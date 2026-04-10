@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctnhppk2ng08"]
+
+[ext_resource type="Script" uid="uid://ssy2lfhrt6vg" path="res://Scenes/PlayedCard/PlayedCard.cs" id="2_222no"]
+[ext_resource type="Resource" uid="uid://bdktoeid0wfol" path="res://Resources/SetUpCardsMonth.tres" id="2_c2jch"]
+[ext_resource type="Texture2D" uid="uid://gcgvjrs8hrdh" path="res://Images/Play Cards/1a.png" id="2_lar3t"]
+[ext_resource type="Resource" uid="uid://b5vndg5i1f0m5" path="res://Resources/SetUpCardsDays.tres" id="3_c2jch"]
+[ext_resource type="Resource" uid="uid://dqoawc5sp5xpf" path="res://Resources/DeckOfCards.tres" id="4_upshv"]
+[ext_resource type="PackedScene" uid="uid://c5ocxau3onxk6" path="res://Scenes/IconButton/IconButton.tscn" id="5_baxs1"]
+[ext_resource type="Resource" uid="uid://0i2tc3mavh05" path="res://Resources/GameData.tres" id="5_jqu6l"]
+[ext_resource type="Texture2D" uid="uid://bx8bxh327220u" path="res://Images/pivot.png" id="8_1qt1f"]
+
+[node name="PlayedCard" type="Control" node_paths=PackedStringArray("_cardImage", "Cell")]
+custom_minimum_size = Vector2(126, 86)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 126.0
+offset_bottom = 86.0
+script = ExtResource("2_222no")
+_cardImage = NodePath("CardImage")
+Cell = [NodePath("CardImage/TopLeft"), NodePath("CardImage/TopMiddle"), NodePath("CardImage/TopRight"), NodePath("CardImage/BottomLeft"), NodePath("CardImage/BottomMiddle"), NodePath("CardImage/BottomRight")]
+_setUpCardsMonth = ExtResource("2_c2jch")
+_setUpCardsDay = ExtResource("3_c2jch")
+_cards = ExtResource("4_upshv")
+_gameData = ExtResource("5_jqu6l")
+metadata/_edit_vertical_guides_ = [3.0, 41.0, 44.0, 82.0, 85.0, 123.0]
+metadata/_edit_horizontal_guides_ = [3.0, 40.0, 46.0, 83.0]
+
+[node name="CardImage" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(126, 86)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_lar3t")
+expand_mode = 3
+
+[node name="TopLeft" parent="CardImage" instance=ExtResource("5_baxs1")]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 41.0
+offset_bottom = 40.0
+
+[node name="TopMiddle" parent="CardImage" instance=ExtResource("5_baxs1")]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 3.0
+offset_right = 82.0
+offset_bottom = 40.0
+
+[node name="TopRight" parent="CardImage" instance=ExtResource("5_baxs1")]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 3.0
+offset_right = 123.0
+offset_bottom = 40.0
+
+[node name="BottomLeft" parent="CardImage" instance=ExtResource("5_baxs1")]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 46.0
+offset_right = 41.0
+offset_bottom = 83.0
+
+[node name="BottomMiddle" parent="CardImage" instance=ExtResource("5_baxs1")]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 46.0
+offset_right = 82.0
+offset_bottom = 83.0
+
+[node name="BottomRight" parent="CardImage" instance=ExtResource("5_baxs1")]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 46.0
+offset_right = 123.0
+offset_bottom = 83.0
+
+[node name="PivotDBG" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+texture = ExtResource("8_1qt1f")
+expand_mode = 3

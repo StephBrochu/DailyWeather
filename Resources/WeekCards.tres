@@ -1,0 +1,107 @@
+[gd_resource type="Resource" script_class="WeekCards" load_steps=20 format=3 uid="uid://dheliipbucmyj"]
+
+[ext_resource type="Script" uid="uid://5hgnawv3b52r" path="res://Resources/Source/WeekCard.cs" id="1_jdx73"]
+[ext_resource type="Script" uid="uid://fmhwu3xoyo6y" path="res://Resources/Source/WeekCardData.cs" id="2_0jn3t"]
+[ext_resource type="Script" uid="uid://cvo7vnhil56ep" path="res://Resources/Source/WeekCards.cs" id="2_1lcjw"]
+[ext_resource type="Texture2D" uid="uid://ceq406gb4tnyd" path="res://Images/Set Up Cards/Week 1.png" id="2_dl2ie"]
+[ext_resource type="Texture2D" uid="uid://djlp31l8riwl8" path="res://Images/Set Up Cards/Week 2.png" id="4_e3d0v"]
+[ext_resource type="Texture2D" uid="uid://dkk4g4jcwjqnf" path="res://Images/Set Up Cards/Week 3.png" id="5_pfqny"]
+[ext_resource type="Texture2D" uid="uid://d3tti86bmwaqn" path="res://Images/Set Up Cards/Week 4-5.png" id="6_vra51"]
+
+[sub_resource type="Resource" id="Resource_as4rm"]
+script = ExtResource("2_0jn3t")
+Row = 7
+Column = 5
+metadata/_custom_type_script = "uid://fmhwu3xoyo6y"
+
+[sub_resource type="Resource" id="Resource_e3d0v"]
+script = ExtResource("2_0jn3t")
+Row = 4
+Column = 5
+metadata/_custom_type_script = "uid://fmhwu3xoyo6y"
+
+[sub_resource type="Resource" id="Resource_0jn3t"]
+script = ExtResource("1_jdx73")
+Image = ExtResource("2_dl2ie")
+Month = SubResource("Resource_e3d0v")
+Day = SubResource("Resource_as4rm")
+Icon1 = 4
+Icon2 = 1
+Background1 = 2
+Background2 = 1
+metadata/_custom_type_script = "uid://5hgnawv3b52r"
+
+[sub_resource type="Resource" id="Resource_htkqg"]
+script = ExtResource("2_0jn3t")
+Row = 7
+Column = 8
+metadata/_custom_type_script = "uid://fmhwu3xoyo6y"
+
+[sub_resource type="Resource" id="Resource_e4syb"]
+script = ExtResource("2_0jn3t")
+Row = 3
+Column = 5
+metadata/_custom_type_script = "uid://fmhwu3xoyo6y"
+
+[sub_resource type="Resource" id="Resource_ueine"]
+script = ExtResource("1_jdx73")
+Image = ExtResource("4_e3d0v")
+Month = SubResource("Resource_e4syb")
+Day = SubResource("Resource_htkqg")
+Icon1 = 3
+Icon2 = 2
+Background1 = 3
+Background2 = 1
+metadata/_custom_type_script = "uid://5hgnawv3b52r"
+
+[sub_resource type="Resource" id="Resource_8ft8j"]
+script = ExtResource("2_0jn3t")
+Row = 7
+Column = 7
+metadata/_custom_type_script = "uid://fmhwu3xoyo6y"
+
+[sub_resource type="Resource" id="Resource_3rp62"]
+script = ExtResource("2_0jn3t")
+Row = 3
+Column = 4
+metadata/_custom_type_script = "uid://fmhwu3xoyo6y"
+
+[sub_resource type="Resource" id="Resource_l704r"]
+script = ExtResource("1_jdx73")
+Image = ExtResource("5_pfqny")
+Month = SubResource("Resource_3rp62")
+Day = SubResource("Resource_8ft8j")
+Icon1 = 1
+Icon2 = 3
+Background1 = 2
+Background2 = 3
+metadata/_custom_type_script = "uid://5hgnawv3b52r"
+
+[sub_resource type="Resource" id="Resource_yydyd"]
+script = ExtResource("2_0jn3t")
+Row = 8
+Column = 5
+metadata/_custom_type_script = "uid://fmhwu3xoyo6y"
+
+[sub_resource type="Resource" id="Resource_k2xgn"]
+script = ExtResource("2_0jn3t")
+Orientation = 90.0
+Row = 5
+Column = 5
+metadata/_custom_type_script = "uid://fmhwu3xoyo6y"
+
+[sub_resource type="Resource" id="Resource_h7yls"]
+script = ExtResource("1_jdx73")
+Image = ExtResource("6_vra51")
+Month = SubResource("Resource_k2xgn")
+Day = SubResource("Resource_yydyd")
+Icon1 = 2
+Icon2 = 4
+Background1 = 1
+Background2 = 2
+metadata/_custom_type_script = "uid://5hgnawv3b52r"
+
+[resource]
+script = ExtResource("2_1lcjw")
+Card = Array[ExtResource("1_jdx73")]([SubResource("Resource_0jn3t"), SubResource("Resource_ueine"), SubResource("Resource_l704r"), SubResource("Resource_h7yls")])
+metadata/_custom_type_script = "uid://cvo7vnhil56ep"

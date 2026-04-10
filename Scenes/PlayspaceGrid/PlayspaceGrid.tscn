@@ -1,0 +1,35 @@
+[gd_scene load_steps=10 format=3 uid="uid://brelr78pu58d"]
+
+[ext_resource type="Script" uid="uid://c8t0p70b4smll" path="res://Scenes/PlayspaceGrid/PlayspaceGrid.cs" id="1_w8acp"]
+[ext_resource type="PackedScene" uid="uid://ctnhppk2ng08" path="res://Scenes/PlayedCard/PlayedCard.tscn" id="2_sgbxb"]
+[ext_resource type="Resource" uid="uid://0i2tc3mavh05" path="res://Resources/GameData.tres" id="3_qs4ta"]
+[ext_resource type="Resource" uid="uid://bdktoeid0wfol" path="res://Resources/SetUpCardsMonth.tres" id="3_uemdo"]
+[ext_resource type="Resource" uid="uid://bqttaf5q4jmfq" path="res://Resources/OffsetTables.tres" id="4_7gkvw"]
+[ext_resource type="Resource" uid="uid://b5vndg5i1f0m5" path="res://Resources/SetUpCardsDays.tres" id="4_p063t"]
+[ext_resource type="Resource" uid="uid://dqoawc5sp5xpf" path="res://Resources/DeckOfCards.tres" id="5_p063t"]
+[ext_resource type="PackedScene" uid="uid://blr5hefieu1rj" path="res://Scenes/PlayspaceGrid/GameGrid.tscn" id="9_ekj37"]
+[ext_resource type="PackedScene" uid="uid://dp0vu4mdcmla2" path="res://Scenes/PlayspaceGrid/DebugCell.tscn" id="9_ymkhs"]
+
+[node name="PlayspaceGrid" type="Control" node_paths=PackedStringArray("_grid")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_w8acp")
+_monthCard = ExtResource("2_sgbxb")
+_monthData = ExtResource("3_uemdo")
+_dayCard = ExtResource("2_sgbxb")
+_dayData = ExtResource("4_p063t")
+_playCard = ExtResource("2_sgbxb")
+_playData = ExtResource("5_p063t")
+_gridRef = ExtResource("9_ekj37")
+_grid = NodePath("GameGrid")
+_gameData = ExtResource("3_qs4ta")
+_offsetTables = ExtResource("4_7gkvw")
+_cell = ExtResource("9_ymkhs")
+
+[node name="GameGrid" parent="." instance=ExtResource("9_ekj37")]
+layout_mode = 0
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 4
+script = null

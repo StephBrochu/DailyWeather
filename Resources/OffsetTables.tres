@@ -1,0 +1,154 @@
+[gd_resource type="Resource" script_class="OffsetTables" load_steps=32 format=3 uid="uid://bqttaf5q4jmfq"]
+
+[ext_resource type="Script" uid="uid://d2i8jgrnsoyys" path="res://Resources/Source/OffsetTable.cs" id="1_fd1qf"]
+[ext_resource type="Script" uid="uid://bu1ue1p2gwyt" path="res://Resources/Source/CoordinatesOffset.cs" id="2_ibn5n"]
+[ext_resource type="Script" uid="uid://chp5fbe2cdhxk" path="res://Resources/Source/OffsetTables.cs" id="2_ijfox"]
+
+[sub_resource type="Resource" id="Resource_ijfox"]
+script = ExtResource("2_ibn5n")
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_ibn5n"]
+script = ExtResource("2_ibn5n")
+yOffset = 1
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_tv7wj"]
+script = ExtResource("2_ibn5n")
+yOffset = 2
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_pa5cc"]
+script = ExtResource("2_ibn5n")
+xOffset = 1
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_y46g3"]
+script = ExtResource("2_ibn5n")
+xOffset = 1
+yOffset = 1
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_scue5"]
+script = ExtResource("2_ibn5n")
+xOffset = 1
+yOffset = 2
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_jfk4v"]
+script = ExtResource("1_fd1qf")
+Cell = Array[ExtResource("2_ibn5n")]([SubResource("Resource_ijfox"), SubResource("Resource_ibn5n"), SubResource("Resource_tv7wj"), SubResource("Resource_pa5cc"), SubResource("Resource_y46g3"), SubResource("Resource_scue5")])
+metadata/_custom_type_script = "uid://d2i8jgrnsoyys"
+
+[sub_resource type="Resource" id="Resource_qoob4"]
+script = ExtResource("2_ibn5n")
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_qnsom"]
+script = ExtResource("2_ibn5n")
+yOffset = 1
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_ybgx8"]
+script = ExtResource("2_ibn5n")
+yOffset = 2
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_otp5h"]
+script = ExtResource("2_ibn5n")
+xOffset = -1
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_necb4"]
+script = ExtResource("2_ibn5n")
+xOffset = -1
+yOffset = -1
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_geb7w"]
+script = ExtResource("2_ibn5n")
+xOffset = -1
+yOffset = -2
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_thl6u"]
+script = ExtResource("1_fd1qf")
+Cell = Array[ExtResource("2_ibn5n")]([SubResource("Resource_qoob4"), SubResource("Resource_qnsom"), SubResource("Resource_ybgx8"), SubResource("Resource_otp5h"), SubResource("Resource_necb4"), SubResource("Resource_geb7w")])
+metadata/_custom_type_script = "uid://d2i8jgrnsoyys"
+
+[sub_resource type="Resource" id="Resource_s0m4d"]
+script = ExtResource("2_ibn5n")
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_0kmm6"]
+script = ExtResource("2_ibn5n")
+xOffset = -1
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_nv1jn"]
+script = ExtResource("2_ibn5n")
+xOffset = -2
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_0molw"]
+script = ExtResource("2_ibn5n")
+yOffset = -1
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_1i0bf"]
+script = ExtResource("2_ibn5n")
+xOffset = -1
+yOffset = -1
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_smcjf"]
+script = ExtResource("2_ibn5n")
+xOffset = -2
+yOffset = -1
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_ovhcm"]
+script = ExtResource("1_fd1qf")
+Cell = Array[ExtResource("2_ibn5n")]([SubResource("Resource_s0m4d"), SubResource("Resource_0kmm6"), SubResource("Resource_nv1jn"), SubResource("Resource_0molw"), SubResource("Resource_1i0bf"), SubResource("Resource_smcjf")])
+metadata/_custom_type_script = "uid://d2i8jgrnsoyys"
+
+[sub_resource type="Resource" id="Resource_ig3lj"]
+script = ExtResource("2_ibn5n")
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_is6au"]
+script = ExtResource("2_ibn5n")
+yOffset = -1
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_aix1d"]
+script = ExtResource("2_ibn5n")
+yOffset = -2
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_yjeph"]
+script = ExtResource("2_ibn5n")
+xOffset = -1
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_6adnq"]
+script = ExtResource("2_ibn5n")
+xOffset = -1
+yOffset = -1
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_daaml"]
+script = ExtResource("2_ibn5n")
+xOffset = -1
+yOffset = -2
+metadata/_custom_type_script = "uid://bu1ue1p2gwyt"
+
+[sub_resource type="Resource" id="Resource_vp3yw"]
+script = ExtResource("1_fd1qf")
+Cell = Array[ExtResource("2_ibn5n")]([SubResource("Resource_ig3lj"), SubResource("Resource_is6au"), SubResource("Resource_aix1d"), SubResource("Resource_yjeph"), SubResource("Resource_6adnq"), SubResource("Resource_daaml")])
+metadata/_custom_type_script = "uid://d2i8jgrnsoyys"
+
+[resource]
+script = ExtResource("2_ijfox")
+Table = Array[ExtResource("1_fd1qf")]([SubResource("Resource_jfk4v"), SubResource("Resource_thl6u"), SubResource("Resource_ovhcm"), SubResource("Resource_vp3yw")])
+metadata/_custom_type_script = "uid://chp5fbe2cdhxk"

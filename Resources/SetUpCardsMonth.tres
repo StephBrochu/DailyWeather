@@ -1,0 +1,109 @@
+[gd_resource type="Resource" script_class="SetUpCards" load_steps=23 format=3 uid="uid://bdktoeid0wfol"]
+
+[ext_resource type="Script" uid="uid://d03nyp5tw4pho" path="res://Resources/Source/SetUpCard.cs" id="1_8futw"]
+[ext_resource type="Texture2D" uid="uid://hhmex5xogpnu" path="res://Images/Set Up Cards/Month-JanJune.png" id="2_5iwgy"]
+[ext_resource type="Script" uid="uid://c64nq1ke006hq" path="res://Resources/Source/CardIcon.cs" id="2_advfx"]
+[ext_resource type="Texture2D" uid="uid://cnri3c1avm2hb" path="res://Images/Set Up Cards/Month-JulyDec.png" id="4_advfx"]
+[ext_resource type="Script" uid="uid://ctrgmajc6iseo" path="res://Resources/Source/SetUpCardData.cs" id="4_i34gm"]
+[ext_resource type="Script" uid="uid://byxip7yfxsqa0" path="res://Resources/Source/SetUpCards.cs" id="6_ttyjv"]
+
+[sub_resource type="Resource" id="Resource_advfx"]
+script = ExtResource("2_advfx")
+Icon = 2
+Background = 2
+metadata/_custom_type_script = "uid://c64nq1ke006hq"
+
+[sub_resource type="Resource" id="Resource_j6l5o"]
+script = ExtResource("2_advfx")
+Icon = 2
+Background = 1
+metadata/_custom_type_script = "uid://c64nq1ke006hq"
+
+[sub_resource type="Resource" id="Resource_exdop"]
+script = ExtResource("2_advfx")
+Icon = 4
+Background = 3
+metadata/_custom_type_script = "uid://c64nq1ke006hq"
+
+[sub_resource type="Resource" id="Resource_tix37"]
+script = ExtResource("2_advfx")
+Icon = 3
+Background = 2
+metadata/_custom_type_script = "uid://c64nq1ke006hq"
+
+[sub_resource type="Resource" id="Resource_b5enc"]
+script = ExtResource("2_advfx")
+Icon = 4
+Background = 2
+metadata/_custom_type_script = "uid://c64nq1ke006hq"
+
+[sub_resource type="Resource" id="Resource_843x3"]
+script = ExtResource("2_advfx")
+Icon = 1
+Background = 1
+metadata/_custom_type_script = "uid://c64nq1ke006hq"
+
+[sub_resource type="Resource" id="Resource_i34gm"]
+script = ExtResource("4_i34gm")
+Image = ExtResource("2_5iwgy")
+Icon = Array[ExtResource("2_advfx")]([SubResource("Resource_advfx"), SubResource("Resource_j6l5o"), SubResource("Resource_exdop"), SubResource("Resource_tix37"), SubResource("Resource_b5enc"), SubResource("Resource_843x3")])
+Date = Array[int]([1, 2, 3, 4, 5, 6])
+metadata/_custom_type_script = "uid://ctrgmajc6iseo"
+
+[sub_resource type="Resource" id="Resource_ttyjv"]
+script = ExtResource("1_8futw")
+Front = SubResource("Resource_i34gm")
+metadata/_custom_type_script = "uid://d03nyp5tw4pho"
+
+[sub_resource type="Resource" id="Resource_7s7o5"]
+script = ExtResource("2_advfx")
+Icon = 1
+Background = 3
+metadata/_custom_type_script = "uid://c64nq1ke006hq"
+
+[sub_resource type="Resource" id="Resource_bv2w8"]
+script = ExtResource("2_advfx")
+Icon = 1
+Background = 2
+metadata/_custom_type_script = "uid://c64nq1ke006hq"
+
+[sub_resource type="Resource" id="Resource_6goxt"]
+script = ExtResource("2_advfx")
+Icon = 3
+Background = 1
+metadata/_custom_type_script = "uid://c64nq1ke006hq"
+
+[sub_resource type="Resource" id="Resource_uhu5l"]
+script = ExtResource("2_advfx")
+Icon = 4
+Background = 1
+metadata/_custom_type_script = "uid://c64nq1ke006hq"
+
+[sub_resource type="Resource" id="Resource_7punr"]
+script = ExtResource("2_advfx")
+Icon = 4
+Background = 3
+metadata/_custom_type_script = "uid://c64nq1ke006hq"
+
+[sub_resource type="Resource" id="Resource_7quh3"]
+script = ExtResource("2_advfx")
+Icon = 2
+Background = 3
+metadata/_custom_type_script = "uid://c64nq1ke006hq"
+
+[sub_resource type="Resource" id="Resource_fhq5i"]
+script = ExtResource("4_i34gm")
+Image = ExtResource("4_advfx")
+Icon = Array[ExtResource("2_advfx")]([SubResource("Resource_7s7o5"), SubResource("Resource_bv2w8"), SubResource("Resource_6goxt"), SubResource("Resource_uhu5l"), SubResource("Resource_7punr"), SubResource("Resource_7quh3")])
+Date = Array[int]([7, 8, 9, 10, 11, 12])
+metadata/_custom_type_script = "uid://ctrgmajc6iseo"
+
+[sub_resource type="Resource" id="Resource_vb5bv"]
+script = ExtResource("1_8futw")
+Front = SubResource("Resource_fhq5i")
+metadata/_custom_type_script = "uid://d03nyp5tw4pho"
+
+[resource]
+script = ExtResource("6_ttyjv")
+Card = Array[ExtResource("1_8futw")]([SubResource("Resource_ttyjv"), SubResource("Resource_vb5bv")])
+metadata/_custom_type_script = "uid://byxip7yfxsqa0"
