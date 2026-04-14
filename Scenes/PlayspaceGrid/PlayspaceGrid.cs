@@ -106,7 +106,6 @@ public partial class PlayspaceGrid : Control
 		 };
 		UpdateGrid(_currentCardSelected, sideOfCard, _currentCardSelected.Name, _currentCellSelected.Row, _currentCellSelected.Col, 0, "");
 		
-		GD.Print("sending signal");
 		SignalManager.EmitOnDealNextCard(_cardSelectedNumber);
 		SignalManager.EmitOnLockDisabled();
 		_cardPlayedSoFar++;

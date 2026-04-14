@@ -129,33 +129,40 @@ public partial class TopBar : TextureRect
 			_card.EnableButtons(_playCardData.Cards[card].Back.Icon, card, false);
 		_card.Position = slot.Position;
 		AddChild(_card);
-		GD.Print(side, ": ", card);
 		_nextCard++;
 	}
 
 	private void DealNewCard(int card)
 	{
-		GD.Print(card);
+		Node currentCard;
+		var dealOneMore = _nextCard < _deck.Length;
+		
 		if (_rightCard == card)
+		{ 
+			currentCard = GetTree().GetFirstNodeInGroup("card" + _right);
+			if (dealOneMore)
+			{
+				_rightCard = _deck[_nextCard];
+				DealPlayCard(_rightCardDisplay, _right);
+			}
+		}
+		else if (_leftCard == card)
 		{
-			var currentCard = GetTree().GetFirstNodeInGroup("card"+_right);
-			currentCard.Free();
-			_rightCard = _nextCard;
-			DealPlayCard(_rightCardDisplay, _right);
-		} else if (_leftCard == card)
-		{
-			var currentCard = GetTree().GetFirstNodeInGroup("card"+_left);
-			currentCard.Free();
-			_leftCard = _nextCard;
-			DealPlayCard(_leftCardDisplay, _right);
+			currentCard = GetTree().GetFirstNodeInGroup("card" + _left);
+			if (dealOneMore)
+			{
+				_leftCard = _deck[_nextCard];
+				DealPlayCard(_leftCardDisplay, _right);
+			}
 		}
 		else
 		{
 			GD.Print("error");
 			return;
 		}
+		currentCard.Free();
 	}
-	
+
 	private void DisplayGrid()
 	{
 		// little debugging
