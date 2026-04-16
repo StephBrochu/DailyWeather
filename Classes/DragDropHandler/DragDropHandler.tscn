@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://oitv2b5a1tl7"]
-
-[ext_resource type="Script" uid="uid://oaj8nt4qmhpr" path="res://Classes/DragDropHandler/DragDropHandler.cs" id="1_bdu0c"]
-
-[node name="DragDropHandler" type="Node"]
-script = ExtResource("1_bdu0c")
