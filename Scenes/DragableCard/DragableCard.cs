@@ -13,11 +13,12 @@ public partial class DragableCard : PanelContainer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-
+		
 	}
 
 	public override void _Process(double delta)
 	{
+		if (_card == CardState.Locked) return; // if the card is locked, then don't allow dragging/rotating
 		switch (_card)
 		{
 			case CardState.Drag:
@@ -106,8 +107,9 @@ public partial class DragableCard : PanelContainer
 
 	public void LockCard()
 	{
-		
+		_card = CardState.Locked;
 	}
+	
 // Snap points are enabled by Topbar based on what cell is being held by player
 	public void EnableSnapPoint(int snapPoint)
 	{
@@ -120,4 +122,5 @@ public partial class DragableCard : PanelContainer
 		Control controlNode = GetNode<Control>($"Card/Pivot0{snapPoint}");
 		controlNode.RemoveFromGroup("Snap"); // not sure on name yet. Should probably be Snap + icon/bg
 	}
+	
 }

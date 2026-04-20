@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://7aogaoeiyd8c"]
+[gd_scene load_steps=6 format=3 uid="uid://7aogaoeiyd8c"]
 
 [ext_resource type="PackedScene" uid="uid://phgatxro0ybc" path="res://Scenes/TopBar/TopBar.tscn" id="1_uqdog"]
 [ext_resource type="Texture2D" uid="uid://piknf0q6to2m" path="res://Images/tabletop.png" id="1_v763k"]
+[ext_resource type="Script" uid="uid://714wkc1t3dxi" path="res://Scenes/MainMenu/Camera2d.cs" id="3_adu2g"]
 [ext_resource type="PackedScene" uid="uid://c00jyj5lwj6co" path="res://Scenes/DragableCard/DragableCard.tscn" id="4_0qgbs"]
 [ext_resource type="PackedScene" uid="uid://brelr78pu58d" path="res://Scenes/PlayspaceGrid/PlayspaceGrid.tscn" id="4_adu2g"]
 
@@ -11,37 +12,45 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TopBar" parent="CanvasLayer" instance=ExtResource("1_uqdog")]
+z_index = 1
+offset_right = 1280.0
+offset_bottom = 120.0
+
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(1280, 720)
 layout_mode = 1
-offset_right = 300.0
-offset_bottom = 300.0
+offset_right = 1280.0
+offset_bottom = 720.0
 texture = ExtResource("1_v763k")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="TopBar" parent="." instance=ExtResource("1_uqdog")]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 120.0
+[node name="Camera2D" type="Camera2D" parent="TextureRect"]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = ExtResource("3_adu2g")
 
-[node name="PlayspaceGrid" parent="TopBar" instance=ExtResource("4_adu2g")]
+[node name="Control" type="Control" parent="TextureRect" groups=["Snap"]]
+anchors_preset = 0
+offset_left = 206.0
+offset_top = 356.0
+offset_right = 246.0
+offset_bottom = 396.0
+
+[node name="PlayspaceGrid" parent="TextureRect" instance=ExtResource("4_adu2g")]
 layout_mode = 0
 offset_left = 346.0
 offset_top = 107.0
 offset_right = 972.0
 offset_bottom = 733.0
 
-[node name="DragableCard" parent="." instance=ExtResource("4_0qgbs")]
+[node name="DragableCard" parent="TextureRect" instance=ExtResource("4_0qgbs")]
 layout_mode = 0
-offset_left = 356.0
-offset_top = 245.0
-offset_right = 836.0
-offset_bottom = 585.0
-
-[node name="Control" type="Control" parent="." groups=["Snap"]]
-anchors_preset = 0
-offset_left = 206.0
-offset_top = 356.0
-offset_right = 246.0
-offset_bottom = 396.0
+offset_left = 405.0
+offset_top = 213.0
+offset_right = 885.0
+offset_bottom = 553.0

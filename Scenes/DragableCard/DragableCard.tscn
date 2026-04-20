@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c00jyj5lwj6co"]
+[gd_scene load_steps=5 format=3 uid="uid://c00jyj5lwj6co"]
 
 [ext_resource type="Script" uid="uid://d4g66aw76dgvb" path="res://Scenes/DragableCard/DragableCard.cs" id="1_p7y7u"]
 [ext_resource type="Texture2D" uid="uid://gcgvjrs8hrdh" path="res://Images/Play Cards/1a.png" id="1_uuehp"]
+[ext_resource type="Texture2D" uid="uid://cmin07wlwvc7s" path="res://Images/Selection.png" id="3_naf5d"]
+[ext_resource type="Script" uid="uid://ds55uf5yurp1v" path="res://Scenes/DragableCard/CardCell.cs" id="3_rytju"]
 
 [node name="DragableCard" type="PanelContainer"]
 offset_right = 480.0
 offset_bottom = 340.0
+mouse_filter = 1
 script = ExtResource("1_p7y7u")
-metadata/_edit_horizontal_guides_ = [86.0, 258.0]
+metadata/_edit_horizontal_guides_ = [86.0, 257.0]
 metadata/_edit_vertical_guides_ = [83.0, 241.0, 399.0]
 
 [node name="CardImage" type="TextureRect" parent="."]
@@ -22,6 +25,23 @@ offset_right = 123.0
 offset_bottom = 126.0
 mouse_filter = 1
 
+[node name="CardCell01" type="PanelContainer" parent="CardImage"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(140, 141)
+layout_mode = 0
+offset_left = 13.0
+offset_top = 14.0
+offset_right = 153.0
+offset_bottom = 155.0
+mouse_filter = 1
+script = ExtResource("3_rytju")
+
+[node name="Highlight" type="TextureRect" parent="CardImage/CardCell01"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3254902)
+layout_mode = 2
+texture = ExtResource("3_naf5d")
+
 [node name="Pivot02" type="Control" parent="CardImage" groups=["Pivot"]]
 anchors_preset = 0
 offset_left = 241.0
@@ -29,6 +49,23 @@ offset_top = 86.0
 offset_right = 281.0
 offset_bottom = 126.0
 mouse_filter = 1
+
+[node name="CardCell02" type="PanelContainer" parent="CardImage"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(140, 141)
+layout_mode = 0
+offset_left = 172.0
+offset_top = 14.0
+offset_right = 312.0
+offset_bottom = 155.0
+mouse_filter = 1
+script = ExtResource("3_rytju")
+
+[node name="Highlight" type="TextureRect" parent="CardImage/CardCell02"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3254902)
+layout_mode = 2
+texture = ExtResource("3_naf5d")
 
 [node name="Pivot03" type="Control" parent="CardImage" groups=["Pivot"]]
 anchors_preset = 0
@@ -38,26 +75,94 @@ offset_right = 439.0
 offset_bottom = 126.0
 mouse_filter = 1
 
+[node name="CardCell03" type="PanelContainer" parent="CardImage"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(140, 141)
+layout_mode = 0
+offset_left = 329.0
+offset_top = 14.0
+offset_right = 469.0
+offset_bottom = 155.0
+mouse_filter = 1
+script = ExtResource("3_rytju")
+
+[node name="Highlight" type="TextureRect" parent="CardImage/CardCell03"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3254902)
+layout_mode = 2
+texture = ExtResource("3_naf5d")
+
 [node name="Pivot04" type="Control" parent="CardImage" groups=["Pivot"]]
 anchors_preset = 0
 offset_left = 83.0
-offset_top = 258.0
+offset_top = 257.0
 offset_right = 123.0
-offset_bottom = 298.0
+offset_bottom = 297.0
 mouse_filter = 1
+
+[node name="CardCell04" type="PanelContainer" parent="CardImage"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(140, 141)
+layout_mode = 0
+offset_left = 14.0
+offset_top = 184.0
+offset_right = 154.0
+offset_bottom = 325.0
+mouse_filter = 1
+script = ExtResource("3_rytju")
+
+[node name="Highlight" type="TextureRect" parent="CardImage/CardCell04"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3254902)
+layout_mode = 2
+texture = ExtResource("3_naf5d")
 
 [node name="Pivot05" type="Control" parent="CardImage" groups=["Pivot"]]
 anchors_preset = 0
 offset_left = 241.0
-offset_top = 258.0
+offset_top = 257.0
 offset_right = 281.0
-offset_bottom = 298.0
+offset_bottom = 297.0
 mouse_filter = 1
+
+[node name="CardCell05" type="PanelContainer" parent="CardImage"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(140, 141)
+layout_mode = 0
+offset_left = 171.0
+offset_top = 184.0
+offset_right = 311.0
+offset_bottom = 325.0
+mouse_filter = 1
+script = ExtResource("3_rytju")
+
+[node name="Highlight" type="TextureRect" parent="CardImage/CardCell05"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3254902)
+layout_mode = 2
+texture = ExtResource("3_naf5d")
 
 [node name="Pivot06" type="Control" parent="CardImage" groups=["Pivot"]]
 anchors_preset = 0
 offset_left = 399.0
-offset_top = 258.0
+offset_top = 257.0
 offset_right = 439.0
-offset_bottom = 298.0
+offset_bottom = 297.0
 mouse_filter = 1
+
+[node name="CardCell06" type="PanelContainer" parent="CardImage"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(140, 141)
+layout_mode = 0
+offset_left = 329.0
+offset_top = 184.0
+offset_right = 469.0
+offset_bottom = 325.0
+mouse_filter = 1
+script = ExtResource("3_rytju")
+
+[node name="Highlight" type="TextureRect" parent="CardImage/CardCell06"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3254902)
+layout_mode = 2
+texture = ExtResource("3_naf5d")
