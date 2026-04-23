@@ -90,8 +90,8 @@ public partial class TopBar : TextureRect
 		var month = _weekCardsData.Card[_gameData.WeekCard].Month;
 		var day = _weekCardsData.Card[_gameData.WeekCard].Day;
 		
-		SignalManager.EmitOnSetMonthCard(month.Orientation, month.Row, month.Column, _date.Month);
-		SignalManager.EmitOnSetDayCard(day.Orientation, day.Row, day.Column, _date.Day);
+		//SignalManager.EmitOnSetMonthCard(month.Orientation, month.Row, month.Column, _date.Month);
+		//SignalManager.EmitOnSetDayCard(day.Orientation, day.Row, day.Column, _date.Day);
 	}
 
 	private static int[] ShuffleCardsList(int[] array)
