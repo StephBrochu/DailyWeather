@@ -35,14 +35,14 @@ metadata/_custom_type_script = "uid://5hgnawv3b52r"
 
 [sub_resource type="Resource" id="Resource_htkqg"]
 script = ExtResource("2_0jn3t")
-Row = 7
-Column = 8
+Row = 6
+Column = 9
 Anchor = 3
 metadata/_custom_type_script = "uid://fmhwu3xoyo6y"
 
 [sub_resource type="Resource" id="Resource_e4syb"]
 script = ExtResource("2_0jn3t")
-Row = 3
+Row = 6
 Column = 5
 Anchor = 2
 metadata/_custom_type_script = "uid://fmhwu3xoyo6y"
@@ -60,15 +60,15 @@ metadata/_custom_type_script = "uid://5hgnawv3b52r"
 
 [sub_resource type="Resource" id="Resource_8ft8j"]
 script = ExtResource("2_0jn3t")
-Row = 7
-Column = 7
+Row = 6
+Column = 8
 Anchor = 4
 metadata/_custom_type_script = "uid://fmhwu3xoyo6y"
 
 [sub_resource type="Resource" id="Resource_3rp62"]
 script = ExtResource("2_0jn3t")
-Row = 3
-Column = 4
+Row = 4
+Column = 5
 Anchor = 6
 metadata/_custom_type_script = "uid://fmhwu3xoyo6y"
 
@@ -85,17 +85,17 @@ metadata/_custom_type_script = "uid://5hgnawv3b52r"
 
 [sub_resource type="Resource" id="Resource_yydyd"]
 script = ExtResource("2_0jn3t")
-Row = 8
-Column = 5
-Anchor = 4
+Row = 7
+Column = 6
+Anchor = 8
 metadata/_custom_type_script = "uid://fmhwu3xoyo6y"
 
 [sub_resource type="Resource" id="Resource_k2xgn"]
 script = ExtResource("2_0jn3t")
 Orientation = 90.0
-Row = 5
+Row = 4
 Column = 5
-Anchor = 1
+Anchor = 7
 metadata/_custom_type_script = "uid://fmhwu3xoyo6y"
 
 [sub_resource type="Resource" id="Resource_h7yls"]

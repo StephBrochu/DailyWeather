@@ -32,10 +32,10 @@ public partial class PlayspaceGrid : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		SignalManager.Instance.OnSetMonthCard += SetMonthCard;
-		SignalManager.Instance.OnSetDayCard += SetDayCard;
-		SignalManager.Instance.OnMouseEntered += HighlightCells;
-		SignalManager.Instance.OnMouseExit += UnHighlightCell;
+		//SignalManager.Instance.OnSetMonthCard += SetMonthCard;
+		//SignalManager.Instance.OnSetDayCard += SetDayCard;
+		//SignalManager.Instance.OnMouseEntered += HighlightCells;
+		//SignalManager.Instance.OnMouseExit += UnHighlightCell;
 		SignalManager.Instance.OnPlaceCard += AddCard;
 		SignalManager.Instance.OnSelectNextCard += AddNextCard;
 		SignalManager.Instance.OnLockCard += LockCardIn;

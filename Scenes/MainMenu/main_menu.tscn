@@ -1,17 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://7aogaoeiyd8c"]
+[gd_scene load_steps=11 format=3 uid="uid://7aogaoeiyd8c"]
 
 [ext_resource type="PackedScene" uid="uid://phgatxro0ybc" path="res://Scenes/TopBar/TopBar.tscn" id="1_uqdog"]
 [ext_resource type="Texture2D" uid="uid://piknf0q6to2m" path="res://Images/tabletop.png" id="1_v763k"]
+[ext_resource type="Script" uid="uid://d1uao7hmuwllq" path="res://Scenes/MainMenu/TableTop.cs" id="2_adu2g"]
 [ext_resource type="PackedScene" uid="uid://c00jyj5lwj6co" path="res://Scenes/DragableCard/DragableCard.tscn" id="4_0qgbs"]
 [ext_resource type="PackedScene" uid="uid://brelr78pu58d" path="res://Scenes/PlayspaceGrid/PlayspaceGrid.tscn" id="4_adu2g"]
+[ext_resource type="Resource" uid="uid://bdktoeid0wfol" path="res://Resources/SetUpCardsMonth.tres" id="4_agesy"]
+[ext_resource type="Resource" uid="uid://b5vndg5i1f0m5" path="res://Resources/SetUpCardsDays.tres" id="5_mdp32"]
+[ext_resource type="Resource" uid="uid://dqoawc5sp5xpf" path="res://Resources/DeckOfCards.tres" id="6_rlg4b"]
+[ext_resource type="Resource" uid="uid://0i2tc3mavh05" path="res://Resources/GameData.tres" id="7_w5buf"]
+[ext_resource type="Resource" uid="uid://bqttaf5q4jmfq" path="res://Resources/OffsetTables.tres" id="8_6c6cs"]
 
-[node name="Main Menu" type="Control"]
+[node name="Main_Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 metadata/_edit_vertical_guides_ = [6950.0, 4630.0, 4780.0, 4930.0, 5080.0, 5230.0, 5380.0, 5530.0]
 metadata/_edit_horizontal_guides_ = [2300.0, 2450.0, 2600.0, 2750.0, 2900.0]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TableTop" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(1280, 720)
 layout_mode = 1
 offset_right = 10000.0
@@ -19,8 +25,15 @@ offset_bottom = 5000.0
 texture = ExtResource("1_v763k")
 expand_mode = 1
 stretch_mode = 1
+script = ExtResource("2_adu2g")
+_monthData = ExtResource("4_agesy")
+_dayData = ExtResource("5_mdp32")
+_playCard = ExtResource("4_0qgbs")
+_playData = ExtResource("6_rlg4b")
+_gameData = ExtResource("7_w5buf")
+_offsetTables = ExtResource("8_6c6cs")
 
-[node name="Camera2D" type="Camera2D" parent="TextureRect"]
+[node name="Camera2D" type="Camera2D" parent="TableTop"]
 offset = Vector2(3500, 1750)
 zoom = Vector2(0.4, 0.4)
 limit_left = 0
@@ -30,7 +43,7 @@ limit_bottom = 5000
 position_smoothing_enabled = true
 editor_draw_screen = false
 
-[node name="PlayspaceGrid" parent="TextureRect" instance=ExtResource("4_adu2g")]
+[node name="PlayspaceGrid" parent="TableTop" instance=ExtResource("4_adu2g")]
 visible = false
 layout_mode = 0
 offset_left = 346.0
@@ -38,47 +51,75 @@ offset_top = 107.0
 offset_right = 972.0
 offset_bottom = 733.0
 
-[node name="Anchor1" type="Control" parent="TextureRect"]
+[node name="Anchor1" type="Control" parent="TableTop"]
 anchors_preset = 0
 offset_left = 4930.0
 offset_top = 2300.0
 offset_right = 4976.0
 offset_bottom = 2344.0
 
-[node name="Anchor2" type="Control" parent="TextureRect"]
+[node name="Anchor2" type="Control" parent="TableTop"]
 anchors_preset = 0
 offset_left = 4630.0
 offset_top = 2450.0
 offset_right = 4676.0
 offset_bottom = 2494.0
 
-[node name="Anchor3" type="Control" parent="TextureRect"]
+[node name="Anchor3" type="Control" parent="TableTop"]
 anchors_preset = 0
-offset_left = 5080.0
+offset_left = 5230.0
 offset_top = 2450.0
-offset_right = 5126.0
+offset_right = 5276.0
 offset_bottom = 2494.0
 
-[node name="Anchor4" type="Control" parent="TextureRect"]
+[node name="Anchor4" type="Control" parent="TableTop"]
 anchors_preset = 0
-offset_left = 5080.0
-offset_top = 2600.0
-offset_right = 5126.0
-offset_bottom = 2644.0
+offset_left = 5230.0
+offset_top = 2750.0
+offset_right = 5276.0
+offset_bottom = 2794.0
 
-[node name="Anchor5" type="Control" parent="TextureRect"]
+[node name="Anchor5" type="Control" parent="TableTop"]
 anchors_preset = 0
 offset_left = 4930.0
 offset_top = 2750.0
 offset_right = 4976.0
 offset_bottom = 2794.0
 
-[node name="Anchor6" type="Control" parent="TextureRect"]
+[node name="Anchor6" type="Control" parent="TableTop"]
 anchors_preset = 0
 offset_left = 4780.0
 offset_top = 2450.0
 offset_right = 4826.0
 offset_bottom = 2494.0
+
+[node name="Anchor7" type="Control" parent="TableTop"]
+anchors_preset = 0
+offset_left = 5080.0
+offset_top = 2300.0
+offset_right = 5126.0
+offset_bottom = 2344.0
+
+[node name="Anchor8" type="Control" parent="TableTop"]
+anchors_preset = 0
+offset_left = 5080.0
+offset_top = 2750.0
+offset_right = 5126.0
+offset_bottom = 2794.0
+
+[node name="FirstCard" type="Control" parent="TableTop"]
+anchors_preset = 0
+offset_left = 6074.0
+offset_top = 2300.0
+offset_right = 6120.0
+offset_bottom = 2344.0
+
+[node name="SecondCard" type="Control" parent="TableTop"]
+anchors_preset = 0
+offset_left = 6074.0
+offset_top = 2600.0
+offset_right = 6120.0
+offset_bottom = 2644.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -86,30 +127,3 @@ offset_bottom = 2494.0
 z_index = 1
 offset_right = 1280.0
 offset_bottom = 120.0
-
-[node name="DragableCard" parent="." instance=ExtResource("4_0qgbs")]
-visible = false
-layout_mode = 0
-offset_left = 4556.0
-offset_top = 2206.0
-offset_right = 5016.0
-offset_bottom = 2516.0
-
-[node name="DragableCard2" parent="." instance=ExtResource("4_0qgbs")]
-visible = false
-layout_mode = 0
-offset_left = 5019.0
-offset_top = 2361.0
-offset_right = 5479.0
-offset_bottom = 2671.0
-rotation = 1.5707964
-metadata/_edit_horizontal_guides_ = [86.0, 248.0]
-
-[node name="DragableCard3" parent="." instance=ExtResource("4_0qgbs")]
-visible = false
-layout_mode = 0
-offset_left = 4708.0
-offset_top = 2512.0
-offset_right = 5168.0
-offset_bottom = 2822.0
-metadata/_edit_horizontal_guides_ = [86.0, 248.0]

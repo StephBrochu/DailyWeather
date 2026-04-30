@@ -1,9 +1,12 @@
-﻿using Godot;
+﻿using System.Collections.Generic;
+using Godot;
 [GlobalClass]
 
 public partial class GameData: Resource
 {
-    [Export] public Godot.Collections.Array<Row> Grid { get; set; } = new();
+    [Export] public Godot.Collections.Array<Row> Grid { get; set; } = [];
+    
+    public List<CardData> Deck = [];
     public int WeekCard { get; set; }
     public int DayCard { get; set; }
     public int Season { get; set; }
