@@ -6,9 +6,6 @@ public partial class TopBar : TextureRect
 {
 	[Export] private TextureRect _weekCardDisplay;
 	[Export] private TextureRect _dayCardDisplay;
-	[Export] private Control _leftCardDisplay;
-	[Export] private Control _rightCardDisplay;
-	[Export] private PackedScene _availableCard;
 	[Export] private PackedScene _playgrid;
 	[Export] private WeekCards _weekCardsData;
 	[Export] private DayConditionCards _dayCardData;
@@ -110,52 +107,6 @@ public partial class TopBar : TextureRect
 		}
 	}
 	
-	private void DealPlayCard(Control slot, string side)
-	{
-		var card = _deck[_nextCard];
-		_card = _availableCard.Instantiate<PlayedCard>();
-		_card.AddToGroup($"card{side}");
-		_card.Card(0, card, _cardSide[_nextCard]);
-		if (_cardSide[_nextCard])
-			_card.EnableButtons(_playCardData.Cards[card].Front.Icon, card, true);
-		else
-			_card.EnableButtons(_playCardData.Cards[card].Back.Icon, card, false);
-		_card.Position = slot.Position;
-		AddChild(_card);
-		_nextCard++;
-	}
-
-	private void DealNewCard(int card)
-	{
-		Node currentCard;
-		var dealOneMore = _nextCard < _deck.Length;
-		
-		if (_rightCard == card)
-		{ 
-			currentCard = GetTree().GetFirstNodeInGroup("card" + _right);
-			if (dealOneMore)
-			{
-				_rightCard = _deck[_nextCard];
-				DealPlayCard(_rightCardDisplay, _right);
-			}
-		}
-		else if (_leftCard == card)
-		{
-			currentCard = GetTree().GetFirstNodeInGroup("card" + _left);
-			if (dealOneMore)
-			{
-				_leftCard = _deck[_nextCard];
-				DealPlayCard(_leftCardDisplay, _right);
-			}
-		}
-		else
-		{
-			GD.Print("error");
-			return;
-		}
-		currentCard.Free();
-	}
-
 	private void DisplayGrid()
 	{
 		// little debugging

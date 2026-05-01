@@ -3,7 +3,6 @@ using Vector2 = Godot.Vector2;
 
 public partial class DragableCard : PanelContainer
 {
-	public static DragableCard Instance { get; private set; }
 	[Export] private TextureRect _cardImage;
 	[Export] public Godot.Collections.Array<CardCell> Cell = new();
 	public enum CardState {Dealt, Drag, Rotate, Released, Locked}
@@ -12,12 +11,17 @@ public partial class DragableCard : PanelContainer
 	private Vector2 _eventStart = Vector2.Zero; // position of the cursor when the event starts
 	private Vector2 _offset = Vector2.Zero; // offset between cursor and corner of card
 	private float _currentRotation;
+
+	private int _currentCellIcon;
+	private int _currentCellBG;
+	private Control _currentCellPivot;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Instance = this;
 		Card = CardState.Dealt;
+		SignalManager.Instance.OnMouseEntered += OnMouseEntered;
+		SignalManager.Instance.OnMouseExit += OnMouseExit;
 	}
 
 	public override void _Process(double delta)
@@ -40,6 +44,20 @@ public partial class DragableCard : PanelContainer
 		}
 	}
 
+	private void OnMouseEntered(int icon, int bg, Control pivot )
+	{
+		_currentCellBG = bg;
+		_currentCellIcon = icon;
+		_currentCellPivot = pivot;
+	}
+
+	private void OnMouseExit()
+	{
+		_currentCellBG = 0;
+		_currentCellIcon = 0;
+		_currentCellPivot = null;
+	}
+	
 	public override void _GuiInput(InputEvent @event)
 	{
 		if (Card == CardState.Locked) return; // if the card is locked, then don't allow dragging/rotating
@@ -59,32 +77,14 @@ public partial class DragableCard : PanelContainer
 			{
 				if (Card== CardState.Drag) Card= CardState.Released;
 			}
-		}
+		} 
 	}
 
 	private void RotateCard()
 	{
-		var pivotPoints = GetTree().GetNodesInGroup("Pivot");
-		
-		// find the closest pivot point
-		var closestPivot = Vector2.Zero;
-		var bestDistance = 99999f;
-		var nameOfPivot = "None";
-		foreach(var node in pivotPoints)
-		{
-			Control controlNode = GetNode<Control>(node.GetPath());
-			var distance = (_eventStart - controlNode.GlobalPosition).Length();
-			if (distance < bestDistance)
-			{
-				closestPivot = controlNode.Position;
-				bestDistance = distance;
-			//	nameOfPivot = controlNode.Name;
-			}
-		}
-		GD.Print(Position);
-		PivotOffset = closestPivot;
-		
-		GD.Print(float.Pi*1.5f);
+		var parentNode = _currentCellPivot.GetParent<PanelContainer>();
+		PivotOffset = _currentCellPivot.Position + parentNode.Position;
+		GD.Print(PivotOffset);
 		if (_currentRotation >= (float.Pi * 1.5f))
 			_currentRotation = 0;
 		else
@@ -93,21 +93,30 @@ public partial class DragableCard : PanelContainer
 	}
 
 	private void CheckForSnap()
-	{
-		// two potential ways of doing things: checking for a snap on only the cell type that the player is dragging the card from  (might not be obvious) OR
-		// use all the snap points on the card (longer and will give "illegal" card placements)
-		var snapPoints = GetTree().GetNodesInGroup("Snap"); 
-		// temporary until viable snap points is established
-		var cardSnapPointNode = GetNode<Control>("CardImage/Pivot01"); // need to get all of this card's pivot point and then cycle through them
+	{ // defaulting to CardCell0 of dragged card. why?
+		var snapPoints = GetTree().GetNodesInGroup("Snap");
 		foreach (var node in snapPoints)
 		{
-			Control controlNode = GetNode<Control>(node.GetPath());
-			var distance = (cardSnapPointNode.GlobalPosition - controlNode.GlobalPosition).Length();
-			GD.Print($"distance: {distance}");
-			if (distance <= 100) // snap distance is probably too great
+			PanelContainer cardCellNode = GetNode<PanelContainer>(node.GetPath());
+			if (cardCellNode.Get("Available").AsBool())
 			{
-				Position = controlNode.GlobalPosition - cardSnapPointNode.Position; 
-				break;
+				var icon = cardCellNode.Get("Icon").AsInt16();
+				var bg = cardCellNode.Get("Bg").AsInt16();
+				if (_currentCellIcon == icon && _currentCellBG == bg)
+				{
+					var path = cardCellNode.GetPath() + "/Pivot";
+					var pivot = GetNode<Control>(path);
+					var distance = (_currentCellPivot.GlobalPosition - pivot.GlobalPosition).Length(); // let's get the correct pivot position
+					if (distance <= 200) // snap distance is probably too great
+					{
+						GD.Print(_currentCellPivot.GetParent().Name);
+						var parent = _currentCellPivot.GetParent();
+						var parentPath = parent.GetPath();
+						PanelContainer parentPosition = GetNode<PanelContainer>(parentPath);
+						Position = pivot.GlobalPosition - (_currentCellPivot.Position + parentPosition.Position);
+						break;
+					}
+				}
 			}
 		}
 	}
@@ -125,26 +134,26 @@ public partial class DragableCard : PanelContainer
 	public void LockCard()
 	{
 		Card= CardState.Locked;
-		int i = 1;
-		Control pivot = GetNodeOrNull<Control>($"CardImage/Pivot0{i}");
-		while (pivot is not null)
+		int i = 0;
+		PanelContainer cell = GetNodeOrNull<PanelContainer>($"CardImage/CardCell{i}");
+		while (cell is not null)
 		{
-			pivot.AddToGroup("Snap");
+			cell.AddToGroup("Snap");
 			i++;
-			pivot = GetNodeOrNull<Control>($"CardImage/Pivot0{i}");
+			cell = GetNodeOrNull<PanelContainer>($"CardImage/CardCell{i}");
 		}
 	}
 	
 // Snap points are enabled by Topbar based on what cell is being held by player
 	public void EnableSnapPoint(int snapPoint)
 	{
-		Control controlNode = GetNode<Control>($"Card/Pivot0{snapPoint}");
+		PanelContainer controlNode = GetNode<PanelContainer>($"Card/CardCell{snapPoint}");
 		controlNode.AddToGroup("Snap"); // not sure on name yet. Should probably be Snap + icon/bg
 	}
 
 	public void DisableSnapPoint(int snapPoint)
 	{
-		Control controlNode = GetNode<Control>($"Card/Pivot0{snapPoint}");
+		PanelContainer controlNode = GetNode<PanelContainer>($"Card/CardCell{snapPoint}");
 		controlNode.RemoveFromGroup("Snap"); // not sure on name yet. Should probably be Snap + icon/bg
 	}
 	

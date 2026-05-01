@@ -118,7 +118,7 @@ public partial class IconButton : TextureButton
 	{
 		if (!_available) return;
 		_highlight.Visible = true;
-		SignalManager.EmitOnMouseEntered(_icon, _bg);
+		//SignalManager.EmitOnMouseEntered(_icon, _bg);
 		//GD.Print($"Icon: {_icon}; BG: {_bg}");
 	}
 

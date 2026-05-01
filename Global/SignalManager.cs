@@ -6,7 +6,7 @@ public partial class SignalManager : Node
 	[Signal] public delegate void OnSetMonthCardEventHandler(float rotation, int row, int column, int anchor, int card); 
 	[Signal] public delegate void OnSetDayCardEventHandler(float rotation, int row, int column, int anchor, int card);
 	[Signal] public delegate void OnDealCardEventHandler();
-	[Signal] public delegate void OnMouseEnteredEventHandler(int icon, int bg);
+	[Signal] public delegate void OnMouseEnteredEventHandler(int icon, int bg, Control pivot);
 	[Signal] public delegate void OnMouseExitEventHandler();
 	[Signal] public delegate void OnPlaceCardEventHandler(int card, bool front, int rowOffset, int colOffset); // refactor
 	[Signal] public delegate void OnSelectNextCardEventHandler(int card, bool front, int rowOffset, int colOffset); // refactor
@@ -40,9 +40,9 @@ public partial class SignalManager : Node
 		Instance.EmitSignal(SignalName.OnDealCard);
 	}
 	
-	public static void EmitOnMouseEntered(int icon, int bg)
+	public static void EmitOnMouseEntered(int icon, int bg, Control pivot)
 	{
-		Instance.EmitSignal(SignalName.OnMouseEntered, icon, bg);
+		Instance.EmitSignal(SignalName.OnMouseEntered, icon, bg, pivot);
 	}
 
 	public static void EmitOnMouseExit()

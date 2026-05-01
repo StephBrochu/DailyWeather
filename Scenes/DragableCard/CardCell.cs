@@ -4,19 +4,22 @@ public partial class CardCell : PanelContainer
 {
     public int Icon { get; set; }
     public int Bg { get; set; }
-    public bool Available;
+    public bool Available { get; set; }
     public int Row = -1;
     public int Col = -1;
     private int _rowOffset;
     private int _colOffset;
     private TextureRect _highlight;
     private TextureRect _unavailable;
+    private Control _pivot;
     
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         _highlight = GetNode<TextureRect>("Highlight");
         _unavailable = GetNode<TextureRect>("Unavailable");
+        _pivot = GetNode<Control>("Pivot");
+        
         MouseEntered += OnMouseOver;
         MouseExited += OnMouseExit;
         Available = true;
@@ -26,7 +29,7 @@ public partial class CardCell : PanelContainer
     {
         if (!Available) return;
         _highlight.Visible = true;
-        SignalManager.EmitOnMouseEntered(Icon, Bg);
+        SignalManager.EmitOnMouseEntered(Icon, Bg, _pivot);
     }
 
     private void OnMouseExit()

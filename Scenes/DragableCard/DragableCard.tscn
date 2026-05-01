@@ -20,14 +20,6 @@ metadata/_edit_vertical_guides_ = [78.0, 230.0, 380.0]
 layout_mode = 2
 texture = ExtResource("1_uuehp")
 
-[node name="Pivot01" type="Control" parent="CardImage" groups=["Pivot"]]
-anchors_preset = 0
-offset_left = 78.0
-offset_top = 81.0
-offset_right = 118.0
-offset_bottom = 121.0
-mouse_filter = 1
-
 [node name="CardCell0" type="PanelContainer" parent="CardImage" groups=["Cell"]]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -37,6 +29,12 @@ offset_right = 148.0
 offset_bottom = 149.0
 mouse_filter = 1
 script = ExtResource("3_rytju")
+
+[node name="Pivot" type="Control" parent="CardImage/CardCell0" groups=["Pivot"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
 
 [node name="Highlight" type="TextureRect" parent="CardImage/CardCell0"]
 visible = false
@@ -50,14 +48,6 @@ self_modulate = Color(1, 1, 1, 0.34509805)
 layout_mode = 2
 texture = ExtResource("5_j3muq")
 
-[node name="Pivot02" type="Control" parent="CardImage" groups=["Pivot"]]
-anchors_preset = 0
-offset_left = 230.0
-offset_top = 81.0
-offset_right = 270.0
-offset_bottom = 121.0
-mouse_filter = 1
-
 [node name="CardCell1" type="PanelContainer" parent="CardImage" groups=["Cell"]]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -67,6 +57,12 @@ offset_right = 299.0
 offset_bottom = 149.0
 mouse_filter = 1
 script = ExtResource("3_rytju")
+
+[node name="Pivot" type="Control" parent="CardImage/CardCell1" groups=["Pivot"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
 
 [node name="Highlight" type="TextureRect" parent="CardImage/CardCell1"]
 visible = false
@@ -80,14 +76,6 @@ self_modulate = Color(1, 1, 1, 0.34509805)
 layout_mode = 2
 texture = ExtResource("5_j3muq")
 
-[node name="Pivot03" type="Control" parent="CardImage" groups=["Pivot"]]
-anchors_preset = 0
-offset_left = 380.0
-offset_top = 81.0
-offset_right = 420.0
-offset_bottom = 121.0
-mouse_filter = 1
-
 [node name="CardCell2" type="PanelContainer" parent="CardImage" groups=["Cell"]]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -97,6 +85,12 @@ offset_right = 449.0
 offset_bottom = 149.0
 mouse_filter = 1
 script = ExtResource("3_rytju")
+
+[node name="Pivot" type="Control" parent="CardImage/CardCell2" groups=["Pivot"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
 
 [node name="Unavailable" type="TextureRect" parent="CardImage/CardCell2"]
 visible = false
@@ -110,14 +104,6 @@ self_modulate = Color(1, 1, 1, 0.3254902)
 layout_mode = 2
 texture = ExtResource("3_naf5d")
 
-[node name="Pivot04" type="Control" parent="CardImage" groups=["Pivot"]]
-anchors_preset = 0
-offset_left = 78.0
-offset_top = 231.0
-offset_right = 118.0
-offset_bottom = 271.0
-mouse_filter = 1
-
 [node name="CardCell3" type="PanelContainer" parent="CardImage" groups=["Cell"]]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -127,6 +113,12 @@ offset_right = 148.0
 offset_bottom = 299.0
 mouse_filter = 1
 script = ExtResource("3_rytju")
+
+[node name="Pivot" type="Control" parent="CardImage/CardCell3" groups=["Pivot"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
 
 [node name="Unavailable" type="TextureRect" parent="CardImage/CardCell3"]
 visible = false
@@ -140,14 +132,6 @@ self_modulate = Color(1, 1, 1, 0.3254902)
 layout_mode = 2
 texture = ExtResource("3_naf5d")
 
-[node name="Pivot05" type="Control" parent="CardImage" groups=["Pivot"]]
-anchors_preset = 0
-offset_left = 230.0
-offset_top = 232.0
-offset_right = 270.0
-offset_bottom = 272.0
-mouse_filter = 1
-
 [node name="CardCell4" type="PanelContainer" parent="CardImage" groups=["Cell"]]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -157,6 +141,12 @@ offset_right = 299.0
 offset_bottom = 299.0
 mouse_filter = 1
 script = ExtResource("3_rytju")
+
+[node name="Pivot" type="Control" parent="CardImage/CardCell4" groups=["Pivot"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
 
 [node name="Highlight" type="TextureRect" parent="CardImage/CardCell4"]
 visible = false
@@ -170,14 +160,6 @@ self_modulate = Color(1, 1, 1, 0.34509805)
 layout_mode = 2
 texture = ExtResource("5_j3muq")
 
-[node name="Pivot06" type="Control" parent="CardImage" groups=["Pivot"]]
-anchors_preset = 0
-offset_left = 380.0
-offset_top = 231.0
-offset_right = 420.0
-offset_bottom = 259.0
-mouse_filter = 1
-
 [node name="CardCell5" type="PanelContainer" parent="CardImage" groups=["Cell"]]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -187,6 +169,12 @@ offset_right = 449.0
 offset_bottom = 299.0
 mouse_filter = 1
 script = ExtResource("3_rytju")
+
+[node name="Pivot" type="Control" parent="CardImage/CardCell5" groups=["Pivot"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
 
 [node name="Highlight" type="TextureRect" parent="CardImage/CardCell5"]
 visible = false

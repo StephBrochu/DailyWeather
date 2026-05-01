@@ -112,7 +112,7 @@ public partial class TableTop : TextureRect
 		_cellsOccupied[key] = value;
 	}
 	
-	private void HighlightCells(int icon, int bg)
+	private void HighlightCells(int icon, int bg, Control pivot)
 	{
 		foreach (KeyValuePair<string,string> pair in _cellsOccupied)
 		{
