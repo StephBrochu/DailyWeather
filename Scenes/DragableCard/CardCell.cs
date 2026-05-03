@@ -5,8 +5,8 @@ public partial class CardCell : PanelContainer
     public int Icon { get; set; }
     public int Bg { get; set; }
     public bool Available { get; set; }
-    public int Row = -1;
-    public int Col = -1;
+    public int Row { get; set; }
+    public int Col { get; set; }
     private int _rowOffset;
     private int _colOffset;
     private TextureRect _highlight;
@@ -23,6 +23,8 @@ public partial class CardCell : PanelContainer
         MouseEntered += OnMouseOver;
         MouseExited += OnMouseExit;
         Available = true;
+        Row = -1;
+        Col = -1;
     }
     
     private void OnMouseOver()

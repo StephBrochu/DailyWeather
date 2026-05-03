@@ -27,6 +27,7 @@ public partial class TopBar : TextureRect
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		SignalManager.Instance.OnDebugDisplayGrid += DisplayGrid;
 		//SignalManager.Instance.OnDealNextCard += DealNewCard;
 		// this will be replaced with a menu on the start screen to allow the player to select any day they want
 		_today = DateTime.Today.DayOfWeek; 
@@ -110,9 +111,10 @@ public partial class TopBar : TextureRect
 	private void DisplayGrid()
 	{
 		// little debugging
+		GD.Print("    [00][01][02][03][04][05][06][07][08][09][10][11][12][13][14]");
 		for (int x = 0; x< _gameData.Grid.Count; x++)
 		{
-			string line = "";
+			string line = $"[{x:D2}]";
 			for (int y = 0; y < _gameData.Grid[x].GridRow.Count; y++)
 			{
 				var cell = _gameData.Grid[x].GridRow[y];

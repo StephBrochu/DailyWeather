@@ -8,6 +8,8 @@ public partial class SignalManager : Node
 	[Signal] public delegate void OnDealCardEventHandler();
 	[Signal] public delegate void OnMouseEnteredEventHandler(int icon, int bg, Control pivot);
 	[Signal] public delegate void OnMouseExitEventHandler();
+	[Signal] public delegate void OnCardPlacedEventHandler(string cardOverlaid, string cellOverlaid, string newCard, string newCell);
+	[Signal] public delegate void OnDebugDisplayGridEventHandler();
 	[Signal] public delegate void OnPlaceCardEventHandler(int card, bool front, int rowOffset, int colOffset); // refactor
 	[Signal] public delegate void OnSelectNextCardEventHandler(int card, bool front, int rowOffset, int colOffset); // refactor
 	[Signal] public delegate void OnRotateCardEventHandler();
@@ -50,6 +52,16 @@ public partial class SignalManager : Node
 		Instance.EmitSignal(SignalName.OnMouseExit);
 	}
 
+	public static void EmitOnCardPlaced(string cardOverlaid, string cellOverlaid, string newCard, string newCell)
+	{
+		Instance.EmitSignal(SignalName.OnCardPlaced, cardOverlaid, cellOverlaid, newCard, newCell);
+	}
+
+	public static void EmitOnDebugDisplayGrid()
+	{
+		Instance.EmitSignal(SignalName.OnDebugDisplayGrid);
+	}
+	
 	public static void EmitOnPlaceCard(int card, bool front, int rowOffset, int colOffset)
 	{
 		Instance.EmitSignal(SignalName.OnPlaceCard, card, front, rowOffset, colOffset);

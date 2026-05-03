@@ -13,8 +13,8 @@ mouse_filter = 1
 script = ExtResource("1_p7y7u")
 _cardImage = NodePath("CardImage")
 Cell = [NodePath("CardImage/CardCell0"), NodePath("CardImage/CardCell1"), NodePath("CardImage/CardCell2"), NodePath("CardImage/CardCell3"), NodePath("CardImage/CardCell4"), NodePath("CardImage/CardCell5")]
-metadata/_edit_horizontal_guides_ = [81.0, 231.0]
-metadata/_edit_vertical_guides_ = [78.0, 230.0, 380.0]
+metadata/_edit_horizontal_guides_ = [11.0, 161.0]
+metadata/_edit_vertical_guides_ = [10.0, 161.0, 311.0]
 
 [node name="CardImage" type="TextureRect" parent="."]
 layout_mode = 2

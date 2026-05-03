@@ -19,7 +19,7 @@ public partial class PlayedCard : Control
 	public override void _Ready()
 	{
 		Instance = this;
-		SignalManager.Instance.OnRotateCard += RotateCard;
+		//SignalManager.Instance.OnRotateCard += RotateCard;
 	}
 	
 	public void SetUpMonth(float orientation, int card)

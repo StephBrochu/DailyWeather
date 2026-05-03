@@ -36,9 +36,9 @@ public partial class PlayspaceGrid : Control
 		//SignalManager.Instance.OnSetDayCard += SetDayCard;
 		//SignalManager.Instance.OnMouseEntered += HighlightCells;
 		//SignalManager.Instance.OnMouseExit += UnHighlightCell;
-		SignalManager.Instance.OnPlaceCard += AddCard;
-		SignalManager.Instance.OnSelectNextCard += AddNextCard;
-		SignalManager.Instance.OnLockCard += LockCardIn;
+		//SignalManager.Instance.OnPlaceCard += AddCard;
+		//SignalManager.Instance.OnSelectNextCard += AddNextCard;
+		//SignalManager.Instance.OnLockCard += LockCardIn;
 		if (_debug) DebugGrid();
 	}
 
@@ -133,8 +133,8 @@ public partial class PlayspaceGrid : Control
 		for (int i = 0; i < 6; i++)
 		{
 			var offsetTable = _offsetTables.Table[offsetTableToUse].Cell[i];
-			var offsetRow = row + offsetTable.xOffset;
-			var offsetCol = col + offsetTable.yOffset;
+			var offsetRow = row + offsetTable.rowOffset;
+			var offsetCol = col + offsetTable.colOffset;
 			var gameData = _gameData.Grid[offsetRow].GridRow[offsetCol];
 			gameData.Icon = iconData[i].Icon;
 			gameData.Background = iconData[i].Background;

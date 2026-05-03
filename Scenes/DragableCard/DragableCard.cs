@@ -5,7 +5,7 @@ public partial class DragableCard : PanelContainer
 {
 	[Export] private TextureRect _cardImage;
 	[Export] public Godot.Collections.Array<CardCell> Cell = new();
-	public enum CardState {Dealt, Drag, Rotate, Released, Locked}
+	public enum CardState {Dealt, Drag, Rotate, Released, Snapped, Locked}
 	public CardState Card;
 	
 	private Vector2 _eventStart = Vector2.Zero; // position of the cursor when the event starts
@@ -15,7 +15,11 @@ public partial class DragableCard : PanelContainer
 	private int _currentCellIcon;
 	private int _currentCellBG;
 	private Control _currentCellPivot;
-	
+
+	private Node _cardOverlaid;
+	private StringName _nodeName;
+	private Node _cellParent;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -39,6 +43,10 @@ public partial class DragableCard : PanelContainer
 			
 			case CardState.Released:
 				CheckForSnap();
+				Card = CardState.Dealt;
+				break;
+			
+			case CardState.Snapped:
 				Card = CardState.Dealt;
 				break;
 		}
@@ -76,6 +84,7 @@ public partial class DragableCard : PanelContainer
 			else
 			{
 				if (Card== CardState.Drag) Card= CardState.Released;
+				CheckForSnap();
 			}
 		} 
 	}
@@ -84,38 +93,43 @@ public partial class DragableCard : PanelContainer
 	{
 		var parentNode = _currentCellPivot.GetParent<PanelContainer>();
 		PivotOffset = _currentCellPivot.Position + parentNode.Position;
-		GD.Print(PivotOffset);
+		// got to figure out why the pivot is wrong when switching
 		if (_currentRotation >= (float.Pi * 1.5f))
 			_currentRotation = 0;
 		else
 			_currentRotation += float.Pi / 2;
 		Rotation = _currentRotation;
+		if (Card == CardState.Snapped) SignalManager.EmitOnCardPlaced(_cardOverlaid.Name,_nodeName, Name,_cellParent.Name);
+
 	}
 
 	private void CheckForSnap()
 	{ // defaulting to CardCell0 of dragged card. why?
-		var snapPoints = GetTree().GetNodesInGroup("Snap");
-		foreach (var node in snapPoints)
+		var snapPoints = GetTree().GetNodesInGroup("Snap"); //get all cells that are allowed to be overlaid
+		foreach (var node in snapPoints) // let's go through each one to see if we can snap the card atop it
 		{
-			PanelContainer cardCellNode = GetNode<PanelContainer>(node.GetPath());
-			if (cardCellNode.Get("Available").AsBool())
+			PanelContainer cardCellNode = GetNode<PanelContainer>(node.GetPath()); // get the parent of the anchor (PanelContainer), so we can get the data for this cell
+			if (cardCellNode.Get("Available").AsBool()) // are we allowed to snap a card on this?
 			{
-				var icon = cardCellNode.Get("Icon").AsInt16();
+				var icon = cardCellNode.Get("Icon").AsInt16(); 
 				var bg = cardCellNode.Get("Bg").AsInt16();
-				if (_currentCellIcon == icon && _currentCellBG == bg)
+				if (_currentCellIcon == icon && _currentCellBG == bg) // does the icon/bg match the icon/bg of the card? if not, can't snap there
 				{
-					var path = cardCellNode.GetPath() + "/Pivot";
+					var path = cardCellNode.GetPath() + "/Pivot"; // we need the center of the cell, which is stored in the pivot (control)
 					var pivot = GetNode<Control>(path);
-					var distance = (_currentCellPivot.GlobalPosition - pivot.GlobalPosition).Length(); // let's get the correct pivot position
+					var distance = (_currentCellPivot.GlobalPosition - pivot.GlobalPosition).Length(); // check the distance between the two control node
 					if (distance <= 200) // snap distance is probably too great
 					{
-						GD.Print(_currentCellPivot.GetParent().Name);
-						var parent = _currentCellPivot.GetParent();
-						var parentPath = parent.GetPath();
+						_cellParent = _currentCellPivot.GetParent(); // we need to get the position of the Cell, so that we can add it to the pivot position
+						var parentPath = _cellParent.GetPath();
 						PanelContainer parentPosition = GetNode<PanelContainer>(parentPath);
 						Position = pivot.GlobalPosition - (_currentCellPivot.Position + parentPosition.Position);
+						_cardOverlaid = cardCellNode.GetParent().GetParent(); // needed to get the name of the card
+						Card = CardState.Snapped;
+						_nodeName = node.Name; 
+						SignalManager.EmitOnCardPlaced(_cardOverlaid.Name,_nodeName, Name,_cellParent.Name); 
 						break;
-					}
+					} else {SignalManager.EmitOnLockDisabled();}
 				}
 			}
 		}
