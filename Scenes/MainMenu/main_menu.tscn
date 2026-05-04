@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://7aogaoeiyd8c"]
+[gd_scene load_steps=10 format=3 uid="uid://7aogaoeiyd8c"]
 
 [ext_resource type="PackedScene" uid="uid://phgatxro0ybc" path="res://Scenes/TopBar/TopBar.tscn" id="1_uqdog"]
 [ext_resource type="Texture2D" uid="uid://piknf0q6to2m" path="res://Images/tabletop.png" id="1_v763k"]
 [ext_resource type="Script" uid="uid://d1uao7hmuwllq" path="res://Scenes/MainMenu/TableTop.cs" id="2_adu2g"]
 [ext_resource type="PackedScene" uid="uid://c00jyj5lwj6co" path="res://Scenes/DragableCard/DragableCard.tscn" id="4_0qgbs"]
-[ext_resource type="PackedScene" uid="uid://brelr78pu58d" path="res://Scenes/PlayspaceGrid/PlayspaceGrid.tscn" id="4_adu2g"]
 [ext_resource type="Resource" uid="uid://bdktoeid0wfol" path="res://Resources/SetUpCardsMonth.tres" id="4_agesy"]
 [ext_resource type="Resource" uid="uid://b5vndg5i1f0m5" path="res://Resources/SetUpCardsDays.tres" id="5_mdp32"]
 [ext_resource type="Resource" uid="uid://dqoawc5sp5xpf" path="res://Resources/DeckOfCards.tres" id="6_rlg4b"]
@@ -42,14 +41,6 @@ limit_right = 10000
 limit_bottom = 5000
 position_smoothing_enabled = true
 editor_draw_screen = false
-
-[node name="PlayspaceGrid" parent="TableTop" instance=ExtResource("4_adu2g")]
-visible = false
-layout_mode = 0
-offset_left = 346.0
-offset_top = 107.0
-offset_right = 972.0
-offset_bottom = 733.0
 
 [node name="Anchor1" type="Control" parent="TableTop"]
 anchors_preset = 0

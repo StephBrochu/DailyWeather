@@ -129,11 +129,6 @@ public partial class TableTop : TextureRect
 
 			cardSelected.Cell[i].Col = offsetCol;
 			cardSelected.Cell[i].Row = offsetRow;
-
-			if (_debug) { var parent = GetNode<GridContainer>("GameGrid");
-				DebugCell cellToUpdate = parent.GetNode<DebugCell>($"{offsetRow:D2}{offsetCol:D2}");
-				cellToUpdate.UpdateData($"{gameData.Icon}{gameData.Background}");
-			}
 			UpdateCellDictionary(offsetRow, offsetCol,iconData[i].Icon, iconData[i].Bg);
 		}
 	}

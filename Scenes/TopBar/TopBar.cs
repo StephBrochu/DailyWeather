@@ -6,7 +6,6 @@ public partial class TopBar : TextureRect
 {
 	[Export] private TextureRect _weekCardDisplay;
 	[Export] private TextureRect _dayCardDisplay;
-	[Export] private PackedScene _playgrid;
 	[Export] private WeekCards _weekCardsData;
 	[Export] private DayConditionCards _dayCardData;
 	[Export] private DeckOfCards _playCardData;
@@ -22,7 +21,6 @@ public partial class TopBar : TextureRect
 	private bool[] _cardSide = [true, true, true, true, true, true];
 	private string _left = "left";
 	private string _right = "right";
-	private PlayedCard _card;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

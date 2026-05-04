@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://blr5hefieu1rj"]
-
-[ext_resource type="Script" uid="uid://bgbwmphmosyvi" path="res://Scenes/PlayspaceGrid/GameGrid.cs" id="1_xpi4m"]
-
-[node name="GameGrid" type="GridContainer"]
-z_index = 999
-columns = 15
-script = ExtResource("1_xpi4m")

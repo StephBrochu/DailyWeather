@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://phgatxro0ybc"]
+[gd_scene load_steps=12 format=3 uid="uid://phgatxro0ybc"]
 
 [ext_resource type="Texture2D" uid="uid://y3uuu750c5jf" path="res://Images/Background.png" id="1_aylmd"]
 [ext_resource type="Script" uid="uid://wif1ndxdcy1v" path="res://Scenes/TopBar/TopBar.cs" id="2_k4new"]
 [ext_resource type="Texture2D" uid="uid://ceq406gb4tnyd" path="res://Images/Set Up Cards/Week 1.png" id="2_mdabh"]
 [ext_resource type="Texture2D" uid="uid://tdcw6v0y5rwl" path="res://Images/Set Up Cards/Weekday- Monday-SummerFall.png" id="3_3p0hn"]
-[ext_resource type="PackedScene" uid="uid://brelr78pu58d" path="res://Scenes/PlayspaceGrid/PlayspaceGrid.tscn" id="3_k4new"]
 [ext_resource type="Resource" uid="uid://dheliipbucmyj" path="res://Resources/WeekCards.tres" id="4_pe3no"]
 [ext_resource type="Resource" uid="uid://d4dkeowkbv5og" path="res://Resources/DayCards.tres" id="5_wffc3"]
 [ext_resource type="Resource" uid="uid://0i2tc3mavh05" path="res://Resources/GameData.tres" id="6_d441w"]
@@ -12,9 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://ci740ojljr0bh" path="res://Images/LockCard.png" id="11_v2ufg"]
 [ext_resource type="Texture2D" uid="uid://djn2ykeo3goxx" path="res://Images/LockCardOff.png" id="12_ckrn8"]
 [ext_resource type="Script" uid="uid://dbfd3ysvrsxud" path="res://Scenes/TopBar/LockCard.cs" id="13_pkylb"]
-[ext_resource type="PackedScene" uid="uid://ctnhppk2ng08" path="res://Scenes/PlayedCard/PlayedCard.tscn" id="18_qpcem"]
 
-[node name="TopBar" type="TextureRect" node_paths=PackedStringArray("_weekCardDisplay", "_dayCardDisplay", "_leftCardDisplay", "_rightCardDisplay")]
+[node name="TopBar" type="TextureRect" node_paths=PackedStringArray("_weekCardDisplay", "_dayCardDisplay")]
 custom_minimum_size = Vector2(1280, 120)
 offset_right = 40.0
 offset_bottom = 40.0
@@ -23,10 +21,6 @@ expand_mode = 3
 script = ExtResource("2_k4new")
 _weekCardDisplay = NodePath("WeekCardDisplay")
 _dayCardDisplay = NodePath("DayCardDisplay")
-_leftCardDisplay = NodePath("LeftCardDisplay")
-_rightCardDisplay = NodePath("RightCardDisplay")
-_availableCard = ExtResource("18_qpcem")
-_playgrid = ExtResource("3_k4new")
 _weekCardsData = ExtResource("4_pe3no")
 _dayCardData = ExtResource("5_wffc3")
 _playCardData = ExtResource("6_ohioj")
