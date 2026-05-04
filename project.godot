@@ -36,8 +36,8 @@ version_control/autoload_on_startup=true
 
 [global_group]
 
-DayCard=""
 Snap=""
+PlayableCard=""
 
 [input]
 

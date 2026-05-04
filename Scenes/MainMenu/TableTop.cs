@@ -67,7 +67,10 @@ public partial class TableTop : TextureRect
 
 	public void DealCard()
 	{
-		if (_gameData.Deck.Count == 0) return; // deck is empty. May want to let user know, skip for now
+		if (_gameData.Deck.Count == 0) {
+			GD.Print("Deck is empty");
+			return; // deck is empty. May want to let user know, skip for now
+		}
 		DragableCard card = _playCard.Instantiate<DragableCard>();
 		var topCard = _gameData.Deck.First();
 		_gameData.Deck.RemoveAt(0); // card is dealt, so remove it from the list
@@ -75,7 +78,22 @@ public partial class TableTop : TextureRect
 		card.Name = $"Card{cardDealt}";
 		cardDealt++;
 		card.Rotation = 0;
-		Control selectAnchor = GetNode<Control>("FirstCard"); // we will need to check if a card is present on/near the anchor before using it
+		string anchor = "FirstCard";
+		// is there another card dealt?
+		var checkForPlayableCard = GetTree().GetNodesInGroup("PlayableCard");
+		if ( checkForPlayableCard.Count != 0)
+		{
+			// we will need to check if a card is present on/near the anchor before using it
+			Control check = GetNode<Control>(anchor);
+			DragableCard cardPresent = GetNode<DragableCard>(GetTree().GetFirstNodeInGroup("PlayableCard").GetPath());
+			var distance = (check.GlobalPosition - cardPresent.GlobalPosition).Length();
+			if (distance <= cardPresent.Size.Y)
+			{
+				anchor = "SecondCard";
+			}
+		}
+		card.AddToGroup("PlayableCard");
+		Control selectAnchor = GetNode<Control>(anchor); // select the first anchor 
 		card.Position = selectAnchor.Position;
 		AddChild(card);
 	}
@@ -206,6 +224,7 @@ public partial class TableTop : TextureRect
 		_cardPlayed.ZIndex = cardDealt;
 		float rotation = float.RadiansToDegrees(_cardPlayed.Rotation);
 		UpdateGrid(_cardPlayed, _cardPlayed.Cell, _cardPlayed.Name, _cell0LocationRow, _cell0LocationCol, rotation, "Card");
+		_cardPlayed.RemoveFromGroup("PlayableCard");
 		SignalManager.EmitOnDebugDisplayGrid();
 		DealCard();
 	}

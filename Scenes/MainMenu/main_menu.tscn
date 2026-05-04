@@ -117,9 +117,9 @@ offset_bottom = 2344.0
 [node name="SecondCard" type="Control" parent="TableTop"]
 anchors_preset = 0
 offset_left = 6074.0
-offset_top = 2600.0
+offset_top = 2729.0
 offset_right = 6120.0
-offset_bottom = 2644.0
+offset_bottom = 2773.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

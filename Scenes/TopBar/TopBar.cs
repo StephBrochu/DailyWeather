@@ -39,7 +39,8 @@ public partial class TopBar : TextureRect
 		SetStartCards(); // set up the initial two cards, depending on the week card used
 		
 		ShuffleDeck();
-		SignalManager.EmitOnDealCard();
+		SignalManager.EmitOnDealCard(); // deal one card
+		SignalManager.EmitOnDealCard(); // and a second
 		DisplayGrid(); // for debugging purposes
 
 	}
