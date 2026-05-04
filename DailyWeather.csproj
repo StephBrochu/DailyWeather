@@ -6,6 +6,5 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Classes\" />
-    <Folder Include="Scenes\PlayspaceGrid\" />
   </ItemGroup>
 </Project>
