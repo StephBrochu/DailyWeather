@@ -129,7 +129,6 @@ public partial class TopBar : TextureRect
 				}
 			}
 			GD.Print(line);
-			line = "";
 		}
 		//GD.Print($"Cell on Month Card: {_gameData.CellMonth+1}; Cell on Day card: {_gameData.CellDay+1}");
 		//GD.Print($"Week Card: {_gameData.WeekCard}; Day Card: {_gameData.DayCard}");

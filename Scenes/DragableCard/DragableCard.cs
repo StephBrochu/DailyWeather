@@ -79,6 +79,7 @@ public partial class DragableCard : PanelContainer
 			} else if (mouseButtonEvent.Pressed && Card== CardState.Dealt)
 			{
 				_offset = GetGlobalMousePosition() - Position;
+				ZIndex = 99;
 				Card= CardState.Drag;
 			}
 			else
@@ -104,7 +105,7 @@ public partial class DragableCard : PanelContainer
 	}
 
 	private void CheckForSnap()
-	{ // defaulting to CardCell0 of dragged card. why?
+	{ 
 		var snapPoints = GetTree().GetNodesInGroup("Snap"); //get all cells that are allowed to be overlaid
 		foreach (var node in snapPoints) // let's go through each one to see if we can snap the card atop it
 		{
@@ -129,7 +130,12 @@ public partial class DragableCard : PanelContainer
 						_nodeName = node.Name; 
 						SignalManager.EmitOnCardPlaced(_cardOverlaid.Name,_nodeName, Name,_cellParent.Name); 
 						break;
-					} else {SignalManager.EmitOnLockDisabled();}
+					}
+					else
+					{
+						SignalManager.EmitOnLockDisabled();
+						ZIndex = 10;
+					}
 				}
 			}
 		}
@@ -159,7 +165,7 @@ public partial class DragableCard : PanelContainer
 	}
 	
 // Snap points are enabled by Topbar based on what cell is being held by player
-	public void EnableSnapPoint(int snapPoint)
+	public void EnableSnapPoint(int snapPoint) // this may not be used
 	{
 		PanelContainer controlNode = GetNode<PanelContainer>($"Card/CardCell{snapPoint}");
 		controlNode.AddToGroup("Snap"); // not sure on name yet. Should probably be Snap + icon/bg
@@ -167,7 +173,7 @@ public partial class DragableCard : PanelContainer
 
 	public void DisableSnapPoint(int snapPoint)
 	{
-		PanelContainer controlNode = GetNode<PanelContainer>($"Card/CardCell{snapPoint}");
+		PanelContainer controlNode = GetNode<PanelContainer>($"CardImage/CardCell{snapPoint}");
 		controlNode.RemoveFromGroup("Snap"); // not sure on name yet. Should probably be Snap + icon/bg
 	}
 	

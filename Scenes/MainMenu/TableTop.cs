@@ -74,7 +74,6 @@ public partial class TableTop : TextureRect
 		card.SetUpData(topCard.Image, topCard.Icon);
 		card.Name = $"Card{cardDealt}";
 		cardDealt++;
-		card.ZIndex = cardDealt; // this might not work
 		card.Rotation = 0;
 		Control selectAnchor = GetNode<Control>("FirstCard"); // we will need to check if a card is present on/near the anchor before using it
 		card.Position = selectAnchor.Position;
@@ -82,7 +81,7 @@ public partial class TableTop : TextureRect
 	}
 	
 	private void UpdateGrid(DragableCard cardSelected, Godot.Collections.Array<CardCell> iconData, string group, int row, int col, float rotation, string type)
-	{
+	{ 
 		int offsetTableToUse = (int)rotation / 90;
 		for (int i = 0; i < 6; i++)
 		{
@@ -90,6 +89,16 @@ public partial class TableTop : TextureRect
 			var offsetRow = row + offsetTable.rowOffset;
 			var offsetCol = col + offsetTable.colOffset;
 			var gameData = _gameData.Grid[offsetRow].GridRow[offsetCol];
+			// need to check if there was info in the cell before and if yes, then disable the cell
+			if (gameData.Icon !=0)
+			{
+				GD.Print($"There is data in cell {offsetRow}/{offsetCol}");
+				var cardName = gameData.CardName;
+				var cellIndex = gameData.CellIndex;
+				DragableCard card = GetNode<DragableCard>(cardName);
+				card.DisableSnapPoint(cellIndex);
+			}
+			
 			gameData.Icon = iconData[i].Icon;
 			gameData.Background = iconData[i].Bg;
 			gameData.CardName = group;
@@ -149,7 +158,7 @@ public partial class TableTop : TextureRect
 
 	private void CheckForValidPlacement(string cardOverlaid, string cellOverlaid, string newCard, string newCell)
 	{
-		_cardPlayed = this.GetNode<DragableCard>(newCard);
+		_cardPlayed = GetNode<DragableCard>(newCard);
 		int rotationTableToUse = (int)((180/Math.PI) * _cardPlayed.Rotation)/90; // we need the rotation of the card being played
 		
 		PanelContainer cardOverlaidCell = GetNode<PanelContainer>($"{cardOverlaid}/CardImage/{cellOverlaid}"); // cell of the card being overlaid
@@ -194,6 +203,7 @@ public partial class TableTop : TextureRect
 	private void LockCardInAndDealNewCard()
 	{
 		_cardPlayed.LockCard();
+		_cardPlayed.ZIndex = cardDealt;
 		float rotation = float.RadiansToDegrees(_cardPlayed.Rotation);
 		UpdateGrid(_cardPlayed, _cardPlayed.Cell, _cardPlayed.Name, _cell0LocationRow, _cell0LocationCol, rotation, "Card");
 		SignalManager.EmitOnDebugDisplayGrid();
