@@ -3,12 +3,15 @@ using Godot;
 public partial class SignalManager : Node
 {
 	public static SignalManager Instance { get; private set; }
-	[Signal] public delegate void OnSetMonthCardEventHandler(float rotation, int row, int column, int card);
-	[Signal] public delegate void OnSetDayCardEventHandler(float rotation, int row, int column, int card);
-	[Signal] public delegate void OnMouseEnteredEventHandler(int icon, int bg);
+	[Signal] public delegate void OnSetMonthCardEventHandler(float rotation, int row, int column, int anchor, int card); 
+	[Signal] public delegate void OnSetDayCardEventHandler(float rotation, int row, int column, int anchor, int card);
+	[Signal] public delegate void OnDealCardEventHandler();
+	[Signal] public delegate void OnMouseEnteredEventHandler(int icon, int bg, Control pivot);
 	[Signal] public delegate void OnMouseExitEventHandler();
-	[Signal] public delegate void OnPlaceCardEventHandler(int card, bool front, int rowOffset, int colOffset);
-	[Signal] public delegate void OnSelectNextCardEventHandler(int card, bool front, int rowOffset, int colOffset);
+	[Signal] public delegate void OnCardPlacedEventHandler(string cardOverlaid, string cellOverlaid, string newCard, string newCell);
+	[Signal] public delegate void OnDebugDisplayGridEventHandler();
+	[Signal] public delegate void OnPlaceCardEventHandler(int card, bool front, int rowOffset, int colOffset); // refactor
+	[Signal] public delegate void OnSelectNextCardEventHandler(int card, bool front, int rowOffset, int colOffset); // refactor
 	[Signal] public delegate void OnRotateCardEventHandler();
 	[Signal] public delegate void OnLockEnabledEventHandler();
 	[Signal] public delegate void OnLockDisabledEventHandler();
@@ -24,19 +27,24 @@ public partial class SignalManager : Node
 		Instance = this;
 	}
 
-	public static void EmitOnSetMonthCard(float rotation, int row, int col, int card)
+	public static void EmitOnSetMonthCard(float rotation, int row, int col, int anchor, int card)
 	{
-		Instance.EmitSignal(SignalName.OnSetMonthCard, rotation, row, col, card);
+		Instance.EmitSignal(SignalName.OnSetMonthCard, rotation, row, col, anchor, card);
 	}
 
-	public static void EmitOnSetDayCard(float rotation, int row, int col, int card)
+	public static void EmitOnSetDayCard(float rotation, int row, int col, int anchor, int card)
 	{
-		Instance.EmitSignal(SignalName.OnSetDayCard, rotation, row, col, card);
+		Instance.EmitSignal(SignalName.OnSetDayCard, rotation, row, col, anchor, card);
 	}
 
-	public static void EmitOnMouseEntered(int icon, int bg)
+	public static void EmitOnDealCard()
 	{
-		Instance.EmitSignal(SignalName.OnMouseEntered, icon, bg);
+		Instance.EmitSignal(SignalName.OnDealCard);
+	}
+	
+	public static void EmitOnMouseEntered(int icon, int bg, Control pivot)
+	{
+		Instance.EmitSignal(SignalName.OnMouseEntered, icon, bg, pivot);
 	}
 
 	public static void EmitOnMouseExit()
@@ -44,6 +52,16 @@ public partial class SignalManager : Node
 		Instance.EmitSignal(SignalName.OnMouseExit);
 	}
 
+	public static void EmitOnCardPlaced(string cardOverlaid, string cellOverlaid, string newCard, string newCell)
+	{
+		Instance.EmitSignal(SignalName.OnCardPlaced, cardOverlaid, cellOverlaid, newCard, newCell);
+	}
+
+	public static void EmitOnDebugDisplayGrid()
+	{
+		Instance.EmitSignal(SignalName.OnDebugDisplayGrid);
+	}
+	
 	public static void EmitOnPlaceCard(int card, bool front, int rowOffset, int colOffset)
 	{
 		Instance.EmitSignal(SignalName.OnPlaceCard, card, front, rowOffset, colOffset);

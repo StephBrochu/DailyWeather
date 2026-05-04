@@ -1,0 +1,189 @@
+[gd_scene load_steps=6 format=3 uid="uid://c00jyj5lwj6co"]
+
+[ext_resource type="Script" uid="uid://d4g66aw76dgvb" path="res://Scenes/DragableCard/DragableCard.cs" id="1_p7y7u"]
+[ext_resource type="Texture2D" uid="uid://gcgvjrs8hrdh" path="res://Images/Play Cards/1a.png" id="1_uuehp"]
+[ext_resource type="Texture2D" uid="uid://cmin07wlwvc7s" path="res://Images/Selection.png" id="3_naf5d"]
+[ext_resource type="Script" uid="uid://ds55uf5yurp1v" path="res://Scenes/DragableCard/CardCell.cs" id="3_rytju"]
+[ext_resource type="Texture2D" uid="uid://c6svjixi5ou63" path="res://Images/Unavailable.png" id="5_j3muq"]
+
+[node name="DragableCard" type="PanelContainer" node_paths=PackedStringArray("_cardImage", "Cell")]
+offset_right = 460.0
+offset_bottom = 310.0
+mouse_filter = 1
+script = ExtResource("1_p7y7u")
+_cardImage = NodePath("CardImage")
+Cell = [NodePath("CardImage/CardCell0"), NodePath("CardImage/CardCell1"), NodePath("CardImage/CardCell2"), NodePath("CardImage/CardCell3"), NodePath("CardImage/CardCell4"), NodePath("CardImage/CardCell5")]
+metadata/_edit_horizontal_guides_ = [11.0, 161.0]
+metadata/_edit_vertical_guides_ = [10.0, 161.0, 311.0]
+
+[node name="CardImage" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_uuehp")
+
+[node name="CardCell0" type="PanelContainer" parent="CardImage" groups=["Cell"]]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 11.0
+offset_right = 148.0
+offset_bottom = 149.0
+mouse_filter = 1
+script = ExtResource("3_rytju")
+
+[node name="Pivot" type="Control" parent="CardImage/CardCell0" groups=["Pivot"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="Highlight" type="TextureRect" parent="CardImage/CardCell0"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3254902)
+layout_mode = 2
+texture = ExtResource("3_naf5d")
+
+[node name="Unavailable" type="TextureRect" parent="CardImage/CardCell0"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.34509805)
+layout_mode = 2
+texture = ExtResource("5_j3muq")
+
+[node name="CardCell1" type="PanelContainer" parent="CardImage" groups=["Cell"]]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 161.0
+offset_top = 11.0
+offset_right = 299.0
+offset_bottom = 149.0
+mouse_filter = 1
+script = ExtResource("3_rytju")
+
+[node name="Pivot" type="Control" parent="CardImage/CardCell1" groups=["Pivot"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="Highlight" type="TextureRect" parent="CardImage/CardCell1"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3254902)
+layout_mode = 2
+texture = ExtResource("3_naf5d")
+
+[node name="Unavailable" type="TextureRect" parent="CardImage/CardCell1"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.34509805)
+layout_mode = 2
+texture = ExtResource("5_j3muq")
+
+[node name="CardCell2" type="PanelContainer" parent="CardImage" groups=["Cell"]]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 311.0
+offset_top = 11.0
+offset_right = 449.0
+offset_bottom = 149.0
+mouse_filter = 1
+script = ExtResource("3_rytju")
+
+[node name="Pivot" type="Control" parent="CardImage/CardCell2" groups=["Pivot"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="Unavailable" type="TextureRect" parent="CardImage/CardCell2"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.34509805)
+layout_mode = 2
+texture = ExtResource("5_j3muq")
+
+[node name="Highlight" type="TextureRect" parent="CardImage/CardCell2"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3254902)
+layout_mode = 2
+texture = ExtResource("3_naf5d")
+
+[node name="CardCell3" type="PanelContainer" parent="CardImage" groups=["Cell"]]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 161.0
+offset_right = 148.0
+offset_bottom = 299.0
+mouse_filter = 1
+script = ExtResource("3_rytju")
+
+[node name="Pivot" type="Control" parent="CardImage/CardCell3" groups=["Pivot"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="Unavailable" type="TextureRect" parent="CardImage/CardCell3"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.34509805)
+layout_mode = 2
+texture = ExtResource("5_j3muq")
+
+[node name="Highlight" type="TextureRect" parent="CardImage/CardCell3"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3254902)
+layout_mode = 2
+texture = ExtResource("3_naf5d")
+
+[node name="CardCell4" type="PanelContainer" parent="CardImage" groups=["Cell"]]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 161.0
+offset_top = 161.0
+offset_right = 299.0
+offset_bottom = 299.0
+mouse_filter = 1
+script = ExtResource("3_rytju")
+
+[node name="Pivot" type="Control" parent="CardImage/CardCell4" groups=["Pivot"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="Highlight" type="TextureRect" parent="CardImage/CardCell4"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3254902)
+layout_mode = 2
+texture = ExtResource("3_naf5d")
+
+[node name="Unavailable" type="TextureRect" parent="CardImage/CardCell4"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.34509805)
+layout_mode = 2
+texture = ExtResource("5_j3muq")
+
+[node name="CardCell5" type="PanelContainer" parent="CardImage" groups=["Cell"]]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 311.0
+offset_top = 161.0
+offset_right = 449.0
+offset_bottom = 299.0
+mouse_filter = 1
+script = ExtResource("3_rytju")
+
+[node name="Pivot" type="Control" parent="CardImage/CardCell5" groups=["Pivot"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="Highlight" type="TextureRect" parent="CardImage/CardCell5"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3254902)
+layout_mode = 2
+texture = ExtResource("3_naf5d")
+
+[node name="Unavailable" type="TextureRect" parent="CardImage/CardCell5"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.34509805)
+layout_mode = 2
+texture = ExtResource("5_j3muq")
