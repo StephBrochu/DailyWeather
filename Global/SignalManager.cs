@@ -10,16 +10,15 @@ public partial class SignalManager : Node
 	[Signal] public delegate void OnMouseExitEventHandler();
 	[Signal] public delegate void OnCardPlacedEventHandler(string cardOverlaid, string cellOverlaid, string newCard, string newCell);
 	[Signal] public delegate void OnDebugDisplayGridEventHandler();
-	[Signal] public delegate void OnPlaceCardEventHandler(int card, bool front, int rowOffset, int colOffset); // refactor
-	[Signal] public delegate void OnSelectNextCardEventHandler(int card, bool front, int rowOffset, int colOffset); // refactor
 	[Signal] public delegate void OnRotateCardEventHandler();
 	[Signal] public delegate void OnLockEnabledEventHandler();
 	[Signal] public delegate void OnLockDisabledEventHandler();
 	[Signal] public delegate void OnLockCardEventHandler();
 	[Signal] public delegate void OnDealNextCardEventHandler(int card);
+	[Signal] public delegate void OnDayCompleteEventHandler();
+	[Signal] public delegate void OnMonthCompleteEventHandler();
+	[Signal] public delegate void OnPatternCompleteEventHandler();
 	
-	//Debug stuff
-	[Signal] public delegate void OnDebugEventHandler();
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -61,16 +60,7 @@ public partial class SignalManager : Node
 	{
 		Instance.EmitSignal(SignalName.OnDebugDisplayGrid);
 	}
-	
-	public static void EmitOnPlaceCard(int card, bool front, int rowOffset, int colOffset)
-	{
-		Instance.EmitSignal(SignalName.OnPlaceCard, card, front, rowOffset, colOffset);
-	}
 
-	public static void EmitOnSelectNextCard(int card,bool front, int rowOffset, int colOffset)
-	{
-		Instance.EmitSignal(SignalName.OnSelectNextCard, card, front, rowOffset, colOffset);
-	}
 	
 	public static void EmitOnRotateCard()
 	{
@@ -92,13 +82,23 @@ public partial class SignalManager : Node
 		Instance.EmitSignal(SignalName.OnLockCard);
 	}
 
-	public static void EmitOnDebug()
-	{
-		Instance.EmitSignal(SignalName.OnDebug);
-	}
-
 	public static void EmitOnDealNextCard(int card)
 	{
 		Instance.EmitSignal(SignalName.OnDealNextCard, card);
+	}
+
+	public static void EmitOnDayComplete()
+	{
+		Instance.EmitSignal(SignalName.OnDayComplete);
+	}
+
+	public static void EmitOnMonthComplete()
+	{
+		Instance.EmitSignal(SignalName.OnMonthComplete);
+	}
+
+	public static void EmintOnPatternComplete()
+	{
+		Instance.EmitSignal(SignalName.OnPatternComplete);
 	}
 }

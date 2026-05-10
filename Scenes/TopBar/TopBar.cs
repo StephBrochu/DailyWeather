@@ -10,6 +10,8 @@ public partial class TopBar : TextureRect
 	[Export] private DayConditionCards _dayCardData;
 	[Export] private DeckOfCards _playCardData;
 	[Export] private GameData _gameData;
+	[Export] private Label _monthLabel;
+	[Export] private Label _dayLabel;
 
 	private DateTime _date;
 	private DayOfWeek _today;
@@ -26,7 +28,8 @@ public partial class TopBar : TextureRect
 	public override void _Ready()
 	{
 		SignalManager.Instance.OnDebugDisplayGrid += DisplayGrid;
-		//SignalManager.Instance.OnDealNextCard += DealNewCard;
+		SignalManager.Instance.OnDayComplete += DayComplete;
+		SignalManager.Instance.OnMonthComplete += MonthComplete;
 		// this will be replaced with a menu on the start screen to allow the player to select any day they want
 		_today = DateTime.Today.DayOfWeek; 
 		_date = new DateTime(2026, 04, 27); // set up a date
@@ -106,7 +109,18 @@ public partial class TopBar : TextureRect
 			}
 		}
 	}
+
+	private void DayComplete()
+	{
+		_dayLabel.Text = "Only current Day is visible";
+		_dayLabel.LabelSettings.FontColor = Color.Color8(0, 255, 0);
+	}
 	
+	private void MonthComplete()
+	{
+		_monthLabel.Text = "Only current Day is visible";
+		_monthLabel.LabelSettings.FontColor = Color.Color8(0, 255, 0);
+	}
 	private void DisplayGrid()
 	{
 		// little debugging

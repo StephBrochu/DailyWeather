@@ -14,6 +14,8 @@ public partial class TableTop : TextureRect
 
 	private Godot.Collections.Dictionary<string, string> _cellsOccupied = new();
 	private List<CardCell> _highlightedCells = [];
+	private List<string> _dayCellsUncovered = [];
+	private List<string> _monthCellsUncovered = [];
 	private bool _debug;
 	private int cardDealt = 1;
 
@@ -99,7 +101,9 @@ public partial class TableTop : TextureRect
 	}
 	
 	private void UpdateGrid(DragableCard cardSelected, Godot.Collections.Array<CardCell> iconData, string group, int row, int col, float rotation, string type)
-	{ 
+	{
+		bool onlyMonthVisible = true; // may need to keep track of all cells instead
+		bool onlyDayVisible = true;
 		int offsetTableToUse = (int)rotation / 90;
 		for (int i = 0; i < 6; i++)
 		{
@@ -113,24 +117,60 @@ public partial class TableTop : TextureRect
 				GD.Print($"There is data in cell {offsetRow}/{offsetCol}");
 				var cardName = gameData.CardName;
 				var cellIndex = gameData.CellIndex;
+				
 				DragableCard card = GetNode<DragableCard>(cardName);
 				card.DisableSnapPoint(cellIndex);
 			}
 			
+			switch (type)
+			{
+				case "day":
+					if (i == _gameData.CellDay)
+					{
+						gameData.Locked = true;
+					}
+					else
+					{
+						_dayCellsUncovered.Add($"{offsetRow}{offsetCol}");
+					}
+					break;
+				
+				case "month":
+					if (i == _gameData.CellMonth)
+					{
+						gameData.Locked = true;
+					}
+					else
+					{
+						_monthCellsUncovered.Add($"{offsetRow}{offsetCol}");
+					}
+
+					break;
+				
+				default:
+					if (gameData.CardName == "DayCard")
+					{
+						_dayCellsUncovered.Remove($"{offsetRow}{offsetCol}");
+						if(_dayCellsUncovered.Count == 0) SignalManager.EmitOnDayComplete();
+					} else if (gameData.CardName == "MonthCard")
+					{
+						_monthCellsUncovered.Remove($"{offsetRow}{offsetCol}");
+						if(_monthCellsUncovered.Count == 0 ) SignalManager.EmitOnMonthComplete();
+					}
+					break;
+			}
 			gameData.Icon = iconData[i].Icon;
 			gameData.Background = iconData[i].Bg;
 			gameData.CardName = group;
 			gameData.CellIndex = i;
-			if ((type == "month" && i == _gameData.CellMonth) || (type == "day" && i == _gameData.CellDay))
-			{
-				gameData.Locked = true;
-				continue;
-			}
 
 			cardSelected.Cell[i].Col = offsetCol;
 			cardSelected.Cell[i].Row = offsetRow;
 			UpdateCellDictionary(offsetRow, offsetCol,iconData[i].Icon, iconData[i].Bg);
 		}
+		
+		
+		
 	}
 
 	private void UpdateCellDictionary(int row, int column, int icon, int bg)
