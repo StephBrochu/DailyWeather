@@ -3,5 +3,5 @@
 
 public partial class ConditionGrid: Resource
 {
-    [Export] private Godot.Collections.Array<ConditionPattern> Grid { get; set; } = new();
+    [Export] public Godot.Collections.Array<ConditionPattern> Grid { get; set; } = [];
 }

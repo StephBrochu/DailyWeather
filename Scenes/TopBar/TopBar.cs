@@ -12,6 +12,7 @@ public partial class TopBar : TextureRect
 	[Export] private GameData _gameData;
 	[Export] private Label _monthLabel;
 	[Export] private Label _dayLabel;
+	[Export] private Label _patternLabel;
 
 	private DateTime _date;
 	private DayOfWeek _today;
@@ -30,6 +31,9 @@ public partial class TopBar : TextureRect
 		SignalManager.Instance.OnDebugDisplayGrid += DisplayGrid;
 		SignalManager.Instance.OnDayComplete += DayComplete;
 		SignalManager.Instance.OnMonthComplete += MonthComplete;
+		SignalManager.Instance.OnPatternComplete += PatternComplete;
+		SignalManager.Instance.OnPatternNotMatching += PatternNotMatching;
+		
 		// this will be replaced with a menu on the start screen to allow the player to select any day they want
 		_today = DateTime.Today.DayOfWeek; 
 		_date = new DateTime(2026, 04, 27); // set up a date
@@ -63,6 +67,7 @@ public partial class TopBar : TextureRect
 
 	private void SetDayCard()
 	{
+		
 		_gameData.Season = _date.Month switch
 		{
 			>= 3 and < 5 => 0,
@@ -70,8 +75,42 @@ public partial class TopBar : TextureRect
 			>= 10 and < 12 => 2,
 			_ => 3
 		};
+
+		int seasonUsed = (_gameData.Season - 2 > 0) ? _gameData.Season - 2 : _gameData.Season;
+		var card = (Math.DivRem(_gameData.Season, 2, out _) == 0)
+			? _dayCardData.Card[(int)_today].Front
+			: _dayCardData.Card[(int)_today].Back;
+		_dayCardDisplay.Texture = card.Image;
 		
-		_dayCardDisplay.Texture = _dayCardData.Card[(int)_today].Image[Math.DivRem(_gameData.Season, 2, out _)];
+		switch ( card.ArrowPosition)
+		{
+			case 0:
+				_gameData.PatternType = "Icon";
+				_gameData.PatternNumber = _weekCardsData.Card[_gameData.WeekCard].Icon1;
+			break;
+			
+			case 1:
+				_gameData.PatternType = "Icon";
+				_gameData.PatternNumber = _weekCardsData.Card[_gameData.WeekCard].Icon2;
+				break;
+			
+			case 2:
+				_gameData.PatternType = "BG";
+				_gameData.PatternNumber = _weekCardsData.Card[_gameData.WeekCard].Background1;
+				break;
+			
+			case 3:
+				_gameData.PatternType = "BG";
+				_gameData.PatternNumber = _weekCardsData.Card[_gameData.WeekCard].Background2;
+				break;
+		}
+
+		// gather + store pattern used
+		foreach (ConditionPattern pair in card.Season[seasonUsed].Grid)
+		{
+			_gameData.PatternUsed.Add(pair);
+		}
+		
 		_gameData.DayCard = (int)_today;
 		_gameData.CellDay = (_date.Day -1) % 6 ;
 	}
@@ -110,17 +149,30 @@ public partial class TopBar : TextureRect
 		}
 	}
 
-	private void DayComplete()
+	private void DayComplete() // should change color of the cell
 	{
 		_dayLabel.Text = "Only current Day is visible";
 		_dayLabel.LabelSettings.FontColor = Color.Color8(0, 255, 0);
 	}
 	
-	private void MonthComplete()
+	private void MonthComplete() // should change color of the cell
 	{
 		_monthLabel.Text = "Only current Day is visible";
 		_monthLabel.LabelSettings.FontColor = Color.Color8(0, 255, 0);
 	}
+
+	private void PatternComplete() // need to add visual feedback on grid
+	{
+		_patternLabel.Text = "Pattern is matched!";
+		_patternLabel.LabelSettings.FontColor = Color.Color8(0, 255, 0);
+	}
+
+	private void PatternNotMatching()
+	{
+		_patternLabel.Text = "Pattern not matching";
+		_patternLabel.LabelSettings.FontColor = Color.Color8(255, 0, 0);
+	}
+	
 	private void DisplayGrid()
 	{
 		// little debugging

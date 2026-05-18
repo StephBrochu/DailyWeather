@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://phgatxro0ybc"]
+[gd_scene load_steps=15 format=3 uid="uid://phgatxro0ybc"]
 
 [ext_resource type="Texture2D" uid="uid://y3uuu750c5jf" path="res://Images/Background.png" id="1_aylmd"]
 [ext_resource type="Script" uid="uid://wif1ndxdcy1v" path="res://Scenes/TopBar/TopBar.cs" id="2_k4new"]
@@ -20,7 +20,11 @@ shadow_color = Color(0, 0, 0, 1)
 font_color = Color(1, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="TopBar" type="TextureRect" node_paths=PackedStringArray("_weekCardDisplay", "_dayCardDisplay", "_monthLabel", "_dayLabel")]
+[sub_resource type="LabelSettings" id="LabelSettings_v2ufg"]
+font_color = Color(1, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="TopBar" type="TextureRect" node_paths=PackedStringArray("_weekCardDisplay", "_dayCardDisplay", "_monthLabel", "_dayLabel", "_patternLabel")]
 custom_minimum_size = Vector2(1280, 120)
 offset_right = 40.0
 offset_bottom = 40.0
@@ -35,6 +39,7 @@ _playCardData = ExtResource("6_ohioj")
 _gameData = ExtResource("6_d441w")
 _monthLabel = NodePath("OnlyMonth")
 _dayLabel = NodePath("OnlyDay")
+_patternLabel = NodePath("Pattern")
 metadata/_edit_vertical_guides_ = [640.0, 173.0, 600.0, 868.0, 1130.0]
 metadata/_edit_horizontal_guides_ = [15.0, -192.0, 49.0]
 
@@ -90,11 +95,12 @@ label_settings = SubResource("LabelSettings_q6kiq")
 
 [node name="Pattern" type="Label" parent="."]
 layout_mode = 0
-offset_left = 868.0
-offset_top = 14.0
-offset_right = 1014.0
-offset_bottom = 37.0
-text = "Scoring Pattern"
+offset_left = 640.0
+offset_top = 85.0
+offset_right = 786.0
+offset_bottom = 108.0
+text = "Pattern not matching"
+label_settings = SubResource("LabelSettings_v2ufg")
 
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 0
@@ -102,4 +108,4 @@ offset_left = 868.0
 offset_top = 49.0
 offset_right = 1014.0
 offset_bottom = 72.0
-text = "Scoring Pattern"
+text = "Score: 0"

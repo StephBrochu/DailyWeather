@@ -18,6 +18,7 @@ public partial class SignalManager : Node
 	[Signal] public delegate void OnDayCompleteEventHandler();
 	[Signal] public delegate void OnMonthCompleteEventHandler();
 	[Signal] public delegate void OnPatternCompleteEventHandler();
+	[Signal] public delegate void OnPatternNotMatchingEventHandler();
 	
 	
 	// Called when the node enters the scene tree for the first time.
@@ -97,8 +98,13 @@ public partial class SignalManager : Node
 		Instance.EmitSignal(SignalName.OnMonthComplete);
 	}
 
-	public static void EmintOnPatternComplete()
+	public static void EmitOnPatternComplete()
 	{
 		Instance.EmitSignal(SignalName.OnPatternComplete);
+	}
+
+	public static void EmitOnPatternNotMatching()
+	{
+		Instance.EmitSignal(SignalName.OnPatternNotMatching);
 	}
 }

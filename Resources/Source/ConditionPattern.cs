@@ -3,5 +3,6 @@
 
 public partial class ConditionPattern: Resource
 {
-    [Export] public Godot.Collections.Array<int> Cell { get; set; } = new();
+    [Export] public int rowOffset { get; set; }
+    [Export] public int colOffset { get; set; }
 }

@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="DayConditionCards" load_steps=135 format=3 uid="uid://d4dkeowkbv5og"]
+[gd_resource type="Resource" script_class="DayConditionCards" load_steps=167 format=3 uid="uid://d4dkeowkbv5og"]
 
 [ext_resource type="Script" uid="uid://b7tw2ry5it4dc" path="res://Resources/Source/DayConditionCard.cs" id="1_d2kg8"]
 [ext_resource type="Texture2D" uid="uid://bhgae1u603obh" path="res://Images/Set Up Cards/Weekday- SaturdaySunday - SummerFall.png" id="1_vq0cy"]
 [ext_resource type="Texture2D" uid="uid://dg6vf8uh04y5t" path="res://Images/Set Up Cards/Weekday- SaturdaySunday - WinterSpring.png" id="2_d2kg8"]
+[ext_resource type="Script" uid="uid://camyeggovvbtl" path="res://Resources/Source/DayCardData.cs" id="3_vq0cy"]
 [ext_resource type="Script" uid="uid://b7dwbeifgj7b0" path="res://Resources/Source/ConditionGrid.cs" id="4_v3ua7"]
 [ext_resource type="Script" uid="uid://c08p86nv15ss6" path="res://Resources/Source/DayConditionCards.cs" id="5_b3n5n"]
 [ext_resource type="Script" uid="uid://bohlbfye2irlg" path="res://Resources/Source/ConditionPattern.cs" id="5_ug4x5"]
@@ -17,50 +18,63 @@
 [ext_resource type="Texture2D" uid="uid://2l1ad54xfdtu" path="res://Images/Set Up Cards/Weekday- Friday - WinterSpring.png" id="14_50w8v"]
 [ext_resource type="Texture2D" uid="uid://bdrcap5arxkpb" path="res://Images/Set Up Cards/Weekday- Friday -SummerFall.png" id="15_1haab"]
 
+[sub_resource type="Resource" id="Resource_xtofj"]
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_bhn5k"]
+script = ExtResource("5_ug4x5")
+rowOffset = 2
+colOffset = 1
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
 [sub_resource type="Resource" id="Resource_3b4yu"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 1])
+rowOffset = 2
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_i31hg"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
+colOffset = 3
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_veuus"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 1, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_xtofj"), SubResource("Resource_bhn5k"), SubResource("Resource_3b4yu"), SubResource("Resource_i31hg")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_c7yog"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_3b4yu"), SubResource("Resource_i31hg"), SubResource("Resource_veuus")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_csoht"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 1, 0])
+rowOffset = -1
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_50w8v"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 1])
+rowOffset = -1
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_1haab"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
+colOffset = 3
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_gqdd4"]
 script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_csoht"), SubResource("Resource_50w8v"), SubResource("Resource_1haab")])
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_c7yog"), SubResource("Resource_csoht"), SubResource("Resource_50w8v"), SubResource("Resource_1haab")])
 metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_s0f8k"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 1, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("3_vq0cy")
+Image = ExtResource("1_vq0cy")
+Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_veuus"), SubResource("Resource_gqdd4")])
+metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_61l4l"]
 script = ExtResource("5_ug4x5")
@@ -68,556 +82,723 @@ metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_nj65t"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 1, 0])
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_sh8n7"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_s0f8k"), SubResource("Resource_61l4l"), SubResource("Resource_nj65t")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("5_ug4x5")
+rowOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_c6cko"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 1])
+rowOffset = 2
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_b3n5n"]
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_61l4l"), SubResource("Resource_nj65t"), SubResource("Resource_sh8n7"), SubResource("Resource_c6cko")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_wxprf"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 1, 0])
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_3pxpw"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
+rowOffset = 1
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_hm8ye"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_c6cko"), SubResource("Resource_wxprf"), SubResource("Resource_3pxpw")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
-
-[sub_resource type="Resource" id="Resource_ug4x5"]
-script = ExtResource("1_d2kg8")
-Image = Array[Texture2D]([ExtResource("1_vq0cy"), ExtResource("2_d2kg8")])
-ArrowPosition = Array[int]([1, 4])
-Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_c7yog"), SubResource("Resource_gqdd4"), SubResource("Resource_sh8n7"), SubResource("Resource_hm8ye")])
-metadata/_custom_type_script = "uid://b7tw2ry5it4dc"
+script = ExtResource("5_ug4x5")
+rowOffset = 1
+colOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_0kb0j"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
+colOffset = 3
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_35jxk"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 1, 1, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_wxprf"), SubResource("Resource_3pxpw"), SubResource("Resource_hm8ye"), SubResource("Resource_0kb0j")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+
+[sub_resource type="Resource" id="Resource_d2kg8"]
+script = ExtResource("3_vq0cy")
+Image = ExtResource("2_d2kg8")
+ArrowPosition = 3
+Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_b3n5n"), SubResource("Resource_35jxk")])
+metadata/_custom_type_script = "uid://camyeggovvbtl"
+
+[sub_resource type="Resource" id="Resource_ug4x5"]
+script = ExtResource("1_d2kg8")
+Front = SubResource("Resource_d2kg8")
+Back = SubResource("Resource_s0f8k")
+metadata/_custom_type_script = "uid://b7tw2ry5it4dc"
 
 [sub_resource type="Resource" id="Resource_o1622"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_qg6sc"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_0kb0j"), SubResource("Resource_35jxk"), SubResource("Resource_o1622")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("5_ug4x5")
+colOffset = 1
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_ywjcn"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_yg88a"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_o1622"), SubResource("Resource_qg6sc"), SubResource("Resource_ywjcn")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_t8bt2"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_1vbuw"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_ywjcn"), SubResource("Resource_yg88a"), SubResource("Resource_t8bt2")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("5_ug4x5")
+colOffset = 1
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_pxy06"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 0])
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_1m5kk"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_t8bt2"), SubResource("Resource_1vbuw"), SubResource("Resource_pxy06")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_fwx6r"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 1, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("3_vq0cy")
+Image = ExtResource("6_xtofj")
+Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_yg88a"), SubResource("Resource_1m5kk")])
+metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_505h4"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_pxy06"), SubResource("Resource_1m5kk"), SubResource("Resource_fwx6r")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_of65b"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 1, 0])
+rowOffset = 1
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_7jpjj"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
+rowOffset = 2
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_eny3m"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
-
-[sub_resource type="Resource" id="Resource_qyk1b"]
 script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_of65b"), SubResource("Resource_7jpjj"), SubResource("Resource_eny3m")])
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_505h4"), SubResource("Resource_of65b"), SubResource("Resource_7jpjj")])
 metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
-[sub_resource type="Resource" id="Resource_b76vy"]
-script = ExtResource("1_d2kg8")
-Image = Array[Texture2D]([ExtResource("6_xtofj"), ExtResource("7_bhn5k")])
-ArrowPosition = Array[int]([1, 2])
-Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_qg6sc"), SubResource("Resource_1vbuw"), SubResource("Resource_505h4"), SubResource("Resource_qyk1b")])
-metadata/_custom_type_script = "uid://b7tw2ry5it4dc"
+[sub_resource type="Resource" id="Resource_qyk1b"]
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_mdxyn"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
+rowOffset = -1
+colOffset = -1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_66nsn"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 1, 1, 1])
+rowOffset = -2
+colOffset = -2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_jw8ed"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
-
-[sub_resource type="Resource" id="Resource_inv76"]
 script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_mdxyn"), SubResource("Resource_66nsn"), SubResource("Resource_jw8ed")])
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_qyk1b"), SubResource("Resource_mdxyn"), SubResource("Resource_66nsn")])
 metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
-[sub_resource type="Resource" id="Resource_47qd4"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+[sub_resource type="Resource" id="Resource_inv76"]
+script = ExtResource("3_vq0cy")
+Image = ExtResource("7_bhn5k")
+ArrowPosition = 1
+Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_eny3m"), SubResource("Resource_jw8ed")])
+metadata/_custom_type_script = "uid://camyeggovvbtl"
 
-[sub_resource type="Resource" id="Resource_65nvx"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+[sub_resource type="Resource" id="Resource_b76vy"]
+script = ExtResource("1_d2kg8")
+Front = SubResource("Resource_inv76")
+Back = SubResource("Resource_fwx6r")
+metadata/_custom_type_script = "uid://b7tw2ry5it4dc"
 
 [sub_resource type="Resource" id="Resource_conll"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 1, 0])
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_cto3i"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_47qd4"), SubResource("Resource_65nvx"), SubResource("Resource_conll")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("5_ug4x5")
+colOffset = 1
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_y2d36"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 1, 0])
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_b2oru"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 1, 0])
+colOffset = 3
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_j68hn"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_conll"), SubResource("Resource_cto3i"), SubResource("Resource_y2d36"), SubResource("Resource_b2oru")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_w0xte"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_y2d36"), SubResource("Resource_b2oru"), SubResource("Resource_j68hn")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_howh3"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
+rowOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_n6pml"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 1, 0])
+rowOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_ul1jk"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
+rowOffset = 2
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_bsnun"]
 script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_howh3"), SubResource("Resource_n6pml"), SubResource("Resource_ul1jk")])
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_w0xte"), SubResource("Resource_howh3"), SubResource("Resource_n6pml"), SubResource("Resource_ul1jk")])
 metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
-[sub_resource type="Resource" id="Resource_06msi"]
-script = ExtResource("1_d2kg8")
-Image = Array[Texture2D]([ExtResource("8_c7yog"), ExtResource("9_csoht")])
-ArrowPosition = Array[int]([3, 4])
-Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_inv76"), SubResource("Resource_cto3i"), SubResource("Resource_w0xte"), SubResource("Resource_bsnun")])
-metadata/_custom_type_script = "uid://b7tw2ry5it4dc"
+[sub_resource type="Resource" id="Resource_47qd4"]
+script = ExtResource("3_vq0cy")
+Image = ExtResource("8_c7yog")
+ArrowPosition = 2
+Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_j68hn"), SubResource("Resource_bsnun")])
+metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_38fcc"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_cucqf"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 1, 0])
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_of85p"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_70vwm"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_38fcc"), SubResource("Resource_cucqf"), SubResource("Resource_of85p")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("5_ug4x5")
+rowOffset = 1
+colOffset = 1
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_876kk"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 1, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_38fcc"), SubResource("Resource_cucqf"), SubResource("Resource_of85p"), SubResource("Resource_70vwm")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_dr1qq"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_iuep0"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
+rowOffset = 1
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_vi35k"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_876kk"), SubResource("Resource_dr1qq"), SubResource("Resource_iuep0")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("5_ug4x5")
+rowOffset = 1
+colOffset = 1
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_ntmhd"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 0])
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_qi1i5"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_dr1qq"), SubResource("Resource_iuep0"), SubResource("Resource_vi35k"), SubResource("Resource_ntmhd")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+
+[sub_resource type="Resource" id="Resource_65nvx"]
+script = ExtResource("3_vq0cy")
+Image = ExtResource("9_csoht")
+ArrowPosition = 3
+Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_876kk"), SubResource("Resource_qi1i5")])
+metadata/_custom_type_script = "uid://camyeggovvbtl"
+
+[sub_resource type="Resource" id="Resource_06msi"]
+script = ExtResource("1_d2kg8")
+Front = SubResource("Resource_65nvx")
+Back = SubResource("Resource_47qd4")
+metadata/_custom_type_script = "uid://b7tw2ry5it4dc"
 
 [sub_resource type="Resource" id="Resource_cyfjc"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 1, 0])
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_78dvf"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_ntmhd"), SubResource("Resource_qi1i5"), SubResource("Resource_cyfjc")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("5_ug4x5")
+rowOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_b1l2g"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 1, 0])
+rowOffset = 2
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_51f25"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_cyfjc"), SubResource("Resource_78dvf"), SubResource("Resource_b1l2g")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_leypc"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 0])
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_cp61o"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_b1l2g"), SubResource("Resource_51f25"), SubResource("Resource_leypc")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
-
-[sub_resource type="Resource" id="Resource_71iss"]
-script = ExtResource("1_d2kg8")
-Image = Array[Texture2D]([ExtResource("10_50w8v"), ExtResource("11_1haab")])
-ArrowPosition = Array[int]([1, 2])
-Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_70vwm"), SubResource("Resource_vi35k"), SubResource("Resource_78dvf"), SubResource("Resource_cp61o")])
-metadata/_custom_type_script = "uid://b7tw2ry5it4dc"
+script = ExtResource("5_ug4x5")
+rowOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_sxtmq"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 1, 0, 0])
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_ytcsq"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_leypc"), SubResource("Resource_cp61o"), SubResource("Resource_sxtmq")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_ux76i"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 1, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("3_vq0cy")
+Image = ExtResource("11_1haab")
+Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_51f25"), SubResource("Resource_ytcsq")])
+metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_86lj8"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_sxtmq"), SubResource("Resource_ytcsq"), SubResource("Resource_ux76i")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_hpiny"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 0])
+rowOffset = -1
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_jpvxx"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 1, 0])
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_m3ala"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 1, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_86lj8"), SubResource("Resource_hpiny"), SubResource("Resource_jpvxx")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_u4tom"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_hpiny"), SubResource("Resource_jpvxx"), SubResource("Resource_m3ala")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_0g211"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 1, 0])
+rowOffset = 1
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_fia6x"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_7av51"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 1, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_u4tom"), SubResource("Resource_0g211"), SubResource("Resource_fia6x")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_ewu3j"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_0g211"), SubResource("Resource_fia6x"), SubResource("Resource_7av51")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("3_vq0cy")
+Image = ExtResource("10_50w8v")
+Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_m3ala"), SubResource("Resource_7av51")])
+metadata/_custom_type_script = "uid://camyeggovvbtl"
+
+[sub_resource type="Resource" id="Resource_71iss"]
+script = ExtResource("1_d2kg8")
+Front = SubResource("Resource_ewu3j")
+Back = SubResource("Resource_ux76i")
+metadata/_custom_type_script = "uid://b7tw2ry5it4dc"
 
 [sub_resource type="Resource" id="Resource_we11y"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 1])
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_pnhl5"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_uwd0q"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 1])
+rowOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_1k46g"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_we11y"), SubResource("Resource_pnhl5"), SubResource("Resource_uwd0q")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
-
-[sub_resource type="Resource" id="Resource_wtuvb"]
-script = ExtResource("1_d2kg8")
-Image = Array[Texture2D]([ExtResource("12_gqdd4"), ExtResource("13_s0f8k")])
-ArrowPosition = Array[int]([3, 4])
-Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_86lj8"), SubResource("Resource_u4tom"), SubResource("Resource_ewu3j"), SubResource("Resource_1k46g")])
-metadata/_custom_type_script = "uid://b7tw2ry5it4dc"
+script = ExtResource("5_ug4x5")
+rowOffset = 2
+colOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_sw16w"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 1, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_we11y"), SubResource("Resource_pnhl5"), SubResource("Resource_uwd0q"), SubResource("Resource_1k46g")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_k4k0i"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_1ottf"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
+colOffset = 3
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_a2cuf"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_sw16w"), SubResource("Resource_k4k0i"), SubResource("Resource_1ottf")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("5_ug4x5")
+rowOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_kbqh2"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 0])
+rowOffset = 2
+colOffset = 3
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_kfsc4"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 1, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_k4k0i"), SubResource("Resource_1ottf"), SubResource("Resource_a2cuf"), SubResource("Resource_kbqh2")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_o58f3"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("3_vq0cy")
+Image = ExtResource("13_s0f8k")
+ArrowPosition = 3
+Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_sw16w"), SubResource("Resource_kfsc4")])
+metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_wpy0b"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_kbqh2"), SubResource("Resource_kfsc4"), SubResource("Resource_o58f3")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_tj1oh"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_jd1ya"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 1, 0])
+rowOffset = 2
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_iif16"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
+rowOffset = 2
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_jxhnv"]
 script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_tj1oh"), SubResource("Resource_jd1ya"), SubResource("Resource_iif16")])
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_wpy0b"), SubResource("Resource_tj1oh"), SubResource("Resource_jd1ya"), SubResource("Resource_iif16")])
 metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_mdly6"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 1, 0])
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_wwccm"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 0, 0])
+rowOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_p58gs"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 1, 0])
+rowOffset = 1
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_dtnbc"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_mdly6"), SubResource("Resource_wwccm"), SubResource("Resource_p58gs")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
-
-[sub_resource type="Resource" id="Resource_2d4m6"]
-script = ExtResource("1_d2kg8")
-Image = Array[Texture2D]([ExtResource("14_50w8v"), ExtResource("15_1haab")])
-ArrowPosition = Array[int]([2, 1])
-Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_a2cuf"), SubResource("Resource_wpy0b"), SubResource("Resource_jxhnv"), SubResource("Resource_dtnbc")])
-metadata/_custom_type_script = "uid://b7tw2ry5it4dc"
+script = ExtResource("5_ug4x5")
+rowOffset = 2
+colOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_707jf"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 1])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_mdly6"), SubResource("Resource_wwccm"), SubResource("Resource_p58gs"), SubResource("Resource_dtnbc")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_027en"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+script = ExtResource("3_vq0cy")
+Image = ExtResource("12_gqdd4")
+ArrowPosition = 2
+Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_jxhnv"), SubResource("Resource_707jf")])
+metadata/_custom_type_script = "uid://camyeggovvbtl"
 
-[sub_resource type="Resource" id="Resource_u5wn0"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 1, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
-
-[sub_resource type="Resource" id="Resource_i3bbm"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_707jf"), SubResource("Resource_027en"), SubResource("Resource_u5wn0")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
-
-[sub_resource type="Resource" id="Resource_bc07u"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 1, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
-
-[sub_resource type="Resource" id="Resource_s5u7o"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 1])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
-
-[sub_resource type="Resource" id="Resource_qvg3w"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_bc07u"), SubResource("Resource_s5u7o"), null])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
-
-[sub_resource type="Resource" id="Resource_rvvxi"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 1, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
-
-[sub_resource type="Resource" id="Resource_5q1gm"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
-
-[sub_resource type="Resource" id="Resource_rm87v"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 1, 0])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
-
-[sub_resource type="Resource" id="Resource_35buc"]
-script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_rvvxi"), SubResource("Resource_5q1gm"), SubResource("Resource_rm87v")])
-metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
-
-[sub_resource type="Resource" id="Resource_yj5ps"]
-script = ExtResource("5_ug4x5")
-Cell = Array[int]([1, 0, 0, 1])
-metadata/_custom_type_script = "uid://bohlbfye2irlg"
+[sub_resource type="Resource" id="Resource_wtuvb"]
+script = ExtResource("1_d2kg8")
+Front = SubResource("Resource_027en")
+Back = SubResource("Resource_o58f3")
+metadata/_custom_type_script = "uid://b7tw2ry5it4dc"
 
 [sub_resource type="Resource" id="Resource_y47nt"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 1, 1, 0])
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_d5o5b"]
 script = ExtResource("5_ug4x5")
-Cell = Array[int]([0, 0, 0, 0])
+rowOffset = 1
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_6cjem"]
+script = ExtResource("5_ug4x5")
+rowOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_6yayd"]
 script = ExtResource("4_v3ua7")
-Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_yj5ps"), SubResource("Resource_y47nt"), SubResource("Resource_d5o5b")])
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_y47nt"), SubResource("Resource_d5o5b"), SubResource("Resource_6cjem")])
 metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+
+[sub_resource type="Resource" id="Resource_a5fdq"]
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_3oss4"]
+script = ExtResource("5_ug4x5")
+rowOffset = -1
+colOffset = 1
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_bf0v3"]
+script = ExtResource("5_ug4x5")
+rowOffset = 1
+colOffset = 1
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_key5a"]
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_a5fdq"), SubResource("Resource_3oss4"), SubResource("Resource_bf0v3")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+
+[sub_resource type="Resource" id="Resource_u5wn0"]
+script = ExtResource("3_vq0cy")
+Image = ExtResource("15_1haab")
+Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_6yayd"), SubResource("Resource_key5a")])
+metadata/_custom_type_script = "uid://camyeggovvbtl"
+
+[sub_resource type="Resource" id="Resource_bc07u"]
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_s5u7o"]
+script = ExtResource("5_ug4x5")
+rowOffset = 2
+colOffset = 1
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_qvg3w"]
+script = ExtResource("5_ug4x5")
+colOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_rvvxi"]
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_bc07u"), SubResource("Resource_s5u7o"), SubResource("Resource_qvg3w")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+
+[sub_resource type="Resource" id="Resource_5q1gm"]
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_rm87v"]
+script = ExtResource("5_ug4x5")
+rowOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_35buc"]
+script = ExtResource("5_ug4x5")
+rowOffset = 1
+colOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_yj5ps"]
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_5q1gm"), SubResource("Resource_rm87v"), SubResource("Resource_35buc")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+
+[sub_resource type="Resource" id="Resource_i3bbm"]
+script = ExtResource("3_vq0cy")
+Image = ExtResource("14_50w8v")
+ArrowPosition = 1
+Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_rvvxi"), SubResource("Resource_yj5ps")])
+metadata/_custom_type_script = "uid://camyeggovvbtl"
+
+[sub_resource type="Resource" id="Resource_2d4m6"]
+script = ExtResource("1_d2kg8")
+Front = SubResource("Resource_i3bbm")
+Back = SubResource("Resource_u5wn0")
+metadata/_custom_type_script = "uid://b7tw2ry5it4dc"
+
+[sub_resource type="Resource" id="Resource_rbd27"]
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_xpykb"]
+script = ExtResource("5_ug4x5")
+rowOffset = 2
+colOffset = 1
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_8w44n"]
+script = ExtResource("5_ug4x5")
+rowOffset = 2
+colOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_3jhqv"]
+script = ExtResource("5_ug4x5")
+colOffset = 3
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_1s0dg"]
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_rbd27"), SubResource("Resource_xpykb"), SubResource("Resource_8w44n"), SubResource("Resource_3jhqv")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+
+[sub_resource type="Resource" id="Resource_xxgia"]
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_80uck"]
+script = ExtResource("5_ug4x5")
+rowOffset = -1
+colOffset = 1
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_nnwts"]
+script = ExtResource("5_ug4x5")
+rowOffset = -1
+colOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_4tlf4"]
+script = ExtResource("5_ug4x5")
+colOffset = 3
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_m6ds5"]
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_xxgia"), SubResource("Resource_80uck"), SubResource("Resource_nnwts"), SubResource("Resource_4tlf4")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+
+[sub_resource type="Resource" id="Resource_dh2cm"]
+script = ExtResource("3_vq0cy")
+Image = ExtResource("1_vq0cy")
+ArrowPosition = 2
+Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_1s0dg"), SubResource("Resource_m6ds5")])
+metadata/_custom_type_script = "uid://camyeggovvbtl"
+
+[sub_resource type="Resource" id="Resource_5w3il"]
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_83a84"]
+script = ExtResource("5_ug4x5")
+colOffset = 1
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_552sd"]
+script = ExtResource("5_ug4x5")
+rowOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_drkvk"]
+script = ExtResource("5_ug4x5")
+rowOffset = 2
+colOffset = 1
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_cluql"]
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_5w3il"), SubResource("Resource_83a84"), SubResource("Resource_552sd"), SubResource("Resource_drkvk")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+
+[sub_resource type="Resource" id="Resource_6he3u"]
+script = ExtResource("5_ug4x5")
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_hotuq"]
+script = ExtResource("5_ug4x5")
+rowOffset = 1
+colOffset = 1
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_s53ws"]
+script = ExtResource("5_ug4x5")
+rowOffset = 1
+colOffset = 2
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_ls8ts"]
+script = ExtResource("5_ug4x5")
+colOffset = 3
+metadata/_custom_type_script = "uid://bohlbfye2irlg"
+
+[sub_resource type="Resource" id="Resource_ats3x"]
+script = ExtResource("4_v3ua7")
+Grid = Array[ExtResource("5_ug4x5")]([SubResource("Resource_6he3u"), SubResource("Resource_hotuq"), SubResource("Resource_s53ws"), SubResource("Resource_ls8ts")])
+metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
+
+[sub_resource type="Resource" id="Resource_slosv"]
+script = ExtResource("3_vq0cy")
+Image = ExtResource("2_d2kg8")
+ArrowPosition = 1
+Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_cluql"), SubResource("Resource_ats3x")])
+metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_6xkyh"]
 script = ExtResource("1_d2kg8")
-Image = Array[Texture2D]([ExtResource("1_vq0cy"), ExtResource("2_d2kg8")])
-ArrowPosition = Array[int]([3, 2])
-Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_i3bbm"), SubResource("Resource_qvg3w"), SubResource("Resource_35buc"), SubResource("Resource_6cjem")])
+Front = SubResource("Resource_slosv")
+Back = SubResource("Resource_dh2cm")
 metadata/_custom_type_script = "uid://b7tw2ry5it4dc"
 
 [resource]

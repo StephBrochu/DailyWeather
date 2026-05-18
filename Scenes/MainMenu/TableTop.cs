@@ -16,6 +16,7 @@ public partial class TableTop : TextureRect
 	private List<CardCell> _highlightedCells = [];
 	private List<string> _dayCellsUncovered = [];
 	private List<string> _monthCellsUncovered = [];
+	public List<string> PatternCells = [];
 	private bool _debug;
 	private int cardDealt = 1;
 
@@ -112,9 +113,9 @@ public partial class TableTop : TextureRect
 			var offsetCol = col + offsetTable.colOffset;
 			var gameData = _gameData.Grid[offsetRow].GridRow[offsetCol];
 			// need to check if there was info in the cell before and if yes, then disable the cell
-			if (gameData.Icon !=0)
+			bool cellEmpty = (gameData.Icon == 0) ? true: false;
+			if (!cellEmpty)
 			{
-				GD.Print($"There is data in cell {offsetRow}/{offsetCol}");
 				var cardName = gameData.CardName;
 				var cellIndex = gameData.CellIndex;
 				
@@ -122,9 +123,9 @@ public partial class TableTop : TextureRect
 				card.DisableSnapPoint(cellIndex);
 			}
 			
-			switch (type)
+			switch (type) // depending on the type of card being "locked in", a few things need to be checked
 			{
-				case "day":
+				case "day": // if it's a day card, check to see if the current cell is the day's cell, ie one that shouldn't be covered
 					if (i == _gameData.CellDay)
 					{
 						gameData.Locked = true;
@@ -135,7 +136,7 @@ public partial class TableTop : TextureRect
 					}
 					break;
 				
-				case "month":
+				case "month": // if it's a month card, check to see if the current cell is the month's cell, ie one that shouldn't be covered
 					if (i == _gameData.CellMonth)
 					{
 						gameData.Locked = true;
@@ -147,30 +148,45 @@ public partial class TableTop : TextureRect
 
 					break;
 				
-				default:
+				default: // if it is a regular card, check if the cell being covered is a Day or Month cell, and if it is, remove it from that type's list
 					if (gameData.CardName == "DayCard")
 					{
 						_dayCellsUncovered.Remove($"{offsetRow}{offsetCol}");
-						if(_dayCellsUncovered.Count == 0) SignalManager.EmitOnDayComplete();
+						if(_dayCellsUncovered.Count == 0) SignalManager.EmitOnDayComplete(); // if all the day's card cell have been covered, let the player know that they have completed this condition
 					} else if (gameData.CardName == "MonthCard")
 					{
 						_monthCellsUncovered.Remove($"{offsetRow}{offsetCol}");
-						if(_monthCellsUncovered.Count == 0 ) SignalManager.EmitOnMonthComplete();
+						if(_monthCellsUncovered.Count == 0 ) SignalManager.EmitOnMonthComplete(); // if all the month's card cell have been covered, let the player know that they have completed this condition
 					}
 					break;
 			}
+			
+			// set up some variables to check if the new cell is one that we need for the pattern or if we're overwriting a cell that is valid, but with something that isn't
+			var patternToMatch = (_gameData.PatternType == "Icon") ? gameData.Icon : gameData.Background;
+			var cardPatternToMatch = (_gameData.PatternType == "Icon") ? cardSelected.Cell[i].Icon : cardSelected.Cell[i].Bg;
+			var location = $"{offsetRow:D2}{offsetCol:D2}";
+			
+			if (cellEmpty)
+			{
+				if (_gameData.PatternNumber == cardPatternToMatch) PatternCells.Add(location);
+			} else {
+				if (_gameData.PatternNumber == patternToMatch) {
+					if (_gameData.PatternNumber != cardPatternToMatch) PatternCells.Remove(location);
+					
+				} else {
+					if (_gameData.PatternNumber == cardPatternToMatch) PatternCells.Add(location); 
+				}
+			}
+			
 			gameData.Icon = iconData[i].Icon;
 			gameData.Background = iconData[i].Bg;
 			gameData.CardName = group;
 			gameData.CellIndex = i;
-
 			cardSelected.Cell[i].Col = offsetCol;
 			cardSelected.Cell[i].Row = offsetRow;
 			UpdateCellDictionary(offsetRow, offsetCol,iconData[i].Icon, iconData[i].Bg);
 		}
-		
-		
-		
+		CheckForPatternCondition();
 	}
 
 	private void UpdateCellDictionary(int row, int column, int icon, int bg)
@@ -178,6 +194,36 @@ public partial class TableTop : TextureRect
 		string key = $"{row:D2}{column:D2}";
 		string value = $"{icon}{bg}";
 		_cellsOccupied[key] = value;
+	}
+
+	private void CheckForPatternCondition()
+	{
+		bool patternMatched = false;
+		foreach (String coordinates in PatternCells)
+		{
+			patternMatched = true;
+			int row = int.Parse((coordinates.Substring(0,2)));
+			int col = int.Parse(coordinates.Substring(2));
+			foreach (ConditionPattern cell in _gameData.PatternUsed)
+			{
+				int offsetRow = row + cell.rowOffset;
+				int offsetCol = col + cell.colOffset;
+				var patternToMatch = (_gameData.PatternType == "Icon") 
+					? _gameData.Grid[offsetRow].GridRow[offsetCol].Icon 
+					: _gameData.Grid[offsetRow].GridRow[offsetCol].Background;
+				if (_gameData.PatternNumber != patternToMatch)
+				{
+					patternMatched = false;
+					break;
+				}
+			}
+			if (patternMatched)
+			{
+				SignalManager.EmitOnPatternComplete();
+				break;
+			}
+		}
+		if (!patternMatched) SignalManager.EmitOnPatternNotMatching(); // either the pattern was never matched or is no longer matching
 	}
 	
 	private void HighlightCells(int icon, int bg, Control pivot)
