@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Linq;
 
 public partial class TopBar : TextureRect
 {
@@ -21,7 +20,6 @@ public partial class TopBar : TextureRect
 	private int _rightCard;
 	private int _leftCard;
 	private int[] _deck = [0, 1, 2, 3, 4, 5];
-	private bool[] _cardSide = [true, true, true, true, true, true];
 	private string _left = "left";
 	private string _right = "right";
 	
@@ -135,16 +133,16 @@ public partial class TopBar : TextureRect
 			(arrayCopy[i], arrayCopy[count]) = (arrayCopy[count], arrayCopy[i]);
 		}
 		// now, flip some cards
-		for (int x= 0; x< arrayCopy.Count; x++)
+		foreach (var card in arrayCopy)
 		{
 			int randomNum = Random.Shared.Next(2);
 			if (randomNum == 1)
 			{
-				_gameData.Deck.Add(arrayCopy[x].Front);
+				_gameData.Deck.Add(card.Front);
 			}
 			else
 			{
-				_gameData.Deck.Add(arrayCopy[x].Back);
+				_gameData.Deck.Add(card.Back);
 			}
 		}
 	}
@@ -180,10 +178,8 @@ public partial class TopBar : TextureRect
 		for (int x = 0; x< _gameData.Grid.Count; x++)
 		{
 			string line = $"[{x:D2}]";
-			for (int y = 0; y < _gameData.Grid[x].GridRow.Count; y++)
+			foreach (var cell in _gameData.Grid[x].GridRow)
 			{
-				var cell = _gameData.Grid[x].GridRow[y];
-				//GD.Print($"Cell:{x:00}/{y:00}, Icon:{cell.Icon}, BG: {cell.Background}, GN: {cell.CardName}, Cell: {cell.CellIndex}, Locked: {cell.Locked} ");
 				if (cell.Locked)
 				{
 					line += $"*{cell.Icon}{cell.Background}*";

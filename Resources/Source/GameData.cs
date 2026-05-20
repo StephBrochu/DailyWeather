@@ -6,7 +6,7 @@ public partial class GameData: Resource
 {
     [Export] public Godot.Collections.Array<Row> Grid { get; set; } = [];
     
-    public List<CardData> Deck = [];
+    public readonly List<CardData> Deck = [];
     public int WeekCard { get; set; }
     public int DayCard { get; set; }
     public int Season { get; set; }
@@ -16,7 +16,7 @@ public partial class GameData: Resource
     // the data for the scoring pattern requirement
     public string PatternType { get; set; }
     public int PatternNumber { get; set; }
-    public List<ConditionPattern> PatternUsed = [];
+    public readonly List<ConditionPattern> PatternUsed = [];
 
     // a few constants so that they can be used everywhere
     public const string MonthCardName = "MonthCard";

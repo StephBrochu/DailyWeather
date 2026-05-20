@@ -13,12 +13,13 @@ public partial class TableTop : TextureRect
 	[Export] private OffsetTables _offsetTables;
 
 	private Godot.Collections.Dictionary<string, string> _cellsOccupied = new();
-	private List<CardCell> _highlightedCells = [];
-	private List<string> _dayCellsUncovered = [];
-	private List<string> _monthCellsUncovered = [];
-	public List<string> PatternCells = [];
+	private readonly List<CardCell> _highlightedCells = [];
+	private readonly List<string> _dayCellsUncovered = [];
+	private readonly List<string> _monthCellsUncovered = [];
+	private readonly List<string> _patternCells = [];
+	private List<string> _validPatternCells = [];
 	private bool _debug;
-	private int cardDealt = 1;
+	private int _cardDealt = 1;
 
 	private DragableCard _cardPlayed;
 	private int _cell0LocationRow;
@@ -68,7 +69,7 @@ public partial class TableTop : TextureRect
 		UpdateGrid(cardSelected, cardSelected.Cell, cardSelected.Name, row, col, rotation, "day");
 	}
 
-	public void DealCard()
+	private void DealCard()
 	{
 		if (_gameData.Deck.Count == 0) {
 			GD.Print("Deck is empty");
@@ -78,8 +79,8 @@ public partial class TableTop : TextureRect
 		var topCard = _gameData.Deck.First();
 		_gameData.Deck.RemoveAt(0); // card is dealt, so remove it from the list
 		card.SetUpData(topCard.Image, topCard.Icon);
-		card.Name = $"Card{cardDealt}";
-		cardDealt++;
+		card.Name = $"Card{_cardDealt}";
+		_cardDealt++;
 		card.Rotation = 0;
 		string anchor = "FirstCard";
 		// is there another card dealt?
@@ -103,8 +104,7 @@ public partial class TableTop : TextureRect
 	
 	private void UpdateGrid(DragableCard cardSelected, Godot.Collections.Array<CardCell> iconData, string group, int row, int col, float rotation, string type)
 	{
-		bool onlyMonthVisible = true; // may need to keep track of all cells instead
-		bool onlyDayVisible = true;
+
 		int offsetTableToUse = (int)rotation / 90;
 		for (int i = 0; i < 6; i++)
 		{
@@ -113,7 +113,7 @@ public partial class TableTop : TextureRect
 			var offsetCol = col + offsetTable.colOffset;
 			var gameData = _gameData.Grid[offsetRow].GridRow[offsetCol];
 			// need to check if there was info in the cell before and if yes, then disable the cell
-			bool cellEmpty = (gameData.Icon == 0) ? true: false;
+			bool cellEmpty = (gameData.Icon == 0);
 			if (!cellEmpty)
 			{
 				var cardName = gameData.CardName;
@@ -168,13 +168,13 @@ public partial class TableTop : TextureRect
 			
 			if (cellEmpty)
 			{
-				if (_gameData.PatternNumber == cardPatternToMatch) PatternCells.Add(location);
+				if (_gameData.PatternNumber == cardPatternToMatch) _patternCells.Add(location);
 			} else {
 				if (_gameData.PatternNumber == patternToMatch) {
-					if (_gameData.PatternNumber != cardPatternToMatch) PatternCells.Remove(location);
+					if (_gameData.PatternNumber != cardPatternToMatch) _patternCells.Remove(location);
 					
 				} else {
-					if (_gameData.PatternNumber == cardPatternToMatch) PatternCells.Add(location); 
+					if (_gameData.PatternNumber == cardPatternToMatch) _patternCells.Add(location); 
 				}
 			}
 			
@@ -199,7 +199,7 @@ public partial class TableTop : TextureRect
 	private void CheckForPatternCondition()
 	{
 		bool patternMatched = false;
-		foreach (String coordinates in PatternCells)
+		foreach (String coordinates in _patternCells)
 		{
 			patternMatched = true;
 			int row = int.Parse((coordinates.Substring(0,2)));
@@ -302,7 +302,7 @@ public partial class TableTop : TextureRect
 	private void LockCardInAndDealNewCard()
 	{
 		_cardPlayed.LockCard();
-		_cardPlayed.ZIndex = cardDealt;
+		_cardPlayed.ZIndex = _cardDealt;
 		float rotation = float.RadiansToDegrees(_cardPlayed.Rotation);
 		UpdateGrid(_cardPlayed, _cardPlayed.Cell, _cardPlayed.Name, _cell0LocationRow, _cell0LocationCol, rotation, "Card");
 		_cardPlayed.RemoveFromGroup("PlayableCard");
