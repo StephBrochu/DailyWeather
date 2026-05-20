@@ -6,7 +6,7 @@ public partial class DragableCard : PanelContainer
 	[Export] private TextureRect _cardImage;
 	[Export] public Godot.Collections.Array<CardCell> Cell = new();
 	public enum CardState {Dealt, Drag, Rotate, Released, Snapped, Locked}
-	public CardState Card;
+	private CardState Card;
 	
 	private Vector2 _eventStart = Vector2.Zero; // position of the cursor when the event starts
 	private Vector2 _offset = Vector2.Zero; // offset between cursor and corner of card
@@ -165,7 +165,7 @@ public partial class DragableCard : PanelContainer
 	}
 	
 // Snap points are enabled by Topbar based on what cell is being held by player
-	public void EnableSnapPoint(int snapPoint) // this may not be used
+	private void EnableSnapPoint(int snapPoint) // this may not be used
 	{
 		PanelContainer controlNode = GetNode<PanelContainer>($"Card/CardCell{snapPoint}");
 		controlNode.AddToGroup("Snap"); // not sure on name yet. Should probably be Snap + icon/bg

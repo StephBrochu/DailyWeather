@@ -4,7 +4,7 @@ public partial class CardCell : PanelContainer
 {
     public int Icon { get; set; }
     public int Bg { get; set; }
-    public bool Available { get; set; }
+    private bool Available { get; set; }
     public int Row { get; set; }
     public int Col { get; set; }
     private int _rowOffset;
