@@ -33,8 +33,8 @@ public partial class TopBar : TextureRect
 		SignalManager.Instance.OnPatternNotMatching += PatternNotMatching;
 		
 		// this will be replaced with a menu on the start screen to allow the player to select any day they want
-		_today = DateTime.Today.DayOfWeek; 
 		_date = new DateTime(2026, 04, 27); // set up a date
+		_today = _date.DayOfWeek; 
 		//_date = DateTime.Now; // today's date
 
 		SetMonthCard(); // select the correct month card

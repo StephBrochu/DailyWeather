@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://phgatxro0ybc"]
+[gd_scene load_steps=16 format=3 uid="uid://phgatxro0ybc"]
 
 [ext_resource type="Texture2D" uid="uid://y3uuu750c5jf" path="res://Images/Background.png" id="1_aylmd"]
 [ext_resource type="Script" uid="uid://wif1ndxdcy1v" path="res://Scenes/TopBar/TopBar.cs" id="2_k4new"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://dqoawc5sp5xpf" path="res://Resources/DeckOfCards.tres" id="6_ohioj"]
 [ext_resource type="Texture2D" uid="uid://ci740ojljr0bh" path="res://Images/LockCard.png" id="11_v2ufg"]
 [ext_resource type="Texture2D" uid="uid://djn2ykeo3goxx" path="res://Images/LockCardOff.png" id="12_ckrn8"]
+[ext_resource type="Script" uid="uid://y2ho51jx4thn" path="res://Scenes/TopBar/Pattern.cs" id="12_q6kiq"]
 [ext_resource type="Script" uid="uid://dbfd3ysvrsxud" path="res://Scenes/TopBar/LockCard.cs" id="13_pkylb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tpgy1"]
@@ -39,7 +40,7 @@ _playCardData = ExtResource("6_ohioj")
 _gameData = ExtResource("6_d441w")
 _monthLabel = NodePath("OnlyMonth")
 _dayLabel = NodePath("OnlyDay")
-_patternLabel = NodePath("Pattern")
+_patternLabel = NodePath("PatternControl/Pattern")
 metadata/_edit_vertical_guides_ = [640.0, 173.0, 600.0, 868.0, 1130.0]
 metadata/_edit_horizontal_guides_ = [15.0, -192.0, 49.0]
 
@@ -79,7 +80,7 @@ script = ExtResource("13_pkylb")
 layout_mode = 0
 offset_left = 640.0
 offset_top = 14.0
-offset_right = 831.0
+offset_right = 868.0
 offset_bottom = 37.0
 text = "Other Months are visible"
 label_settings = SubResource("LabelSettings_tpgy1")
@@ -88,17 +89,23 @@ label_settings = SubResource("LabelSettings_tpgy1")
 layout_mode = 0
 offset_left = 640.0
 offset_top = 49.0
-offset_right = 810.0
+offset_right = 868.0
 offset_bottom = 72.0
 text = "Other Days are visible"
 label_settings = SubResource("LabelSettings_q6kiq")
 
-[node name="Pattern" type="Label" parent="."]
-layout_mode = 0
+[node name="PatternControl" type="Control" parent="."]
+anchors_preset = 0
 offset_left = 640.0
 offset_top = 85.0
-offset_right = 786.0
+offset_right = 868.0
 offset_bottom = 108.0
+script = ExtResource("12_q6kiq")
+
+[node name="Pattern" type="Label" parent="PatternControl"]
+layout_mode = 0
+offset_right = 228.0
+offset_bottom = 23.0
 text = "Pattern not matching"
 label_settings = SubResource("LabelSettings_v2ufg")
 

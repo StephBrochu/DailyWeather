@@ -17,7 +17,7 @@ public partial class TableTop : TextureRect
 	private readonly List<string> _dayCellsUncovered = [];
 	private readonly List<string> _monthCellsUncovered = [];
 	private readonly List<string> _patternCells = [];
-	private List<string> _validPatternCells = [];
+	private readonly List<CardCell> _highlightedPattern = [];
 	private bool _debug;
 	private int _cardDealt = 1;
 
@@ -35,6 +35,8 @@ public partial class TableTop : TextureRect
 		SignalManager.Instance.OnMouseExit += UnHighlightCell;
 		SignalManager.Instance.OnCardPlaced += CheckForValidPlacement;
 		SignalManager.Instance.OnLockCard += LockCardInAndDealNewCard;
+		SignalManager.Instance.OnPatternLabelEntered += HighlightPattern;
+		SignalManager.Instance.OnPatternLabelExited += UnHighlightPattern;
 	}
 
 	private void SetMonthCard(float rotation, int row, int col, int anchor, int date)
@@ -207,15 +209,15 @@ public partial class TableTop : TextureRect
 			foreach (ConditionPattern cell in _gameData.PatternUsed)
 			{
 				int offsetRow = row + cell.rowOffset;
+				if (offsetRow < 0 || offsetRow > _gameData.Grid.Count) break;
 				int offsetCol = col + cell.colOffset;
+				if (offsetCol < 0 || offsetCol > _gameData.Grid[0].GridRow.Count) break;
 				var patternToMatch = (_gameData.PatternType == "Icon") 
 					? _gameData.Grid[offsetRow].GridRow[offsetCol].Icon 
 					: _gameData.Grid[offsetRow].GridRow[offsetCol].Background;
-				if (_gameData.PatternNumber != patternToMatch)
-				{
-					patternMatched = false;
-					break;
-				}
+				if (_gameData.PatternNumber == patternToMatch) continue;
+				patternMatched = false;
+				break;
 			}
 			if (patternMatched)
 			{
@@ -246,6 +248,21 @@ public partial class TableTop : TextureRect
 		}
 	}
 
+	private void HighlightPattern()
+	{
+		foreach (String coordinates in _patternCells)
+		{
+			int row = int.Parse((coordinates.Substring(0,2)));
+			int col = int.Parse(coordinates.Substring(2));
+			var name = _gameData.Grid[row].GridRow[col].CardName;
+			DragableCard card = GetNode<DragableCard>(name);
+			if (_gameData.Grid[row].GridRow[col].Locked) continue;
+			var cell = card.Cell[_gameData.Grid[row].GridRow[col].CellIndex];
+			cell.HighlightCell();
+			_highlightedPattern.Add(cell);
+		}
+	}
+
 	private void UnHighlightCell()
 	{
 		foreach (CardCell highlightedButton in _highlightedCells)
@@ -253,6 +270,15 @@ public partial class TableTop : TextureRect
 			highlightedButton.UnHighlightCell();
 		}
 		_highlightedCells.Clear();
+	}
+
+	private void UnHighlightPattern()
+	{
+		foreach (CardCell highlightedButton in _highlightedPattern)
+		{
+			highlightedButton.UnHighlightCell();			
+		}
+		_highlightedPattern.Clear();
 	}
 
 	private void CheckForValidPlacement(string cardOverlaid, string cellOverlaid, string newCard, string newCell)
