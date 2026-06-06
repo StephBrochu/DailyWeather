@@ -41,7 +41,15 @@ public partial class DragableCard : PanelContainer
 				break;
 			
 			case CardState.Drag:
-				Position = GetGlobalMousePosition() - _offset;
+				if (Input.IsMouseButtonPressed(MouseButton.Left))
+				{
+					Position = GetGlobalMousePosition() - _offset;
+				}
+				else
+				{
+					State = CardState.Released;
+				}
+
 				break;
 			
 			default:
@@ -84,7 +92,6 @@ public partial class DragableCard : PanelContainer
 			else
 			{
 				if (State== CardState.Drag) State= CardState.Released;
-				CheckForSnap();
 			}
 		} 
 	}
