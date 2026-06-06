@@ -74,6 +74,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 script = ExtResource("3_vq0cy")
 Image = ExtResource("1_vq0cy")
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_veuus"), SubResource("Resource_gqdd4")])
+CardScoringCondition = 10
 metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_61l4l"]
@@ -132,6 +133,7 @@ script = ExtResource("3_vq0cy")
 Image = ExtResource("2_d2kg8")
 ArrowPosition = 3
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_b3n5n"), SubResource("Resource_35jxk")])
+CardScoringCondition = 11
 metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_ug4x5"]
@@ -231,6 +233,7 @@ script = ExtResource("3_vq0cy")
 Image = ExtResource("7_bhn5k")
 ArrowPosition = 1
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_eny3m"), SubResource("Resource_jw8ed")])
+CardScoringCondition = 1
 metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_b76vy"]
@@ -293,6 +296,7 @@ script = ExtResource("3_vq0cy")
 Image = ExtResource("8_c7yog")
 ArrowPosition = 2
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_j68hn"), SubResource("Resource_bsnun")])
+CardScoringCondition = 2
 metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_38fcc"]
@@ -351,6 +355,7 @@ script = ExtResource("3_vq0cy")
 Image = ExtResource("9_csoht")
 ArrowPosition = 3
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_876kk"), SubResource("Resource_qi1i5")])
+CardScoringCondition = 3
 metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_06msi"]
@@ -402,6 +407,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 script = ExtResource("3_vq0cy")
 Image = ExtResource("11_1haab")
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_51f25"), SubResource("Resource_ytcsq")])
+CardScoringCondition = 5
 metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_86lj8"]
@@ -448,6 +454,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 script = ExtResource("3_vq0cy")
 Image = ExtResource("10_50w8v")
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_m3ala"), SubResource("Resource_7av51")])
+CardScoringCondition = 4
 metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_71iss"]
@@ -511,6 +518,7 @@ script = ExtResource("3_vq0cy")
 Image = ExtResource("13_s0f8k")
 ArrowPosition = 3
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_sw16w"), SubResource("Resource_kfsc4")])
+CardScoringCondition = 7
 metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_wpy0b"]
@@ -570,6 +578,7 @@ script = ExtResource("3_vq0cy")
 Image = ExtResource("12_gqdd4")
 ArrowPosition = 2
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_jxhnv"), SubResource("Resource_707jf")])
+CardScoringCondition = 6
 metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_wtuvb"]
@@ -623,6 +632,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 script = ExtResource("3_vq0cy")
 Image = ExtResource("15_1haab")
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_6yayd"), SubResource("Resource_key5a")])
+CardScoringCondition = 9
 metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_bc07u"]
@@ -670,6 +680,7 @@ script = ExtResource("3_vq0cy")
 Image = ExtResource("14_50w8v")
 ArrowPosition = 1
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_rvvxi"), SubResource("Resource_yj5ps")])
+CardScoringCondition = 8
 metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_2d4m6"]
@@ -735,6 +746,7 @@ script = ExtResource("3_vq0cy")
 Image = ExtResource("1_vq0cy")
 ArrowPosition = 2
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_1s0dg"), SubResource("Resource_m6ds5")])
+CardScoringCondition = 10
 metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_5w3il"]
@@ -793,6 +805,7 @@ script = ExtResource("3_vq0cy")
 Image = ExtResource("2_d2kg8")
 ArrowPosition = 1
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_cluql"), SubResource("Resource_ats3x")])
+CardScoringCondition = 11
 metadata/_custom_type_script = "uid://camyeggovvbtl"
 
 [sub_resource type="Resource" id="Resource_6xkyh"]

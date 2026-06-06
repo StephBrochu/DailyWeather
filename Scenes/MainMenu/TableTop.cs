@@ -73,10 +73,7 @@ public partial class TableTop : TextureRect
 
 	private void DealCard()
 	{
-		if (_gameData.Deck.Count == 0) {
-			GD.Print("Deck is empty");
-			return; // deck is empty. May want to let user know, skip for now
-		}
+
 		DragableCard card = _playCard.Instantiate<DragableCard>();
 		var topCard = _gameData.Deck.First();
 		_gameData.Deck.RemoveAt(0); // card is dealt, so remove it from the list
@@ -333,6 +330,17 @@ public partial class TableTop : TextureRect
 		UpdateGrid(_cardPlayed, _cardPlayed.Cell, _cardPlayed.Name, _cell0LocationRow, _cell0LocationCol, rotation, "Card");
 		_cardPlayed.RemoveFromGroup("PlayableCard");
 		SignalManager.EmitOnDebugDisplayGrid();
-		DealCard();
+		if (_gameData.Deck.Count != 0)
+		{
+			DealCard();
+			return;
+		}
+
+		var playableCards = GetTree().GetNodesInGroup("PlayableCard");
+
+		if (playableCards.Count != 0) return;
+		
+		GD.Print("All cards played");
+		SignalManager.EmitOnGameEnd();
 	}
 }

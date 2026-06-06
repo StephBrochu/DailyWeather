@@ -6,7 +6,7 @@ public partial class DragableCard : PanelContainer
 	[Export] private TextureRect _cardImage;
 	[Export] public Godot.Collections.Array<CardCell> Cell = new();
 	public enum CardState {Dealt, Drag, Rotate, Released, Snapped, Locked}
-	private CardState _card;
+	public CardState State;
 	
 	private Vector2 _eventStart = Vector2.Zero; // position of the cursor when the event starts
 	private Vector2 _offset = Vector2.Zero; // offset between cursor and corner of card
@@ -19,35 +19,33 @@ public partial class DragableCard : PanelContainer
 	private Node _cardOverlaid;
 	private StringName _nodeName;
 	private Node _cellParent;
+	private int _oldZ;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_card = CardState.Dealt;
+		State = CardState.Dealt;
 		SignalManager.Instance.OnMouseEntered += OnMouseEntered;
 		SignalManager.Instance.OnMouseExit += OnMouseExit;
 	}
 
 	public override void _Process(double delta)
 	{
-		if (_card == CardState.Locked) return; // if the card is locked, then don't allow dragging/rotating
-		switch (_card)
+		if (State == CardState.Locked) return; // if the card is locked, then don't allow dragging/rotating
+		switch (State)
 		{
+			case CardState.Released:
+				CheckForSnap();
+				State = CardState.Dealt;
+				ZIndex = _oldZ;
+				break;
+			
 			case CardState.Drag:
 				Position = GetGlobalMousePosition() - _offset;
 				break;
 			
-			case CardState.Rotate:
-				_card = CardState.Dealt;
-				break;
-			
-			case CardState.Released:
-				CheckForSnap();
-				_card = CardState.Dealt;
-				break;
-			
-			case CardState.Snapped:
-				_card = CardState.Dealt;
+			default:
+				State = CardState.Dealt;
 				break;
 		}
 	}
@@ -68,23 +66,24 @@ public partial class DragableCard : PanelContainer
 	
 	public override void _GuiInput(InputEvent @event)
 	{
-		if (_card == CardState.Locked) return; // if the card is locked, then don't allow dragging/rotating
+		if (State == CardState.Locked) return; // if the card is locked, then don't allow dragging/rotating
 		if (@event is InputEventMouseButton { ButtonIndex: MouseButton.Left } mouseButtonEvent)
 		{
 			if (mouseButtonEvent.DoubleClick)
 			{
 				_eventStart = GetGlobalMousePosition();
-				_card= CardState.Rotate;
+				State= CardState.Rotate;
 				RotateCard();
-			} else if (mouseButtonEvent.Pressed && _card== CardState.Dealt)
+			} else if (mouseButtonEvent.Pressed && State== CardState.Dealt)
 			{
 				_offset = GetGlobalMousePosition() - Position;
+				_oldZ = ZIndex;
 				ZIndex = 99;
-				_card= CardState.Drag;
+				State= CardState.Drag;
 			}
 			else
 			{
-				if (_card== CardState.Drag) _card= CardState.Released;
+				if (State== CardState.Drag) State= CardState.Released;
 				CheckForSnap();
 			}
 		} 
@@ -100,7 +99,7 @@ public partial class DragableCard : PanelContainer
 		else
 			_currentRotation += float.Pi / 2;
 		Rotation = _currentRotation;
-		if (_card == CardState.Snapped) SignalManager.EmitOnCardPlaced(_cardOverlaid.Name,_nodeName, Name,_cellParent.Name);
+		if (State == CardState.Snapped) SignalManager.EmitOnCardPlaced(_cardOverlaid.Name,_nodeName, Name,_cellParent.Name);
 
 	}
 
@@ -126,7 +125,7 @@ public partial class DragableCard : PanelContainer
 						PanelContainer parentPosition = GetNode<PanelContainer>(parentPath);
 						Position = pivot.GlobalPosition - (_currentCellPivot.Position + parentPosition.Position);
 						_cardOverlaid = cardCellNode.GetParent().GetParent(); // needed to get the name of the card
-						_card = CardState.Snapped;
+						State = CardState.Snapped;
 						_nodeName = node.Name; 
 						SignalManager.EmitOnCardPlaced(_cardOverlaid.Name,_nodeName, Name,_cellParent.Name); 
 						break;
@@ -153,7 +152,8 @@ public partial class DragableCard : PanelContainer
 	
 	public void LockCard()
 	{
-		_card= CardState.Locked;
+		State= CardState.Locked;
+		RemoveFromGroup("PlayableCard");
 		int i = 0;
 		PanelContainer cell = GetNodeOrNull<PanelContainer>($"CardImage/CardCell{i}");
 		while (cell is not null)

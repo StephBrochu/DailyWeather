@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://phgatxro0ybc"]
+[gd_scene load_steps=17 format=3 uid="uid://phgatxro0ybc"]
 
 [ext_resource type="Texture2D" uid="uid://y3uuu750c5jf" path="res://Images/Background.png" id="1_aylmd"]
 [ext_resource type="Script" uid="uid://wif1ndxdcy1v" path="res://Scenes/TopBar/TopBar.cs" id="2_k4new"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://djn2ykeo3goxx" path="res://Images/LockCardOff.png" id="12_ckrn8"]
 [ext_resource type="Script" uid="uid://csh1qgsnc82kq" path="res://Scenes/TopBar/Pattern.cs" id="12_q6kiq"]
 [ext_resource type="Script" uid="uid://dbfd3ysvrsxud" path="res://Scenes/TopBar/LockCard.cs" id="13_pkylb"]
+[ext_resource type="Script" uid="uid://cq78dyr8sm82l" path="res://Scenes/TopBar/ScoringControl.cs" id="13_v2ufg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tpgy1"]
 font_color = Color(1, 0, 0, 1)
@@ -109,10 +110,16 @@ offset_bottom = 23.0
 text = "Pattern not matching"
 label_settings = SubResource("LabelSettings_v2ufg")
 
-[node name="ScoreLabel" type="Label" parent="."]
-layout_mode = 0
+[node name="ScoringControl" type="Control" parent="."]
+anchors_preset = 0
 offset_left = 868.0
 offset_top = 49.0
-offset_right = 1014.0
-offset_bottom = 72.0
+offset_right = 908.0
+offset_bottom = 89.0
+script = ExtResource("13_v2ufg")
+
+[node name="ScoreLabel" type="Label" parent="ScoringControl"]
+layout_mode = 0
+offset_right = 146.0
+offset_bottom = 23.0
 text = "Score: 0"

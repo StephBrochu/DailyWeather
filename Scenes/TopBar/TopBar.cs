@@ -151,24 +151,28 @@ public partial class TopBar : TextureRect
 	{
 		_dayLabel.Text = "Only current Day is visible";
 		_dayLabel.LabelSettings.FontColor = Color.Color8(0, 255, 0);
+		_gameData.DayComplete = true;
 	}
 	
 	private void MonthComplete() // should change color of the cell
 	{
 		_monthLabel.Text = "Only current Day is visible";
 		_monthLabel.LabelSettings.FontColor = Color.Color8(0, 255, 0);
+		_gameData.MonthComplete = true;
 	}
 
 	private void PatternComplete() // need to add visual feedback on grid
 	{
 		_patternLabel.Text = "Pattern is matched!";
 		_patternLabel.LabelSettings.FontColor = Color.Color8(0, 255, 0);
+		_gameData.PatternComplete = true;
 	}
 
 	private void PatternNotMatching()
 	{
 		_patternLabel.Text = "Pattern not matching";
 		_patternLabel.LabelSettings.FontColor = Color.Color8(255, 0, 0);
+		_gameData.PatternComplete = false;
 	}
 	
 	private void DisplayGrid()

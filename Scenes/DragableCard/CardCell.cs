@@ -2,6 +2,7 @@ using Godot;
 
 public partial class CardCell : PanelContainer
 {
+    [Export] private TextureRect _scoringCondition;
     public int Icon { get; set; }
     public int Bg { get; set; }
     private bool Available { get; set; }
@@ -11,6 +12,8 @@ public partial class CardCell : PanelContainer
     private int _colOffset;
     private TextureRect _highlight;
     private TextureRect _unavailable;
+
+    private TextureRect _scoringCell;
     private Control _pivot;
     
     // Called when the node enters the scene tree for the first time.
@@ -18,6 +21,8 @@ public partial class CardCell : PanelContainer
     {
         _highlight = GetNode<TextureRect>("Highlight");
         _unavailable = GetNode<TextureRect>("Unavailable");
+        _scoringCondition = GetNode<TextureRect>("ScoringCondition");
+        _scoringCell = GetNode<TextureRect>("ScoringCell");
         _pivot = GetNode<Control>("Pivot");
         
         MouseEntered += OnMouseOver;
@@ -56,5 +61,25 @@ public partial class CardCell : PanelContainer
         Available = false;
         _unavailable.Visible = true;
         SignalManager.EmitOnMouseExit();
+    }
+
+    public void ScoringConditionEnable()
+    {
+        if (Available) _highlight.Visible = true;
+    }
+
+    public void ScoringConditionDisable()
+    {
+        if (Available) _highlight.Visible = false;
+    }
+
+    public void ScoringCellEnable()
+    {
+        if (Available) _scoringCell.Visible = true;
+    }
+
+    public void ScoringCellDisable()
+    {
+        if (Available) _scoringCell.Visible = false;
     }
 }

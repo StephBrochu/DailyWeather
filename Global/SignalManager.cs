@@ -21,6 +21,9 @@ public partial class SignalManager : Node
 	[Signal] public delegate void OnPatternNotMatchingEventHandler();
 	[Signal] public delegate void OnPatternLabelEnteredEventHandler();
 	[Signal] public delegate void OnPatternLabelExitedEventHandler();
+	[Signal] public delegate void OnScoringLabelEnteredEventHandler();
+	[Signal] public delegate void OnScoringLabelExitedEventHandler();
+	[Signal] public delegate void OnGameEndEventHandler();
 	
 	
 	// Called when the node enters the scene tree for the first time.
@@ -118,5 +121,20 @@ public partial class SignalManager : Node
 	public static void EmitOnPatternLabelExited()
 	{
 		Instance.EmitSignal(SignalName.OnPatternLabelExited);
+	}
+
+	public static void EmitOnScoringLabelEntered()
+	{
+		Instance.EmitSignal(SignalName.OnScoringLabelEntered);
+	}
+
+	public static void EmitOnScoringLabelExited()
+	{
+		Instance.EmitSignal(SignalName.OnScoringLabelExited);
+	}
+
+	public static void EmitOnGameEnd()
+	{
+		Instance.EmitSignal(SignalName.OnGameEnd);
 	}
 }
