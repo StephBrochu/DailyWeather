@@ -325,7 +325,7 @@ public partial class TableTop : TextureRect
 	private void LockCardInAndDealNewCard()
 	{
 		_cardPlayed.LockCard();
-		_cardPlayed.ZIndex = _cardDealt;
+		_cardPlayed.ZIndex = _cardDealt+10;
 		float rotation = float.RadiansToDegrees(_cardPlayed.Rotation);
 		UpdateGrid(_cardPlayed, _cardPlayed.Cell, _cardPlayed.Name, _cell0LocationRow, _cell0LocationCol, rotation, "Card");
 		_cardPlayed.RemoveFromGroup("PlayableCard");

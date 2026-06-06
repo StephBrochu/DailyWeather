@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using Godot;
 using Vector2 = Godot.Vector2;
 
@@ -27,6 +29,10 @@ public partial class DragableCard : PanelContainer
 		State = CardState.Dealt;
 		SignalManager.Instance.OnMouseEntered += OnMouseEntered;
 		SignalManager.Instance.OnMouseExit += OnMouseExit;
+		if (Name.ToString().AsSpan(0, 4) is "Card")
+		{
+			ZIndex = Convert.ToInt32(Name.ToString().Last());
+		}
 	}
 
 	public override void _Process(double delta)
@@ -37,6 +43,7 @@ public partial class DragableCard : PanelContainer
 			case CardState.Released:
 				CheckForSnap();
 				State = CardState.Dealt;
+				GD.Print($"Current ZIndex: {ZIndex}; old ZIndex: {_oldZ}");
 				ZIndex = _oldZ;
 				break;
 			
@@ -86,6 +93,8 @@ public partial class DragableCard : PanelContainer
 			{
 				_offset = GetGlobalMousePosition() - Position;
 				_oldZ = ZIndex;
+				GD.Print(Name);
+				GD.Print($"Current ZIndex: {ZIndex}; old ZIndex: {_oldZ}");
 				ZIndex = 99;
 				State= CardState.Drag;
 			}
@@ -140,7 +149,7 @@ public partial class DragableCard : PanelContainer
 					else
 					{
 						SignalManager.EmitOnLockDisabled();
-						ZIndex = 10;
+						ZIndex = _oldZ;
 					}
 				}
 			}
