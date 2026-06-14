@@ -82,11 +82,13 @@ public partial class ScoringManager : Control
 		_highlightedScoringCells.Clear();
 	}
 
-	private void FinalScoring()
+	public void FinalScoring()
 	{
 		// check if able to score
 		CurrentScoring();
 		GD.Print($"Final Score is {_highlightedScoringCells.Count}");
+		_gameData.FinalScore = _highlightedScoringCells.Count;
+		SignalManager.EmitOnFinalScoring();
 	}
 	
 }

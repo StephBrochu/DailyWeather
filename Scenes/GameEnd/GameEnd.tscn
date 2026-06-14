@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://d7mlu8jbvpp4"]
+
+[ext_resource type="Texture2D" uid="uid://da2pcx5cdnthp" path="res://Images/GameEnd.png" id="1_cfpv2"]
+[ext_resource type="Script" uid="uid://b1bhoevjtfioj" path="res://Scenes/GameEnd/GameEnd.cs" id="2_gli1h"]
+[ext_resource type="LabelSettings" uid="uid://b33ppquxsmos" path="res://font/Winning.tres" id="2_ifhnc"]
+[ext_resource type="LabelSettings" uid="uid://orrhl6jwurlq" path="res://font/WinningSmaller.tres" id="3_gli1h"]
+[ext_resource type="Resource" uid="uid://0i2tc3mavh05" path="res://Resources/GameData.tres" id="3_jy5n5"]
+[ext_resource type="LabelSettings" uid="uid://262ypf8humss" path="res://font/NotScoring.tres" id="4_jy5n5"]
+[ext_resource type="LabelSettings" uid="uid://ce6lrxf31e1si" path="res://font/NotScoringSmaller.tres" id="5_rhtkd"]
+
+[node name="GameEnd" type="Control" node_paths=PackedStringArray("_finalScore", "_notScoring", "_missingConditions")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 680.0
+script = ExtResource("2_gli1h")
+_finalScore = NodePath("Scoring/FinalScore")
+_notScoring = NodePath("NotScoring")
+_missingConditions = NodePath("NotScoring/MissingConditions")
+_gameData = ExtResource("3_jy5n5")
+
+[node name="Box" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1500, 680)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_cfpv2")
+expand_mode = 2
+
+[node name="Scoring" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Situation" type="Label" parent="Scoring"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 71.0
+offset_right = 1491.0
+offset_bottom = 168.0
+text = "Final Score:"
+label_settings = ExtResource("2_ifhnc")
+horizontal_alignment = 1
+
+[node name="FinalScore" type="Label" parent="Scoring"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 221.0
+offset_right = 1492.0
+offset_bottom = 318.0
+text = "Final Score:"
+label_settings = ExtResource("3_gli1h")
+horizontal_alignment = 1
+
+[node name="NotScoring" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Situation" type="Label" parent="NotScoring"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 71.0
+offset_right = 1493.0
+offset_bottom = 168.0
+text = "No Score"
+label_settings = ExtResource("4_jy5n5")
+horizontal_alignment = 1
+
+[node name="MissingConditions" type="Label" parent="NotScoring"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 228.0
+offset_right = 1488.0
+offset_bottom = 325.0
+text = "No Score"
+label_settings = ExtResource("5_rhtkd")
+horizontal_alignment = 1

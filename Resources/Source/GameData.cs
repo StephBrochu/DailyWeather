@@ -20,6 +20,7 @@ public partial class GameData: Resource
     public bool DayComplete = false;
     public bool MonthComplete = false;
     public bool PatternComplete = false;
+    public int FinalScore;
 
     // a few constants so that they can be used everywhere
     public const string MonthCardName = "MonthCard";

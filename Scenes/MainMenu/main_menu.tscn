@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://7aogaoeiyd8c"]
+[gd_scene load_steps=13 format=3 uid="uid://7aogaoeiyd8c"]
 
 [ext_resource type="PackedScene" uid="uid://phgatxro0ybc" path="res://Scenes/TopBar/TopBar.tscn" id="1_uqdog"]
 [ext_resource type="Texture2D" uid="uid://piknf0q6to2m" path="res://Images/tabletop.png" id="1_v763k"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://bqttaf5q4jmfq" path="res://Resources/OffsetTables.tres" id="8_6c6cs"]
 [ext_resource type="Script" uid="uid://bm5ojugh4oihc" path="res://Scenes/ScoringManager/ScoringManager.cs" id="10_agesy"]
 [ext_resource type="Resource" uid="uid://d4dkeowkbv5og" path="res://Resources/DayCards.tres" id="11_mdp32"]
+[ext_resource type="PackedScene" uid="uid://d7mlu8jbvpp4" path="res://Scenes/GameEnd/GameEnd.tscn" id="12_rlg4b"]
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
@@ -33,6 +34,15 @@ _playCard = ExtResource("4_0qgbs")
 _playData = ExtResource("6_rlg4b")
 _gameData = ExtResource("7_w5buf")
 _offsetTables = ExtResource("8_6c6cs")
+
+[node name="GameEnd" parent="TableTop" instance=ExtResource("12_rlg4b")]
+visible = false
+z_index = 50
+layout_mode = 0
+offset_left = 4334.0
+offset_top = 2252.0
+offset_right = 5294.0
+offset_bottom = 2932.0
 
 [node name="ScoringManager" type="Control" parent="TableTop"]
 anchors_preset = 0
