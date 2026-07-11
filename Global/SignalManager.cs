@@ -3,8 +3,6 @@ using Godot;
 public partial class SignalManager : Node
 {
 	public static SignalManager Instance { get; private set; }
-	[Signal] public delegate void OnSetMonthCardEventHandler(float rotation, int row, int column, int anchor, int card); 
-	[Signal] public delegate void OnSetDayCardEventHandler(float rotation, int row, int column, int anchor, int card);
 	[Signal] public delegate void OnDealCardEventHandler();
 	[Signal] public delegate void OnMouseEnteredEventHandler(int icon, int bg, Control pivot);
 	[Signal] public delegate void OnMouseExitEventHandler();
@@ -25,6 +23,7 @@ public partial class SignalManager : Node
 	[Signal] public delegate void OnScoringLabelExitedEventHandler();
 	[Signal] public delegate void OnGameEndEventHandler();
 	[Signal] public delegate void OnFinalScoringEventHandler();
+	[Signal] public delegate void OnTriggerNewGameMenuEventHandler();
 	
 	
 	// Called when the node enters the scene tree for the first time.
@@ -32,17 +31,7 @@ public partial class SignalManager : Node
 	{
 		Instance = this;
 	}
-
-	public static void EmitOnSetMonthCard(float rotation, int row, int col, int anchor, int card)
-	{
-		Instance.EmitSignal(SignalName.OnSetMonthCard, rotation, row, col, anchor, card);
-	}
-
-	public static void EmitOnSetDayCard(float rotation, int row, int col, int anchor, int card)
-	{
-		Instance.EmitSignal(SignalName.OnSetDayCard, rotation, row, col, anchor, card);
-	}
-
+	
 	public static void EmitOnDealCard()
 	{
 		Instance.EmitSignal(SignalName.OnDealCard);
@@ -142,5 +131,10 @@ public partial class SignalManager : Node
 	public static void EmitOnFinalScoring()
 	{
 		Instance.EmitSignal(SignalName.OnFinalScoring);
+	}
+
+	public static void EmitOnTriggerNewGameMenu()
+	{
+		Instance.EmitSignal(SignalName.OnTriggerNewGameMenu);
 	}
 }

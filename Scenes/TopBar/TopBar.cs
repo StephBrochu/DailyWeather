@@ -23,6 +23,8 @@ public partial class TopBar : TextureRect
 	private string _left = "left";
 	private string _right = "right";
 	
+	public static TopBar Instance { get; private set; }
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -31,12 +33,13 @@ public partial class TopBar : TextureRect
 		SignalManager.Instance.OnMonthComplete += MonthComplete;
 		SignalManager.Instance.OnPatternComplete += PatternComplete;
 		SignalManager.Instance.OnPatternNotMatching += PatternNotMatching;
-		
-		// this will be replaced with a menu on the start screen to allow the player to select any day they want
-		_date = new DateTime(2026, 04, 27); // set up a date
-		_today = _date.DayOfWeek; 
-		//_date = DateTime.Now; // today's date
+		Instance = this;
+	}
 
+	public void StartNewGame(DateTime date)
+	{
+		_date = date;
+		_today = _date.DayOfWeek; 
 		SetMonthCard(); // select the correct month card
 		SetDayCard(); // select the correct day card
 		SetStartCards(); // set up the initial two cards, depending on the week card used
@@ -45,7 +48,6 @@ public partial class TopBar : TextureRect
 		SignalManager.EmitOnDealCard(); // deal one card
 		SignalManager.EmitOnDealCard(); // and a second
 		DisplayGrid(); // for debugging purposes
-
 	}
 
 	private void SetMonthCard()
@@ -118,8 +120,8 @@ public partial class TopBar : TextureRect
 		var month = _weekCardsData.Card[_gameData.WeekCard].Month;
 		var day = _weekCardsData.Card[_gameData.WeekCard].Day;
 		
-		SignalManager.EmitOnSetMonthCard(month.Orientation, month.Row, month.Column, month.Anchor, _date.Month);
-		SignalManager.EmitOnSetDayCard(day.Orientation, day.Row, day.Column, day.Anchor, _date.Day);
+		TableTop.Instance.SetMonthCard(month.Orientation, month.Row, month.Column, month.Anchor, _date.Month);
+		TableTop.Instance.SetDayCard(day.Orientation, day.Row, day.Column, day.Anchor, _date.Day);
 	}
 
 	private void ShuffleDeck()
@@ -200,5 +202,10 @@ public partial class TopBar : TextureRect
 		//GD.Print(($"Season: {_gameData.Season}"));
 		//GD.Print(String.Join("\n", _deck));
 		//GD.Print(String.Join("\n", _cardSide));
+	}
+
+	public void ClearTable()
+	{
+		
 	}
 }

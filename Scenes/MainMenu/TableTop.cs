@@ -24,12 +24,12 @@ public partial class TableTop : TextureRect
 	private DragableCard _cardPlayed;
 	private int _cell0LocationRow;
 	private int _cell0LocationCol;
+	
+	public static TableTop Instance { get; private set; }
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		SignalManager.Instance.OnSetMonthCard += SetMonthCard;
-		SignalManager.Instance.OnSetDayCard += SetDayCard;
 		SignalManager.Instance.OnDealCard += DealCard;
 		SignalManager.Instance.OnMouseEntered += HighlightCells;
 		SignalManager.Instance.OnMouseExit += UnHighlightCell;
@@ -37,9 +37,10 @@ public partial class TableTop : TextureRect
 		SignalManager.Instance.OnLockCard += LockCardInAndDealNewCard;
 		SignalManager.Instance.OnPatternLabelEntered += HighlightPattern;
 		SignalManager.Instance.OnPatternLabelExited += UnHighlightPattern;
+		Instance = this;
 	}
 
-	private void SetMonthCard(float rotation, int row, int col, int anchor, int date)
+	public void SetMonthCard(float rotation, int row, int col, int anchor, int date)
 	{
 		DragableCard cardSelected = _playCard.Instantiate<DragableCard>();
 		int card = Math.DivRem(date, 6, out _);
@@ -55,7 +56,7 @@ public partial class TableTop : TextureRect
 		UpdateGrid(cardSelected, cardSelected.Cell, cardSelected.Name, row, col, rotation, "month");
 	}
 	
-	private void SetDayCard(float rotation, int row, int col, int anchor, int date)
+	public void SetDayCard(float rotation, int row, int col, int anchor, int date)
 	{
 		DragableCard cardSelected = _playCard.Instantiate<DragableCard>();
 		int card = Math.DivRem(date, 6, out _);
@@ -342,5 +343,14 @@ public partial class TableTop : TextureRect
 		
 		GD.Print("All cards played");
 		SignalManager.EmitOnGameEnd();
+	}
+
+	private void NewGame()
+	{
+		// remove all played cards
+		// remove day card
+		// remove month card
+		
+		// temp send back to start
 	}
 }
