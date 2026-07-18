@@ -30,7 +30,6 @@ public partial class TableTop : TextureRect
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		SignalManager.Instance.OnDealCard += DealCard;
 		SignalManager.Instance.OnMouseEntered += HighlightCells;
 		SignalManager.Instance.OnMouseExit += UnHighlightCell;
 		SignalManager.Instance.OnCardPlaced += CheckForValidPlacement;
@@ -72,7 +71,7 @@ public partial class TableTop : TextureRect
 		UpdateGrid(cardSelected, cardSelected.Cell, cardSelected.Name, row, col, rotation, "day");
 	}
 
-	private void DealCard()
+	public void DealCard()
 	{
 
 		DragableCard card = _playCard.Instantiate<DragableCard>();
@@ -104,7 +103,6 @@ public partial class TableTop : TextureRect
 	
 	private void UpdateGrid(DragableCard cardSelected, Godot.Collections.Array<CardCell> iconData, string group, int row, int col, float rotation, string type)
 	{
-
 		int offsetTableToUse = (int)rotation / 90;
 		for (int i = 0; i < 6; i++)
 		{
@@ -237,6 +235,7 @@ public partial class TableTop : TextureRect
 			if (cellIcon == icon && cellBg == bg)
 			{
 				var name = _gameData.Grid[row].GridRow[col].CardName;
+				GD.Print($"Cell Row:{row}/Col:{col} - Name: {name}");
 				DragableCard card = GetNode<DragableCard>(name);
 				if (_gameData.Grid[row].GridRow[col].Locked) continue;
 				var cell = card.Cell[_gameData.Grid[row].GridRow[col].CellIndex];
@@ -329,7 +328,6 @@ public partial class TableTop : TextureRect
 		_cardPlayed.ZIndex = _cardDealt+10;
 		float rotation = float.RadiansToDegrees(_cardPlayed.Rotation);
 		UpdateGrid(_cardPlayed, _cardPlayed.Cell, _cardPlayed.Name, _cell0LocationRow, _cell0LocationCol, rotation, "Card");
-		_cardPlayed.RemoveFromGroup("PlayableCard");
 		SignalManager.EmitOnDebugDisplayGrid();
 		if (_gameData.Deck.Count != 0)
 		{
@@ -345,12 +343,35 @@ public partial class TableTop : TextureRect
 		SignalManager.EmitOnGameEnd();
 	}
 
-	private void NewGame()
+	public void NewGame()
 	{
-		// remove all played cards
-		// remove day card
-		// remove month card
+		//removing all the cards from the table
+		foreach (var card in GetTree().GetNodesInGroup("PlayedCard"))
+		{
+			RemoveChild(card);
+			card.QueueFree();
+		}
+		// clearing game data
+		int rowId = 0;
+		foreach (Row row in _gameData.Grid)
+		{
+			for (int i = 0; i < _gameData.Grid[rowId].GridRow.Count; i++)
+			{
+				_gameData.Grid[rowId].GridRow[i].Icon = 0;
+				_gameData.Grid[rowId].GridRow[i].Background = 0;
+				_gameData.Grid[rowId].GridRow[i].CardName = null;
+				_gameData.Grid[rowId].GridRow[i].CellIndex = 0;
+				_gameData.Grid[rowId].GridRow[i].Locked = false;
+			}
+			rowId++;
+		}
+		SignalManager.EmitOnDebugDisplayGrid();
+		_gameData.DayComplete = false;
+		_gameData.MonthComplete = false;
+		_gameData.PatternComplete = false;
+		_cardDealt = 1;
 		
-		// temp send back to start
+		GD.Print("New game has started");
+
 	}
 }

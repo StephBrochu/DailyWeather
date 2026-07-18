@@ -4,7 +4,7 @@
 
 [resource]
 font = ExtResource("1_tvyt1")
-font_size = 48
+font_size = 72
 font_color = Color(0.25882354, 0.7607843, 0, 1)
 outline_size = 3
 outline_color = Color(0, 0, 0, 0.48235294)

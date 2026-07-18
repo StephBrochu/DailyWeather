@@ -3,7 +3,6 @@ using Godot;
 public partial class SignalManager : Node
 {
 	public static SignalManager Instance { get; private set; }
-	[Signal] public delegate void OnDealCardEventHandler();
 	[Signal] public delegate void OnMouseEnteredEventHandler(int icon, int bg, Control pivot);
 	[Signal] public delegate void OnMouseExitEventHandler();
 	[Signal] public delegate void OnCardPlacedEventHandler(string cardOverlaid, string cellOverlaid, string newCard, string newCell);
@@ -30,11 +29,6 @@ public partial class SignalManager : Node
 	public override void _Ready()
 	{
 		Instance = this;
-	}
-	
-	public static void EmitOnDealCard()
-	{
-		Instance.EmitSignal(SignalName.OnDealCard);
 	}
 	
 	public static void EmitOnMouseEntered(int icon, int bg, Control pivot)

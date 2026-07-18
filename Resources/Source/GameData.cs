@@ -4,7 +4,7 @@ using Godot;
 
 public partial class GameData: Resource
 {
-    [Export] public Godot.Collections.Array<Row> Grid { get; set; } = [];
+    [Export] public Godot.Collections.Array<Row> Grid { get; set; } = []; 
     
     public readonly List<CardData> Deck = [];
     public int WeekCard { get; set; } // which card is used for the week -> set up card, not play area card

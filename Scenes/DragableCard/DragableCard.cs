@@ -43,7 +43,6 @@ public partial class DragableCard : PanelContainer
 			case CardState.Released:
 				CheckForSnap();
 				State = CardState.Dealt;
-				GD.Print($"Current ZIndex: {ZIndex}; old ZIndex: {_oldZ}");
 				ZIndex = _oldZ;
 				break;
 			
@@ -93,8 +92,6 @@ public partial class DragableCard : PanelContainer
 			{
 				_offset = GetGlobalMousePosition() - Position;
 				_oldZ = ZIndex;
-				GD.Print(Name);
-				GD.Print($"Current ZIndex: {ZIndex}; old ZIndex: {_oldZ}");
 				ZIndex = 99;
 				State= CardState.Drag;
 			}
@@ -170,6 +167,7 @@ public partial class DragableCard : PanelContainer
 	{
 		State= CardState.Locked;
 		RemoveFromGroup("PlayableCard");
+		AddToGroup("PlayedCard");
 		int i = 0;
 		PanelContainer cell = GetNodeOrNull<PanelContainer>($"CardImage/CardCell{i}");
 		while (cell is not null)

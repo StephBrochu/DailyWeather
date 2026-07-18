@@ -45,8 +45,8 @@ public partial class TopBar : TextureRect
 		SetStartCards(); // set up the initial two cards, depending on the week card used
 		
 		ShuffleDeck();
-		SignalManager.EmitOnDealCard(); // deal one card
-		SignalManager.EmitOnDealCard(); // and a second
+		TableTop.Instance.DealCard(); // deal one card
+		TableTop.Instance.DealCard(); // and a second
 		DisplayGrid(); // for debugging purposes
 	}
 
@@ -202,10 +202,5 @@ public partial class TopBar : TextureRect
 		//GD.Print(($"Season: {_gameData.Season}"));
 		//GD.Print(String.Join("\n", _deck));
 		//GD.Print(String.Join("\n", _cardSide));
-	}
-
-	public void ClearTable()
-	{
-		
 	}
 }

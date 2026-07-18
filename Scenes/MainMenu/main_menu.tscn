@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://7aogaoeiyd8c"]
+[gd_scene load_steps=17 format=3 uid="uid://7aogaoeiyd8c"]
 
 [ext_resource type="PackedScene" uid="uid://phgatxro0ybc" path="res://Scenes/TopBar/TopBar.tscn" id="1_uqdog"]
 [ext_resource type="Texture2D" uid="uid://piknf0q6to2m" path="res://Images/tabletop.png" id="1_v763k"]
@@ -12,11 +12,15 @@
 [ext_resource type="Script" uid="uid://bm5ojugh4oihc" path="res://Scenes/ScoringManager/ScoringManager.cs" id="10_agesy"]
 [ext_resource type="Resource" uid="uid://d4dkeowkbv5og" path="res://Resources/DayCards.tres" id="11_mdp32"]
 [ext_resource type="PackedScene" uid="uid://d7mlu8jbvpp4" path="res://Scenes/GameEnd/GameEnd.tscn" id="12_rlg4b"]
+[ext_resource type="Script" uid="uid://dyhsrlrktnt5w" path="res://Scenes/MainMenu/StartMenu.cs" id="13_nqd6t"]
+[ext_resource type="Texture2D" uid="uid://bnlx67gxb8drh" path="res://Images/StartMenu.png" id="13_w5buf"]
+[ext_resource type="Texture2D" uid="uid://dtxegtdxfug0h" path="res://Images/shadow.png" id="14_fo6ee"]
+[ext_resource type="FontFile" uid="uid://bhgucbn7je4og" path="res://font/LuckiestGuy-Regular.ttf" id="15_nqd6t"]
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-metadata/_edit_vertical_guides_ = [6950.0, 4630.0, 4780.0, 4930.0, 5080.0, 5230.0, 5380.0, 5530.0]
+metadata/_edit_vertical_guides_ = [6950.0, 4630.0, 4780.0, 4930.0, 5080.0, 5230.0, 5380.0, 5530.0, 640.0]
 metadata/_edit_horizontal_guides_ = [2300.0, 2450.0, 2600.0, 2750.0, 2900.0]
 
 [node name="TableTop" type="TextureRect" parent="."]
@@ -34,15 +38,6 @@ _playCard = ExtResource("4_0qgbs")
 _playData = ExtResource("6_rlg4b")
 _gameData = ExtResource("7_w5buf")
 _offsetTables = ExtResource("8_6c6cs")
-
-[node name="GameEnd" parent="TableTop" instance=ExtResource("12_rlg4b")]
-visible = false
-z_index = 50
-layout_mode = 0
-offset_left = 4334.0
-offset_top = 2252.0
-offset_right = 5294.0
-offset_bottom = 2932.0
 
 [node name="ScoringManager" type="Control" parent="TableTop"]
 anchors_preset = 0
@@ -132,9 +127,49 @@ offset_top = 2729.0
 offset_right = 6120.0
 offset_bottom = 2773.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GameEnd" parent="TableTop" instance=ExtResource("12_rlg4b")]
+visible = false
+offset = Vector2(130, 100)
+scale = Vector2(0.8, 0.8)
+transform = Transform2D(0.8, 0, 0, 0.8, 130, 100)
 
-[node name="TopBar" parent="CanvasLayer" instance=ExtResource("1_uqdog")]
+[node name="TopBarLayer" type="CanvasLayer" parent="."]
+
+[node name="TopBar" parent="TopBarLayer" instance=ExtResource("1_uqdog")]
 z_index = 1
 offset_right = 1280.0
 offset_bottom = 120.0
+
+[node name="StartMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("_start")]
+script = ExtResource("13_nqd6t")
+_start = NodePath("StartButton")
+
+[node name="SplashScreen" type="TextureRect" parent="StartMenu"]
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("13_w5buf")
+expand_mode = 1
+
+[node name="StartButton" type="TextureButton" parent="StartMenu"]
+custom_minimum_size = Vector2(250, 75)
+offset_left = 515.0
+offset_top = 500.0
+offset_right = 765.0
+offset_bottom = 575.0
+texture_normal = ExtResource("14_fo6ee")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="StartLabel" type="Label" parent="StartMenu/StartButton"]
+custom_minimum_size = Vector2(250, 75)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 9.0
+offset_right = 251.0
+offset_bottom = 84.0
+theme_override_fonts/font = ExtResource("15_nqd6t")
+theme_override_font_sizes/font_size = 52
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
