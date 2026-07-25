@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbv7aggq6m3e5"
-path="res://.godot/imported/Weekday- Tuesday-SummerFall.png-4a2722d02df2243e7be9113dd8b17ee5.ctex"
+uid="uid://cwa10n0l3pipg"
+path="res://.godot/imported/Weekday- Friday -SpringFall.png-9c0d339427102235f74a869966f7bbe1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Set Up Cards/Weekday- Tuesday-SummerFall.png"
-dest_files=["res://.godot/imported/Weekday- Tuesday-SummerFall.png-4a2722d02df2243e7be9113dd8b17ee5.ctex"]
+source_file="res://Images/Set Up Cards/Weekday- Friday -SpringFall.png"
+dest_files=["res://.godot/imported/Weekday- Friday -SpringFall.png-9c0d339427102235f74a869966f7bbe1.ctex"]
 
 [params]
 

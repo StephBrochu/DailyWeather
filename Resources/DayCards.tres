@@ -1,22 +1,22 @@
 [gd_resource type="Resource" script_class="DayConditionCards" load_steps=167 format=3 uid="uid://d4dkeowkbv5og"]
 
 [ext_resource type="Script" uid="uid://b7tw2ry5it4dc" path="res://Resources/Source/DayConditionCard.cs" id="1_d2kg8"]
-[ext_resource type="Texture2D" uid="uid://bhgae1u603obh" path="res://Images/Set Up Cards/Weekday- SaturdaySunday - SummerFall.png" id="1_vq0cy"]
-[ext_resource type="Texture2D" uid="uid://dg6vf8uh04y5t" path="res://Images/Set Up Cards/Weekday- SaturdaySunday - WinterSpring.png" id="2_d2kg8"]
+[ext_resource type="Texture2D" uid="uid://b5v7wfmrfifg5" path="res://Images/Set Up Cards/Weekday- SaturdaySunday - SpringFall.png" id="2_gqdd4"]
 [ext_resource type="Script" uid="uid://camyeggovvbtl" path="res://Resources/Source/DayCardData.cs" id="3_vq0cy"]
 [ext_resource type="Script" uid="uid://b7dwbeifgj7b0" path="res://Resources/Source/ConditionGrid.cs" id="4_v3ua7"]
 [ext_resource type="Script" uid="uid://c08p86nv15ss6" path="res://Resources/Source/DayConditionCards.cs" id="5_b3n5n"]
 [ext_resource type="Script" uid="uid://bohlbfye2irlg" path="res://Resources/Source/ConditionPattern.cs" id="5_ug4x5"]
-[ext_resource type="Texture2D" uid="uid://tdcw6v0y5rwl" path="res://Images/Set Up Cards/Weekday- Monday-SummerFall.png" id="6_xtofj"]
-[ext_resource type="Texture2D" uid="uid://bjt8qhpbn3l0m" path="res://Images/Set Up Cards/Weekday- Monday-WinterSpring.png" id="7_bhn5k"]
-[ext_resource type="Texture2D" uid="uid://bbv7aggq6m3e5" path="res://Images/Set Up Cards/Weekday- Tuesday-SummerFall.png" id="8_c7yog"]
-[ext_resource type="Texture2D" uid="uid://c77k6ltm3ew5s" path="res://Images/Set Up Cards/Weekday- Tuesday-WinterSpring.png" id="9_csoht"]
-[ext_resource type="Texture2D" uid="uid://bqn1lho7583cj" path="res://Images/Set Up Cards/Weekday- Wednesday - WinterSpring.png" id="10_50w8v"]
-[ext_resource type="Texture2D" uid="uid://02ued71krpsm" path="res://Images/Set Up Cards/Weekday- Wednesday -SummerFall.png" id="11_1haab"]
-[ext_resource type="Texture2D" uid="uid://c3w00uf4hxkem" path="res://Images/Set Up Cards/Weekday- Thursday - WinterSpring.png" id="12_gqdd4"]
-[ext_resource type="Texture2D" uid="uid://d1bwt7djos1yp" path="res://Images/Set Up Cards/Weekday- Thursday -SummerFall.png" id="13_s0f8k"]
-[ext_resource type="Texture2D" uid="uid://2l1ad54xfdtu" path="res://Images/Set Up Cards/Weekday- Friday - WinterSpring.png" id="14_50w8v"]
-[ext_resource type="Texture2D" uid="uid://bdrcap5arxkpb" path="res://Images/Set Up Cards/Weekday- Friday -SummerFall.png" id="15_1haab"]
+[ext_resource type="Texture2D" uid="uid://cnhhfby0cbogy" path="res://Images/Set Up Cards/Weekday- SaturdaySunday - WinterSummer.png" id="6_i31hg"]
+[ext_resource type="Texture2D" uid="uid://bigghh7niq01p" path="res://Images/Set Up Cards/Weekday- Monday-SpringFall.png" id="7_1haab"]
+[ext_resource type="Texture2D" uid="uid://biqbq5s2ip3xi" path="res://Images/Set Up Cards/Weekday- Monday-WinterSummer.png" id="8_1haab"]
+[ext_resource type="Texture2D" uid="uid://c33v8bblifwx1" path="res://Images/Set Up Cards/Weekday- Tuesday-SpringFall.png" id="9_gqdd4"]
+[ext_resource type="Texture2D" uid="uid://b4uh5r5j7kqo1" path="res://Images/Set Up Cards/Weekday- Tuesday-WinterSummer.png" id="10_gqdd4"]
+[ext_resource type="Texture2D" uid="uid://dlefnti41fye0" path="res://Images/Set Up Cards/Weekday- Wednesday -SpringFall.png" id="11_s0f8k"]
+[ext_resource type="Texture2D" uid="uid://dklycx7lysyng" path="res://Images/Set Up Cards/Weekday- Wednesday - WinterSummer.png" id="12_s0f8k"]
+[ext_resource type="Texture2D" uid="uid://d01aw4qmbxhra" path="res://Images/Set Up Cards/Weekday- Thursday -SpringFall.png" id="13_61l4l"]
+[ext_resource type="Texture2D" uid="uid://bhnjpa4c8ntgv" path="res://Images/Set Up Cards/Weekday- Thursday - WinterSummer.png" id="14_61l4l"]
+[ext_resource type="Texture2D" uid="uid://cwa10n0l3pipg" path="res://Images/Set Up Cards/Weekday- Friday -SpringFall.png" id="15_nj65t"]
+[ext_resource type="Texture2D" uid="uid://b41qjiuwf14hj" path="res://Images/Set Up Cards/Weekday- Friday - WinterSummer.png" id="16_nj65t"]
 
 [sub_resource type="Resource" id="Resource_xtofj"]
 script = ExtResource("5_ug4x5")
@@ -72,7 +72,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_s0f8k"]
 script = ExtResource("3_vq0cy")
-Image = ExtResource("1_vq0cy")
+Image = ExtResource("2_gqdd4")
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_veuus"), SubResource("Resource_gqdd4")])
 CardScoringCondition = 10
 metadata/_custom_type_script = "uid://camyeggovvbtl"
@@ -130,7 +130,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_d2kg8"]
 script = ExtResource("3_vq0cy")
-Image = ExtResource("2_d2kg8")
+Image = ExtResource("6_i31hg")
 ArrowPosition = 3
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_b3n5n"), SubResource("Resource_35jxk")])
 CardScoringCondition = 11
@@ -182,7 +182,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_fwx6r"]
 script = ExtResource("3_vq0cy")
-Image = ExtResource("6_xtofj")
+Image = ExtResource("7_1haab")
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_yg88a"), SubResource("Resource_1m5kk")])
 metadata/_custom_type_script = "uid://camyeggovvbtl"
 
@@ -230,7 +230,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_inv76"]
 script = ExtResource("3_vq0cy")
-Image = ExtResource("7_bhn5k")
+Image = ExtResource("8_1haab")
 ArrowPosition = 1
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_eny3m"), SubResource("Resource_jw8ed")])
 CardScoringCondition = 1
@@ -293,7 +293,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_47qd4"]
 script = ExtResource("3_vq0cy")
-Image = ExtResource("8_c7yog")
+Image = ExtResource("9_gqdd4")
 ArrowPosition = 2
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_j68hn"), SubResource("Resource_bsnun")])
 CardScoringCondition = 2
@@ -352,7 +352,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_65nvx"]
 script = ExtResource("3_vq0cy")
-Image = ExtResource("9_csoht")
+Image = ExtResource("10_gqdd4")
 ArrowPosition = 3
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_876kk"), SubResource("Resource_qi1i5")])
 CardScoringCondition = 3
@@ -405,7 +405,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_ux76i"]
 script = ExtResource("3_vq0cy")
-Image = ExtResource("11_1haab")
+Image = ExtResource("11_s0f8k")
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_51f25"), SubResource("Resource_ytcsq")])
 CardScoringCondition = 5
 metadata/_custom_type_script = "uid://camyeggovvbtl"
@@ -452,7 +452,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_ewu3j"]
 script = ExtResource("3_vq0cy")
-Image = ExtResource("10_50w8v")
+Image = ExtResource("12_s0f8k")
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_m3ala"), SubResource("Resource_7av51")])
 CardScoringCondition = 4
 metadata/_custom_type_script = "uid://camyeggovvbtl"
@@ -515,7 +515,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_o58f3"]
 script = ExtResource("3_vq0cy")
-Image = ExtResource("13_s0f8k")
+Image = ExtResource("13_61l4l")
 ArrowPosition = 3
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_sw16w"), SubResource("Resource_kfsc4")])
 CardScoringCondition = 7
@@ -575,7 +575,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_027en"]
 script = ExtResource("3_vq0cy")
-Image = ExtResource("12_gqdd4")
+Image = ExtResource("14_61l4l")
 ArrowPosition = 2
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_jxhnv"), SubResource("Resource_707jf")])
 CardScoringCondition = 6
@@ -630,7 +630,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_u5wn0"]
 script = ExtResource("3_vq0cy")
-Image = ExtResource("15_1haab")
+Image = ExtResource("15_nj65t")
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_6yayd"), SubResource("Resource_key5a")])
 CardScoringCondition = 9
 metadata/_custom_type_script = "uid://camyeggovvbtl"
@@ -677,7 +677,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_i3bbm"]
 script = ExtResource("3_vq0cy")
-Image = ExtResource("14_50w8v")
+Image = ExtResource("16_nj65t")
 ArrowPosition = 1
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_rvvxi"), SubResource("Resource_yj5ps")])
 CardScoringCondition = 8
@@ -743,7 +743,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_dh2cm"]
 script = ExtResource("3_vq0cy")
-Image = ExtResource("1_vq0cy")
+Image = ExtResource("2_gqdd4")
 ArrowPosition = 2
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_1s0dg"), SubResource("Resource_m6ds5")])
 CardScoringCondition = 10
@@ -802,7 +802,7 @@ metadata/_custom_type_script = "uid://b7dwbeifgj7b0"
 
 [sub_resource type="Resource" id="Resource_slosv"]
 script = ExtResource("3_vq0cy")
-Image = ExtResource("2_d2kg8")
+Image = ExtResource("6_i31hg")
 ArrowPosition = 1
 Season = Array[ExtResource("4_v3ua7")]([SubResource("Resource_cluql"), SubResource("Resource_ats3x")])
 CardScoringCondition = 11

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://y3uuu750c5jf" path="res://Images/Background.png" id="1_aylmd"]
 [ext_resource type="Script" uid="uid://wif1ndxdcy1v" path="res://Scenes/TopBar/TopBar.cs" id="2_k4new"]
 [ext_resource type="Texture2D" uid="uid://ceq406gb4tnyd" path="res://Images/Set Up Cards/Week 1.png" id="2_mdabh"]
-[ext_resource type="Texture2D" uid="uid://tdcw6v0y5rwl" path="res://Images/Set Up Cards/Weekday- Monday-SummerFall.png" id="3_3p0hn"]
+[ext_resource type="Texture2D" uid="uid://bigghh7niq01p" path="res://Images/Set Up Cards/Weekday- Monday-SpringFall.png" id="3_3p0hn"]
 [ext_resource type="Resource" uid="uid://dheliipbucmyj" path="res://Resources/WeekCards.tres" id="4_pe3no"]
 [ext_resource type="Resource" uid="uid://d4dkeowkbv5og" path="res://Resources/DayCards.tres" id="5_wffc3"]
 [ext_resource type="Resource" uid="uid://0i2tc3mavh05" path="res://Resources/GameData.tres" id="6_d441w"]

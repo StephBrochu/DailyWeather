@@ -76,8 +76,8 @@ public partial class TopBar : TextureRect
 			_ => 3
 		};
 
-		int seasonUsed = (_gameData.Season - 2 > 0) ? _gameData.Season - 2 : _gameData.Season;
-		var card = (Math.DivRem(_gameData.Season, 2, out _) == 0)
+		int seasonUsed = Math.DivRem(_gameData.Season, 2, out _);
+		var card = _gameData.Season % 2 != 0
 			? _dayCardData.Card[(int)_today].Front
 			: _dayCardData.Card[(int)_today].Back;
 		_dayCardDisplay.Texture = card.Image;
