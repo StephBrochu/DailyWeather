@@ -167,12 +167,12 @@ metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_1vbuw"]
 script = ExtResource("5_ug4x5")
-colOffset = 1
+rowOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_pxy06"]
 script = ExtResource("5_ug4x5")
-colOffset = 2
+rowOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_1m5kk"]
@@ -214,13 +214,13 @@ metadata/_custom_type_script = "uid://bohlbfye2irlg"
 [sub_resource type="Resource" id="Resource_mdxyn"]
 script = ExtResource("5_ug4x5")
 rowOffset = -1
-colOffset = -1
+colOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_66nsn"]
 script = ExtResource("5_ug4x5")
 rowOffset = -2
-colOffset = -2
+colOffset = 2
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_jw8ed"]
@@ -305,7 +305,7 @@ metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_cucqf"]
 script = ExtResource("5_ug4x5")
-colOffset = 1
+rowOffset = 1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_of85p"]
@@ -331,7 +331,7 @@ metadata/_custom_type_script = "uid://bohlbfye2irlg"
 [sub_resource type="Resource" id="Resource_iuep0"]
 script = ExtResource("5_ug4x5")
 rowOffset = 1
-colOffset = 1
+colOffset = -1
 metadata/_custom_type_script = "uid://bohlbfye2irlg"
 
 [sub_resource type="Resource" id="Resource_vi35k"]
