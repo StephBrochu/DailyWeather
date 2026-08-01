@@ -40,6 +40,11 @@ public partial class DragableCard : PanelContainer
 		if (State == CardState.Locked) return; // if the card is locked, then don't allow dragging/rotating
 		switch (State)
 		{
+			case CardState.Rotate:
+				RotateCard();
+				State = CardState.Released;
+				break;
+				
 			case CardState.Released:
 				CheckForSnap();
 				State = CardState.Dealt;
@@ -85,9 +90,7 @@ public partial class DragableCard : PanelContainer
 		{
 			if (mouseButtonEvent.DoubleClick)
 			{
-				_eventStart = GetGlobalMousePosition();
 				State= CardState.Rotate;
-				RotateCard();
 			} else if (mouseButtonEvent.Pressed && State== CardState.Dealt)
 			{
 				_offset = GetGlobalMousePosition() - Position;
@@ -104,9 +107,22 @@ public partial class DragableCard : PanelContainer
 
 	private void RotateCard()
 	{
-		var parentNode = _currentCellPivot.GetParent<PanelContainer>();
-		PivotOffset = _currentCellPivot.Position + parentNode.Position;
-		// got to figure out why the pivot is wrong when switching
+		float bestDistance = 99999999;
+		Vector2 bestPivot = Vector2.Zero;
+		for (int i = 0; i <= 5; i++)
+		{
+			var cellPivots = GetNode<Control>($"CardImage/CardCell{i}/Pivot");
+			var cellLocation = GetNode<PanelContainer>($"CardImage/CardCell{i}");
+			var distance = (cellPivots.GlobalPosition - GetGlobalMousePosition()).Length();
+			if (distance < bestDistance)
+			{
+				GD.Print(cellLocation.Name);
+				bestPivot = cellPivots.Position + cellLocation.Position;
+				bestDistance = distance;
+			}
+		}
+		PivotOffset = bestPivot;
+		
 		if (_currentRotation >= (float.Pi * 1.5f))
 			_currentRotation = 0;
 		else
